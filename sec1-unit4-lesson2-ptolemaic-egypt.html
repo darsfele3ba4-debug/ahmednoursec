@@ -1,0 +1,4576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس مصر تحت حكم البطالمة - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الثَّانَوِيُّ - الْوَحْدَةُ الرَّابِعَةُ - الدَّرْسُ الثَّانِي: مِصْرُ تَحْتَ حُكْمِ الْبَطَالِمَةِ</h2>
+                    <p style="margin-top: 10px;">التَّارِيخُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "التاريخ: مصر تحت حكم البطالمة - الصف الأول الثانوي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول مصر تحت حكم البطالمة",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "نجح الإسكندر الأكبر في السيطرة على مصر دون قتال عام:",
+                "options": [
+                    "332 ق.م",
+                    "323 ق.م",
+                    "331 ق.م",
+                    "30 ق.م"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جعل الإسكندر مصر هدفًا له لاستكمال إخضاع الولايات:",
+                "options": [
+                    "الرومانية",
+                    "البابلية",
+                    "الفينيقية",
+                    "الفارسية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أعمال الإسكندر لإرضاء المصريين:",
+                "options": [
+                    "هدم المعابد",
+                    "فرض الضرائب",
+                    "إظهار ولائه للمعبودات المصرية وعلى رأسها آمون",
+                    "تغيير النظم الإدارية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "اختار الإسكندر لبناء الإسكندرية قرية مصرية قديمة تسمى:",
+                "options": [
+                    "منف",
+                    "راقودة",
+                    "نقراطيس",
+                    "طيبة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تقابل قرية راقودة جزيرة صغيرة في البحر تسمى:",
+                "options": [
+                    "فاروس",
+                    "كريت",
+                    "قبرص",
+                    "رودس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أهداف بناء الإسكندرية أن تكون:",
+                "options": [
+                    "مقبرة له",
+                    "قاعدة بحرية لتدعيم سيطرته على البحر المتوسط",
+                    "عاصمة زراعية",
+                    "مدينة فرعونية خالصة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "غادر الإسكندر مصر متجهًا إلى الشرق لحرب الفرس عام:",
+                "options": [
+                    "323 ق.م",
+                    "332 ق.م",
+                    "331 ق.م",
+                    "305 ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "توفي الإسكندر الأكبر عام:",
+                "options": [
+                    "332 ق.م",
+                    "30 ق.م",
+                    "323 ق.م",
+                    "305 ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لقب الإسكندر بالأكبر لأنه:",
+                "options": [
+                    "أطول الملوك",
+                    "أكبر إخوته",
+                    "من أكبر الفاتحين وحقق انتصارات مبهرة",
+                    "أكبر الملوك سنًا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "اجتمع قادة جيش الإسكندر وتقاسموا الإمبراطورية في:",
+                "options": [
+                    "مؤتمر أثينا",
+                    "مؤتمر بابل",
+                    "مؤتمر الإسكندرية",
+                    "مؤتمر روما"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت مصر من نصيب:",
+                "options": [
+                    "أنطيوخوس",
+                    "بطليموس بن لاجوس",
+                    "فيليب",
+                    "سلوقس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أعلن بطليموس نفسه ملكًا على مصر عام:",
+                "options": [
+                    "332 ق.م",
+                    "305 ق.م",
+                    "284 ق.م",
+                    "323 ق.م"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عرفت الحضارة التي جمعت بين المصرية القديمة واليونانية باسم:",
+                "options": [
+                    "الرومانية",
+                    "الهلينستية",
+                    "المينوية",
+                    "القبطية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "طبق البطالمة في المجال الاقتصادي نظام:",
+                "options": [
+                    "المقايضة",
+                    "الإقطاع الأوروبي",
+                    "الاحتكار",
+                    "الحرية الاقتصادية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "اهتم البطالمة بالزراعة باعتبارها:",
+                "options": [
+                    "حرفة للعبيد",
+                    "الركيزة الأولى للاقتصاد المصري",
+                    "نشاطًا محظورًا",
+                    "نشاطًا ثانويًا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من وسائل الري الحديثة في عهد البطالمة:",
+                "options": [
+                    "الشادوف فقط",
+                    "الساقية والطنبور",
+                    "الري بالتنقيط",
+                    "الري بالرش"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتبع البطالمة نظام ... للحفاظ على جودة الأرض وخصوبتها:",
+                "options": [
+                    "الري الدائم",
+                    "التبوير الدائم",
+                    "الزراعة الواحدة",
+                    "الدورة الزراعية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قسمت الأراضي الزراعية في عهد البطالمة إلى:",
+                "options": [
+                    "سبعة أنواع",
+                    "خمسة أنواع",
+                    "نوعين",
+                    "ثلاثة أنواع"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الأراضي التي كان يمتلكها الملوك الفراعنة ثم آلت إلى البطالمة:",
+                "options": [
+                    "أراضي المدن",
+                    "أراضي الهبات",
+                    "الأراضي المقدسة",
+                    "أراضي الملك"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "الأراضي التي كان الملوك يمنحونها للمعابد:",
+                "options": [
+                    "أراضي الإقطاعات العسكرية",
+                    "أراضي الملك",
+                    "الأراضي المقدسة",
+                    "أراضي الهبات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "منح البطالمة الجنود المرتزقة من الإغريق أراضي:",
+                "options": [
+                    "الإقطاعات العسكرية",
+                    "المدن",
+                    "المقدسة",
+                    "الهبات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أراضي ... كان البطالمة يمنحونها لكبار موظفيهم:",
+                "options": [
+                    "المدن",
+                    "الملك",
+                    "الهبات",
+                    "الإقطاعات العسكرية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من المدن التي تمتعت بوضع المدينة اليونانية:",
+                "options": [
+                    "منف وطيبة",
+                    "فيلة وأبيدوس",
+                    "أسوان وإدفو",
+                    "نقراطيس والإسكندرية وبطلمية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من الصناعات المهمة بمصر في عصر البطالمة:",
+                "options": [
+                    "الورق من نبات البردي",
+                    "البلاستيك",
+                    "السيارات",
+                    "الحرير الصيني"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أنشأ البطالمة لإرشاد السفن:",
+                "options": [
+                    "معبد فيلة",
+                    "منارة الإسكندرية",
+                    "معبد إدفو",
+                    "مكتبة الإسكندرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أصبحت ... أكبر الموانئ في العالم القديم:",
+                "options": [
+                    "الإسكندرية",
+                    "قرطاجة",
+                    "نقراطيس",
+                    "صور"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حكم البطالمة مصر من خلال الحكم ... الذي ورثوه عن الفراعنة:",
+                "options": [
+                    "العسكري",
+                    "الملكي",
+                    "الديمقراطي",
+                    "الجمهوري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان يساعد الملك البطلمي في الحكم:",
+                "options": [
+                    "الرقباء الشعبيون",
+                    "الجمعية الشعبية",
+                    "مجلس الشيوخ",
+                    "وزير المالية وكبير القضاة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "امتد حكم البطالمة لمصر من:",
+                "options": [
+                    "332 ق.م إلى 31 ق.م",
+                    "323 ق.م إلى 30 ق.م",
+                    "284 ق.م إلى 180 ق.م",
+                    "305 ق.م إلى 30 م"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "المرحلة الأولى لدولة البطالمة هي مرحلة:",
+                "options": [
+                    "القوة والازدهار",
+                    "الاحتلال",
+                    "الفوضى",
+                    "الضعف والانهيار"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لقب بطليموس الأول بـ:",
+                "options": [
+                    "المحب لأبيه",
+                    "الفاتح",
+                    "المنقذ",
+                    "الخيّر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حكم بطليموس الأول مصر:",
+                "options": [
+                    "221-205 ق.م",
+                    "246-221 ق.م",
+                    "323-284 ق.م",
+                    "284-246 ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أحدث نهضة كبيرة في المجالات الاقتصادية والثقافية حتى أصبحت مصر إمبراطورية كبيرة:",
+                "options": [
+                    "بطليموس الثالث عشر",
+                    "بطليموس الخامس",
+                    "بطليموس الثاني",
+                    "بطليموس الرابع"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لقب بطليموس الثالث بالخيّر أو الصالح لأنه:",
+                "options": [
+                    "أسس الإسكندرية",
+                    "أمر بإسقاط الضرائب وفتح صوامع الغلال حين انخفض منسوب الفيضان",
+                    "بنى المكتبة",
+                    "انتصر في الحروب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد عهد ... بداية لمرحلة التدهور لحكم البطالمة:",
+                "options": [
+                    "بطليموس الثالث",
+                    "بطليموس الرابع",
+                    "بطليموس الثاني",
+                    "بطليموس الأول"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "انفرد أجاثوكليس بالوصاية على الملك الصغير:",
+                "options": [
+                    "بطليموس الثالث",
+                    "بطليموس الأول",
+                    "بطليموس الثاني",
+                    "بطليموس الخامس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "آخر ملوك البطالمة:",
+                "options": [
+                    "بطليموس الرابع عشر",
+                    "أرسينوي",
+                    "بطليموس الخامس",
+                    "كليوباترا السابعة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تحالفت كليوباترا السابعة مع:",
+                "options": [
+                    "أوكتافيوس",
+                    "نيرون",
+                    "ماركوس أنطونيوس",
+                    "بومبي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "انتحر ماركوس أنطونيوس بعد هزيمته في معركة:",
+                "options": [
+                    "قادش",
+                    "زاما",
+                    "أكتيوم البحرية عام 31 ق.م",
+                    "مجدو"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "انتحرت كليوباترا وأصبحت مصر تحت الحكم الروماني عام:",
+                "options": [
+                    "332 ق.م",
+                    "323 ق.م",
+                    "31 ق.م",
+                    "30 ق.م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اختص البطالمة المقدونيين واليونانيين بـ:",
+                "options": [
+                    "الوظائف العليا وأغدقوا عليهم الهبات والمنح",
+                    "التجارة الداخلية فقط",
+                    "الخدمة في المعابد فقط",
+                    "الأعمال الزراعية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اشتغل يهود الإسكندرية بـ:",
+                "options": [
+                    "الكهانة",
+                    "التجارة والأعمال المصرفية والإقراض",
+                    "الزراعة",
+                    "الرعي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "المصريون في عصر البطالمة هم:",
+                "options": [
+                    "الجنود المرتزقة",
+                    "أقلية حاكمة",
+                    "طبقة الأغنياء",
+                    "أهل البلاد والأغلبية الساحقة وعماد الاقتصاد"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تميزت السياسة الدينية للبطالمة بـ:",
+                "options": [
+                    "منع العبادة المصرية",
+                    "هدم المعابد",
+                    "التعصب الديني",
+                    "التسامح الديني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من المعابد التي أنشأها البطالمة ولا تزال شامخة:",
+                "options": [
+                    "معبد الكرنك",
+                    "الدير البحري",
+                    "معبد إدفو ومعابد فيلة",
+                    "معابد أبو سمبل"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أشهر علماء الفلك في عصر البطالمة:",
+                "options": [
+                    "أريستارخوس",
+                    "إقليدس",
+                    "أرشميدس",
+                    "هيروفيلوس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وضع كتاب الأصول في مجال الهندسة الرياضية:",
+                "options": [
+                    "مانيتون",
+                    "استرابون",
+                    "إقليدس",
+                    "أرشميدس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "اكتشف الدورة الدموية العالم:",
+                "options": [
+                    "أريستارخوس",
+                    "هيروفيلوس",
+                    "إقليدس",
+                    "أرشميدس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قسم المؤرخ المصري مانيتون تاريخ مصر الفرعونية إلى:",
+                "options": [
+                    "أربعين أسرة",
+                    "عشر أسرات",
+                    "ثلاثين أسرة",
+                    "عشرين أسرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يطلق على الأدب اليوناني في عصر البطالمة الأدب:",
+                "options": [
+                    "السكندري",
+                    "الهلينستي",
+                    "الروماني",
+                    "الأثيني"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن مصر تحت حكم البطالمة",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "عام دخول الإسكندر مصر؟",
+                "options": [
+                    "332 ق.م",
+                    "323 ق.م",
+                    "331 ق.م",
+                    "30 ق.م"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معبود أظهر الإسكندر ولاءه له؟",
+                "options": [
+                    "آمون",
+                    "زيوس",
+                    "بعل",
+                    "مردوخ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قرية بنيت عليها الإسكندرية؟",
+                "options": [
+                    "راقودة",
+                    "منف",
+                    "بلوزيوم",
+                    "نقراطيس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جزيرة أمام راقودة؟",
+                "options": [
+                    "قبرص",
+                    "كريت",
+                    "فاروس",
+                    "رودس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عام مغادرة الإسكندر مصر؟",
+                "options": [
+                    "332 ق.م",
+                    "331 ق.م",
+                    "323 ق.م",
+                    "305 ق.م"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عام وفاة الإسكندر؟",
+                "options": [
+                    "284 ق.م",
+                    "332 ق.م",
+                    "305 ق.م",
+                    "323 ق.م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مكان تقسيم الإمبراطورية؟",
+                "options": [
+                    "روما",
+                    "الإسكندرية",
+                    "بابل",
+                    "أثينا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صاحب نصيب مصر؟",
+                "options": [
+                    "أنتيجونوس",
+                    "فيليب",
+                    "بطليموس بن لاجوس",
+                    "سلوقس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عام إعلان بطليموس ملكًا؟",
+                "options": [
+                    "332 ق.م",
+                    "305 ق.م",
+                    "323 ق.م",
+                    "284 ق.م"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حضارة مصرية يونانية؟",
+                "options": [
+                    "القبطية",
+                    "الهلينستية",
+                    "المينوية",
+                    "البيزنطية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "النظام الاقتصادي البطلمي؟",
+                "options": [
+                    "الاحتكار",
+                    "الحرية",
+                    "المقايضة",
+                    "التعاون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الركيزة الأولى للاقتصاد؟",
+                "options": [
+                    "الصيد",
+                    "التجارة",
+                    "الزراعة",
+                    "الصناعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "آلة ري حديثة؟",
+                "options": [
+                    "الطنبور",
+                    "الشادوف",
+                    "الرشاش",
+                    "المضخة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فاكهة استقدمها البطالمة؟",
+                "options": [
+                    "المانجو",
+                    "الموز",
+                    "المشمش",
+                    "البرتقال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عدد أنواع الأراضي؟",
+                "options": [
+                    "ثلاثة",
+                    "ستة",
+                    "أربعة",
+                    "خمسة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أراضي المعابد؟",
+                "options": [
+                    "الهبات",
+                    "الملك",
+                    "المدن",
+                    "المقدسة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أراضي المرتزقة؟",
+                "options": [
+                    "المقدسة",
+                    "الهبات",
+                    "الإقطاعات العسكرية",
+                    "المدن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أراضي كبار الموظفين؟",
+                "options": [
+                    "المدن",
+                    "المقدسة",
+                    "الهبات",
+                    "الملك"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مدينة لها وضع يوناني؟",
+                "options": [
+                    "طيبة",
+                    "إدفو",
+                    "بطلمية",
+                    "منف"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صناعة من البردي؟",
+                "options": [
+                    "الجلود",
+                    "النسيج",
+                    "الزجاج",
+                    "الورق"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مرشد السفن بالإسكندرية؟",
+                "options": [
+                    "المنارة",
+                    "المعبد",
+                    "المتحف",
+                    "المكتبة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكبر ميناء قديم؟",
+                "options": [
+                    "الإسكندرية",
+                    "بيريه",
+                    "صور",
+                    "قرطاجة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نظام الحكم البطلمي؟",
+                "options": [
+                    "ملكي",
+                    "عسكري",
+                    "جمهوري",
+                    "ديمقراطي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مساعد الملك في المال؟",
+                "options": [
+                    "وزير المالية",
+                    "الكاهن",
+                    "قائد الجيش",
+                    "كبير القضاة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عدد مراحل حكم البطالمة؟",
+                "options": [
+                    "اثنتان",
+                    "أربع",
+                    "خمس",
+                    "ثلاث"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لقب بطليموس الأول؟",
+                "options": [
+                    "العادل",
+                    "المنقذ",
+                    "الفاتح",
+                    "الخيّر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عام وفاة بطليموس الأول؟",
+                "options": [
+                    "246 ق.م",
+                    "305 ق.م",
+                    "221 ق.م",
+                    "284 ق.م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "صاحب النهضة الكبرى؟",
+                "options": [
+                    "بطليموس الرابع",
+                    "بطليموس الأول",
+                    "بطليموس الخامس",
+                    "بطليموس الثاني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لقب بطليموس الثالث؟",
+                "options": [
+                    "المحب",
+                    "الفاتح",
+                    "المنقذ",
+                    "الخيّر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بداية التدهور؟",
+                "options": [
+                    "بطليموس الثالث",
+                    "بطليموس الأول",
+                    "بطليموس الثاني",
+                    "بطليموس الرابع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "الوصي على بطليموس الخامس؟",
+                "options": [
+                    "أجاثوكليس",
+                    "قيصر",
+                    "مانيتون",
+                    "أنطونيوس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "آخر ملوك البطالمة؟",
+                "options": [
+                    "كليوباترا السابعة",
+                    "بطليموس الخامس",
+                    "بطليموس الأول",
+                    "أرسينوي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حليف كليوباترا؟",
+                "options": [
+                    "أنطونيوس",
+                    "كاليجولا",
+                    "نيرون",
+                    "أوكتافيوس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معركة هزيمة أنطونيوس؟",
+                "options": [
+                    "مجدو",
+                    "زاما",
+                    "قادش",
+                    "أكتيوم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عام نهاية البطالمة؟",
+                "options": [
+                    "30 ق.م",
+                    "31 ق.م",
+                    "47 ق.م",
+                    "323 ق.م"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الطبقة العليا البطلمية؟",
+                "options": [
+                    "العبيد",
+                    "المصريون",
+                    "المقدونيون واليونانيون",
+                    "اليهود"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عمل يهود الإسكندرية؟",
+                "options": [
+                    "الجندية",
+                    "الكهانة",
+                    "الزراعة",
+                    "الإقراض"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عماد الاقتصاد؟",
+                "options": [
+                    "الرومان",
+                    "اليهود",
+                    "المقدونيون",
+                    "المصريون"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "السياسة الدينية البطلمية؟",
+                "options": [
+                    "الاضطهاد",
+                    "الإلحاد",
+                    "التعصب",
+                    "التسامح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "معبد بطلمي بالصعيد؟",
+                "options": [
+                    "أبو سمبل",
+                    "الكرنك",
+                    "إدفو",
+                    "الأقصر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "موقع المعابد البطلمية؟",
+                "options": [
+                    "سيناء",
+                    "الصعيد",
+                    "الواحات",
+                    "الدلتا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مدينة تفوقت على أثينا؟",
+                "options": [
+                    "نقراطيس",
+                    "الإسكندرية",
+                    "روما",
+                    "منف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فلكي بطلمي شهير؟",
+                "options": [
+                    "أريستارخوس",
+                    "إقليدس",
+                    "مانيتون",
+                    "أرشميدس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صاحب كتاب الأصول؟",
+                "options": [
+                    "إقليدس",
+                    "أريستارخوس",
+                    "هيروفيلوس",
+                    "أرشميدس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صاحب قانون الطفو؟",
+                "options": [
+                    "أرشميدس",
+                    "هيروفيلوس",
+                    "أريستارخوس",
+                    "إقليدس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مكتشف الدورة الدموية؟",
+                "options": [
+                    "هيروفيلوس",
+                    "جالينوس",
+                    "أبو قراط",
+                    "أرشميدس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منشئ حديقة الحيوان؟",
+                "options": [
+                    "بطليموس الأول",
+                    "كليوباترا",
+                    "بطليموس الثاني",
+                    "بطليموس الثالث"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مؤرخ مصري بطلمي؟",
+                "options": [
+                    "بوليبيوس",
+                    "مانيتون",
+                    "استرابون",
+                    "هيرودوت"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عدد أسرات مانيتون؟",
+                "options": [
+                    "ثلاثون",
+                    "عشرون",
+                    "خمسون",
+                    "أربعون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اسم أدب العصر البطلمي؟",
+                "options": [
+                    "الروماني",
+                    "الملحمي",
+                    "الأثيني",
+                    "السكندري"
+                ],
+                "ans": 3
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات مصر تحت حكم البطالمة",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «انتصر الإسكندر على الفرس في آسيا الصغرى وسوريا و...».",
+                "options": [
+                    "مصر",
+                    "اليونان",
+                    "فلسطين",
+                    "الهند"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «عامل الإسكندر المصريين معاملة ...».",
+                "options": [
+                    "سيئة",
+                    "عادية",
+                    "حسنة",
+                    "قاسية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «أبقى الإسكندر على النظم ... المصرية».",
+                "options": [
+                    "العسكرية فقط",
+                    "الدينية فقط",
+                    "الفارسية",
+                    "الإدارية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من أهداف بناء الإسكندرية أن تحمل ... مثل عدة مدن أخرى أسسها».",
+                "options": [
+                    "اسم أثينا",
+                    "اسم آمون",
+                    "اسم أبيه",
+                    "اسمه"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من أهداف بناء الإسكندرية أن تكون مركزًا لنشر الحضارة ... في العالم».",
+                "options": [
+                    "الفارسية",
+                    "الرومانية",
+                    "الفرعونية",
+                    "الإغريقية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «انتصر الإسكندر على الفرس في العراق و... حتى استولى على كل أملاكهم».",
+                "options": [
+                    "مصر",
+                    "الشام",
+                    "إيران",
+                    "اليونان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «توغل الإسكندر في القارة الآسيوية حتى وصل إلى حدود ...».",
+                "options": [
+                    "الهند",
+                    "اليابان",
+                    "روسيا",
+                    "الصين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «بعد وفاة الإسكندر لم يكن له ... للعرش».",
+                "options": [
+                    "وريث",
+                    "جيش",
+                    "منافس",
+                    "عاصمة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «بدأت مصر في عهد جديد أطلق عليه دولة ...».",
+                "options": [
+                    "السلوقيين",
+                    "الرومان",
+                    "الفرس",
+                    "البطالمة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان الإسكندر يهدف إلى تكوين حضارة جديدة تجمع بين مزايا الحضارات الشرقية العريقة والحضارات ...».",
+                "options": [
+                    "الصينية",
+                    "اليونانية",
+                    "الرومانية",
+                    "الهندية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «فتح الإسكندر أبواب ... على مصراعيها أمام اليونان للإقامة بها».",
+                "options": [
+                    "الجنوب",
+                    "الشرق",
+                    "الشمال",
+                    "الغرب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «وضع البطالمة النظم الاقتصادية لتكوين دولة قوية تلعب دورًا مؤثرًا في سياسات ...».",
+                "options": [
+                    "مصر فقط",
+                    "اليونان فقط",
+                    "العالم",
+                    "الإسكندرية فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من وسائل النهوض بالزراعة إصلاح نظم الري وشق القنوات وإقامة ...».",
+                "options": [
+                    "الأهرامات",
+                    "الجسور",
+                    "القصور",
+                    "المعابد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «اهتم البطالمة بزراعة القمح والذرة و...».",
+                "options": [
+                    "الأرز",
+                    "القطن",
+                    "الشعير",
+                    "البن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «استقدم البطالمة أنواعًا جديدة من الفواكه وبخاصة العنب والتين والرمان و...».",
+                "options": [
+                    "الموز",
+                    "المانجو",
+                    "الأناناس",
+                    "المشمش"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «الأراضي المقدسة نوعان: الأول مخصص للكهنة والثاني مخصص ...».",
+                "options": [
+                    "للجنود",
+                    "للملك",
+                    "للتجار",
+                    "للمعابد"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «اعتمد البطالمة في تكوين جيوشهم على الجنود ... من الإغريق».",
+                "options": [
+                    "المصريين",
+                    "الرومان",
+                    "المرتزقة",
+                    "الفرس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كانت مصر منذ أقدم العصور موطنًا للعديد من ... المهمة».",
+                "options": [
+                    "الحروب",
+                    "الصناعات",
+                    "الصحاري",
+                    "الأوبئة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «احتكر البطالمة ... أيضًا».",
+                "options": [
+                    "الطب",
+                    "التعليم",
+                    "الصناعة",
+                    "الدين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ساعد النشاط الزراعي والصناعي على رواج ...».",
+                "options": [
+                    "الهجرة",
+                    "الحروب",
+                    "التجارة",
+                    "الفقر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «شجع على التجارة موقع مصر الجغرافي في قلب العالم ...».",
+                "options": [
+                    "الجديد",
+                    "القديم",
+                    "الحديث",
+                    "الغربي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «أنشأ البطالمة الموانئ على ساحل البحر المتوسط و...».",
+                "options": [
+                    "الميت",
+                    "قزوين",
+                    "الأسود",
+                    "الأحمر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أقام البطالمة ... لبناء السفن».",
+                "options": [
+                    "معابد",
+                    "ترسانات",
+                    "مقابر",
+                    "صوامع"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «سك البطالمة ... لتسهيل التبادل التجاري».",
+                "options": [
+                    "العملة",
+                    "التماثيل",
+                    "المسلات",
+                    "الأختام"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «في التجارة الداخلية أحكمت الدولة رقابتها على ...».",
+                "options": [
+                    "المعابد",
+                    "الأسواق",
+                    "الجيش",
+                    "المدارس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «انتعشت التجارة الخارجية نتيجة إنشاء البطالمة عدة ... على البحرين».",
+                "options": [
+                    "موانئ",
+                    "معابد",
+                    "قلاع",
+                    "أهرامات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «للملك البطلمي كل السلطات التشريعية والتنفيذية والقضائية و...».",
+                "options": [
+                    "الانتخابية",
+                    "الشعبية",
+                    "البرلمانية",
+                    "الدينية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ينتمي بطليموس الأول إلى إحدى العائلات ... النبيلة».",
+                "options": [
+                    "الرومانية",
+                    "المقدونية",
+                    "الفارسية",
+                    "المصرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «وضع بطليموس الأول أسس النظم الإدارية و... في مصر».",
+                "options": [
+                    "الدينية فقط",
+                    "الرياضية",
+                    "العسكرية فقط",
+                    "المالية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «شهد عهد بطليموس الثاني توجهًا كبيرًا نحو شبه الجزيرة العربية والبحر الأحمر و...».",
+                "options": [
+                    "الصين",
+                    "الهند",
+                    "إفريقيا",
+                    "أوروبا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان بطليموس الثالث محبًا للعلم و...».",
+                "options": [
+                    "الحرب",
+                    "الثقافة",
+                    "الصيد",
+                    "المال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «توفي بطليموس الرابع وترك طفلًا لم يتجاوز عمره ...».",
+                "options": [
+                    "الخامسة عشرة",
+                    "العشرين",
+                    "السابعة",
+                    "العاشرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «أدار أجاثوكليس البلاد من أجل تحقيق مصالحه ...».",
+                "options": [
+                    "العامة",
+                    "الشخصية",
+                    "الوطنية",
+                    "الدينية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «في عهد بطليموس الخامس فقدت مصر معظم أملاكها ...».",
+                "options": [
+                    "الخارجية",
+                    "الداخلية",
+                    "الزراعية",
+                    "الدينية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تولت كليوباترا العرش مع أخيها بطليموس الثالث عشر وقد غرق أثناء حرب ...».",
+                "options": [
+                    "بابل",
+                    "روما",
+                    "أكتيوم",
+                    "الإسكندرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كانت كليوباترا تخطط لتصبح ملكة على ...».",
+                "options": [
+                    "فارس",
+                    "روما",
+                    "أثينا",
+                    "بابل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان هدف البطالمة إقامة دولة تستند على أسس شرقية مع إضفاء الصبغة ... عليها».",
+                "options": [
+                    "الفرعونية الخالصة",
+                    "الفارسية",
+                    "اليونانية",
+                    "الرومانية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «حرص البطالمة على الظهور أمام رعاياهم المصريين في مظهر الحكام ...».",
+                "options": [
+                    "الوطنيين",
+                    "الأجانب",
+                    "المستعمرين",
+                    "الغزاة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «اعتمد البطالمة على المقدونيين والإغريق لما يتوافر لديهم من رءوس أموال و...».",
+                "options": [
+                    "خبرات",
+                    "أراضٍ",
+                    "أسلحة",
+                    "معابد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كان اليونانيون يعاملون المصريين معاملة تتسم بـ...».",
+                "options": [
+                    "العدل",
+                    "التعالي",
+                    "المساواة",
+                    "الاحترام الكامل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «أقبل المصريون على تعلم اللغة ...».",
+                "options": [
+                    "الفارسية",
+                    "اللاتينية",
+                    "اليونانية",
+                    "العبرية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تأثر اليونانيون بمظاهر الحياة المصرية فتعلموا اللغة المصرية وعبدوا الآلهة المصرية واتخذوا ... مصرية».",
+                "options": [
+                    "أطعمة فقط",
+                    "ملابس فقط",
+                    "أسماء",
+                    "بيوتًا فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «أعاد بطليموس الأول تماثيل الآلهة المصرية التي كان ... قد استولوا عليها».",
+                "options": [
+                    "الفرس",
+                    "الآشوريون",
+                    "الهكسوس",
+                    "الرومان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «صور البطالمة أنفسهم بملابس الملوك ... يقدمون القرابين للآلهة المصرية».",
+                "options": [
+                    "اليونانيين",
+                    "الرومان",
+                    "الفرس",
+                    "الفراعنة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «التسامح الديني واحترام الأديان من مقومات ... في أي مجتمع».",
+                "options": [
+                    "الفوضى",
+                    "الاستقرار",
+                    "الحروب",
+                    "الفقر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «إنشاء دار العلم جامعة الإسكندرية و... كان له أبعد الأثر في اجتذاب العلماء».",
+                "options": [
+                    "المنارة",
+                    "الموانئ",
+                    "المعابد",
+                    "المكتبة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «برع علماء الإسكندرية في التشريح و...».",
+                "options": [
+                    "السحر",
+                    "الكيمياء الحديثة",
+                    "التنجيم",
+                    "الجراحة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «استخدم هيروفيلوس أداة بديعة لقياس سرعة ...».",
+                "options": [
+                    "الضوء",
+                    "الرياح",
+                    "النبض",
+                    "المياه"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «توصل علماء الجغرافيا إلى نظرية دوران الأرض حول ... وقياس محيط الكرة الأرضية».",
+                "options": [
+                    "المريخ",
+                    "القمر",
+                    "النجوم",
+                    "الشمس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من أعظم إنجازات الأدب السكندري نشر ملاحم هوميروس وتاريخ ...».",
+                "options": [
+                    "استرابون",
+                    "مانيتون",
+                    "هيرودوت",
+                    "بوليبيوس"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ مصر تحت حكم البطالمة",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "سيطر الإسكندر الأكبر على مصر دون قتال عام 332 ق.م.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أظهر الإسكندر عداءه للمعبودات المصرية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أبقى الإسكندر على النظم الإدارية المصرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أقيمت الإسكندرية على قرية مصرية قديمة تسمى راقودة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أهداف بناء الإسكندرية أن تكون قاعدة بحرية لتدعيم السيطرة على البحر المتوسط.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "توفي الإسكندر الأكبر عام 332 ق.م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان للإسكندر وريث للعرش تولى الحكم بعده.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تقاسم قادة جيش الإسكندر الإمبراطورية في مؤتمر بابل عام 323 ق.م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أعلن بطليموس بن لاجوس نفسه ملكًا على مصر عام 305 ق.م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الحضارة الهلينستية تجمع بين الحضارة المصرية القديمة واليونانية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "طبق البطالمة نظام الحرية الاقتصادية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اعتبر البطالمة الزراعة الركيزة الأولى للاقتصاد المصري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استخدم البطالمة الساقية والطنبور في الري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أهمل البطالمة استصلاح الأراضي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اتبع البطالمة نظام الدورة الزراعية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قسمت الأراضي الزراعية في عهد البطالمة إلى ثلاثة أنواع.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أراضي الهبات كان البطالمة يمنحونها لكبار موظفيهم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منح البطالمة الجنود المرتزقة أراضي الإقطاعات العسكرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من مدن الوضع اليوناني نقراطيس والإسكندرية وبطلمية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لم يحتكر البطالمة الصناعة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من صناعات العصر البطلمي الورق من نبات البردي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أنشأ البطالمة منارة الإسكندرية لإرشاد السفن.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لم يتدخل البطالمة في تحديد الأسعار.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أصبحت الإسكندرية أكبر الموانئ في العالم القديم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حكم البطالمة مصر بنظام جمهوري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مرت دولة البطالمة بمرحلتين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لقب بطليموس الأول بالمنقذ.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أحدث بطليموس الثاني نهضة كبيرة في المجالات الاقتصادية والثقافية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لقب بطليموس الثالث بالمنقذ.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فتح بطليموس الثالث صوامع الغلال حين انخفض منسوب الفيضان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد عهد بطليموس الرابع بداية التدهور.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ازدهرت البلاد في عهد بطليموس الخامس بفضل أجاثوكليس.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كليوباترا السابعة آخر ملوك البطالمة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تحالفت كليوباترا مع ماركوس أنطونيوس.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "انتصر أنطونيوس في معركة أكتيوم البحرية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أصبحت مصر تحت الحكم الروماني عام 30 ق.م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اختص البطالمة المقدونيين واليونانيين بالوظائف العليا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان يهود الإسكندرية يشتغلون بالتجارة والأعمال المصرفية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "المصريون في العصر البطلمي أقلية في البلاد.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تشكلت من المصريين فئة المحاربين بعد عهد بطليموس الرابع.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تأثر اليونانيون بمظاهر الحياة المصرية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتسمت السياسة الدينية للبطالمة بالتعصب.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قدم بطليموس الأول القرابين للآلهة المصرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقع المعابد البطلمية جميعها في الدلتا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بنيت المعابد البطلمية على الطراز المصري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تفوقت الإسكندرية على أثينا في مجال العلم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أريستارخوس أول من قام بدراسات نسبية لأحجام الشمس والقمر والأرض.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أرشميدس صاحب كتاب الأصول في الهندسة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اكتشف هيروفيلوس الدورة الدموية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قسم مانيتون تاريخ مصر الفرعونية إلى ثلاثين أسرة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في مصر تحت حكم البطالمة",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "لماذا جعل الإسكندر الأكبر مصر هدفًا له؟",
+                "options": [
+                    "للهروب من الفرس",
+                    "لاستكمال إخضاع الولايات الفارسية لحكمه في سبيل تكوين الإمبراطورية المقدونية",
+                    "للتجارة فقط",
+                    "لنشر الديمقراطية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا رحب المصريون بالإسكندر المقدوني في مصر؟",
+                "options": [
+                    "لأنه هدم المعابد",
+                    "لأنه فرض الضرائب",
+                    "لأنه مصري",
+                    "لأنه خلصهم من الفرس وأظهر ولاءه لمعبوداتهم وعاملهم معاملة حسنة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أعمال الإسكندر لإرضاء الشعب المصري؟",
+                "options": [
+                    "نفى الكهنة",
+                    "هدم المعابد",
+                    "أظهر ولاءه للمعبودات المصرية وعامل المصريين معاملة حسنة وأبقى النظم الإدارية",
+                    "فرض لغته"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا اختار الإسكندر موقع الإسكندرية؟",
+                "options": [
+                    "لأنها عاصمة الفراعنة",
+                    "لتحمل اسمه ولتكون مركزًا لنشر الحضارة الإغريقية وقاعدة بحرية على البحر المتوسط",
+                    "لقربها من النوبة",
+                    "لأنها صحراوية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كيف تأسست دولة البطالمة في مصر؟",
+                "options": [
+                    "بعد وفاة الإسكندر تقاسم قادته الإمبراطورية في مؤتمر بابل فكانت مصر من نصيب بطليموس الذي أعلن نفسه ملكًا 305 ق.م",
+                    "بالغزو الروماني",
+                    "بالانتخاب",
+                    "بثورة مصرية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما هدف الإسكندر من تكوين حضارة جديدة؟",
+                "options": [
+                    "نشر الحضارة الفارسية",
+                    "القضاء على الحضارة المصرية",
+                    "لا هدف",
+                    "الجمع بين مزايا الحضارات الشرقية العريقة والحضارات اليونانية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما جوانب الحضارة الهلينستية؟",
+                "options": [
+                    "الحياة الاقتصادية والسياسية والاجتماعية والدينية والثقافية والعلمية",
+                    "الدينية فقط",
+                    "الزراعية فقط",
+                    "الحياة العسكرية فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا طبق البطالمة نظام الاحتكار؟",
+                "options": [
+                    "لمساعدة الفلاحين فقط",
+                    "لإقامة اقتصاد قوي لتكوين دولة قوية تلعب دورًا مؤثرًا في سياسات العالم",
+                    "لتشجيع الحرية",
+                    "لإفقار الدولة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما وسائل النهوض بالزراعة في عهد البطالمة؟",
+                "options": [
+                    "الاعتماد على الأمطار",
+                    "إهمال الري",
+                    "إصلاح نظم الري وشق القنوات واستخدام الساقية والطنبور واستصلاح الأراضي والدورة الزراعية",
+                    "ترك الأرض بورًا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أنواع الأراضي الزراعية في عهد البطالمة؟",
+                "options": [
+                    "أراضي الملك والأراضي المقدسة والإقطاعات العسكرية والهبات وأراضي المدن",
+                    "أراضي المعابد فقط",
+                    "نوعان فقط",
+                    "أراضي الملك فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا منح البطالمة الجنود المرتزقة الإغريق مساحات من الأرض؟",
+                "options": [
+                    "لأنهم فلاحون",
+                    "لطردهم",
+                    "لأنهم اعتمدوا عليهم في تكوين جيوشهم",
+                    "لأنهم كهنة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "قارن بين أراضي الهبات وأراضي المدن:",
+                "options": [
+                    "أراضي المدن للجنود",
+                    "الهبات للمعابد",
+                    "متطابقة",
+                    "الهبات تمنح لكبار الموظفين وأراضي المدن تخصص للمدن ذات الوضع اليوناني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أهم الصناعات بمصر في عصر البطالمة؟",
+                "options": [
+                    "الحرير",
+                    "الزيوت والفخار والزجاج والتعدين والمنسوجات والجلود والورق من البردي",
+                    "السيارات",
+                    "البلاستيك"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما العوامل التي ساعدت على رواج التجارة في العصر البطلمي؟",
+                "options": [
+                    "النشاط الزراعي والصناعي وموقع مصر الجغرافي وولع اليونان بالتجارة",
+                    "قلة الإنتاج",
+                    "العزلة",
+                    "الحروب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مظاهر اهتمام البطالمة بالتجارة؟",
+                "options": [
+                    "منع التجارة",
+                    "إلغاء العملة",
+                    "إنشاء الموانئ والترسانات والمنارات وتنظيم الجمارك وسك العملة",
+                    "إغلاق الموانئ"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهمية منارة الإسكندرية؟",
+                "options": [
+                    "حماية المدينة من الفيضان",
+                    "عبادة الآلهة",
+                    "تخزين الحبوب",
+                    "إرشاد السفن في الميناء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما صلاحيات الملك في نظام الحكم البطلمي؟",
+                "options": [
+                    "سلطة دينية فقط",
+                    "يملك كل شيء وله كل السلطات التشريعية والتنفيذية والقضائية والدينية",
+                    "سلطة مقيدة",
+                    "لا سلطة له"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قارن بين مرحلتي حكم البطالمة:",
+                "options": [
+                    "الأولى ضعف",
+                    "متطابقتان",
+                    "الثانية ازدهار",
+                    "الأولى قوة وازدهار من بطليموس الأول للثالث والثانية ضعف وانهيار من الرابع حتى كليوباترا السابعة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما دور بطليموس الأول في تأسيس الدولة البطلمية؟",
+                "options": [
+                    "خاض حروبًا لتوطيد حكمه وكون إمبراطورية مركزها مصر ووضع أسس النظم الإدارية والمالية",
+                    "هدم الإسكندرية",
+                    "سلم مصر للرومان",
+                    "لا دور"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا لقب بطليموس الأول بالمنقذ؟",
+                "options": [
+                    "لأنه طبيب",
+                    "لأنه أنقذ كليوباترا",
+                    "لدوره في توطيد الحكم وتكوين إمبراطورية مركزها مصر ووضع أسس النظم",
+                    "لأنه هزم الرومان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما مظاهر النهضة في عهد بطليموس الثاني؟",
+                "options": [
+                    "الانهيار",
+                    "الفقر",
+                    "نهضة اقتصادية وثقافية وأصبحت مصر إمبراطورية كبيرة وتوجه نحو شبه الجزيرة العربية والبحر الأحمر وإفريقيا",
+                    "الاحتلال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا لقب بطليموس الثالث بالخيّر أو الصالح؟",
+                "options": [
+                    "لأنه بنى المنارة",
+                    "لأنه أمر بإسقاط الضرائب وفتح صوامع الغلال حين انخفض منسوب فيضان النيل",
+                    "لأنه أسس المكتبة",
+                    "لأنه انتصر في الحروب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما نتائج تولي أجاثوكليس الوصاية على بطليموس الخامس؟",
+                "options": [
+                    "انتصار على الرومان",
+                    "ازدهار البلاد",
+                    "زيادة الأملاك",
+                    "انهيار البلاد سياسيًا واقتصاديًا وفقدان معظم الأملاك الخارجية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما الدروس المستفادة من عهد أجاثوكليس؟",
+                "options": [
+                    "الوصاية دائمًا مفيدة",
+                    "لا درس",
+                    "المصالح الشخصية تقوي الدولة",
+                    "تقديم المصالح الشخصية على مصلحة الوطن يؤدي إلى انهيار الدولة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كيف انتهى حكم البطالمة لمصر؟",
+                "options": [
+                    "تحالفت كليوباترا مع أنطونيوس وهزم في أكتيوم 31 ق.م فانتحر وانتحرت كليوباترا 30 ق.م وأصبحت مصر تحت الحكم الروماني",
+                    "بغزو فارسي",
+                    "بوفاة طبيعية",
+                    "بثورة مصرية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما دور المرأة في مصر البطلمية من خلال كليوباترا السابعة؟",
+                "options": [
+                    "لا دور",
+                    "تولت الحكم وشاركت في السياسة وخططت لتصبح ملكة على روما",
+                    "دور زراعي فقط",
+                    "دور ديني فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما هدف البطالمة في الحياة الاجتماعية؟",
+                "options": [
+                    "القضاء على المصريين",
+                    "إقامة دولة تستند على أسس شرقية مع إضفاء الصبغة اليونانية عليها",
+                    "الحكم العسكري",
+                    "إقامة دولة رومانية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا اعتمد البطالمة على المقدونيين والإغريق؟",
+                "options": [
+                    "لأنهم كهنة",
+                    "لأنهم فلاحون",
+                    "لأنهم فقراء",
+                    "ليكونوا أعوانًا مخلصين لما لديهم من رءوس أموال وخبرات بأحدث الأساليب الاقتصادية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما طبقات المجتمع في العصر البطلمي؟",
+                "options": [
+                    "المقدونيون واليونانيون ثم يهود الإسكندرية ثم المصريون",
+                    "طبقة واحدة",
+                    "المصريون في القمة",
+                    "الرومان والفرس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف تغير وضع المصريين منذ عهد بطليموس الرابع؟",
+                "options": [
+                    "أفسحت الدولة المجال لهم لتولي وظائف أعلى وتعلموا اليونانية وتشكلت منهم فئة المحاربين",
+                    "ساءت أحوالهم",
+                    "طردوا من مصر",
+                    "لم يتغير"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أثر التمييز العنصري على المجتمع؟",
+                "options": [
+                    "يؤدي إلى الكراهية وعدم الاستقرار وضعف المجتمع",
+                    "يقوي المجتمع",
+                    "يحقق العدالة",
+                    "لا أثر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مظاهر التواصل الحضاري بين اليونانيين والمصريين في العصر البطلمي؟",
+                "options": [
+                    "تعلم اليونانيون اللغة المصرية وعبدوا الآلهة المصرية واتخذوا أسماء مصرية",
+                    "لا تواصل",
+                    "فرض اللغة اليونانية فقط",
+                    "هدم المعابد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا اتسمت السياسة الدينية للبطالمة بالتسامح؟",
+                "options": [
+                    "لإدراكهم أهمية العقيدة الدينية في حياة المصريين",
+                    "لعدم اهتمامهم بالدين",
+                    "خوفًا من الرومان",
+                    "لأنهم مصريون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مظاهر احترام البطالمة للديانة المصرية؟",
+                "options": [
+                    "منع العبادة",
+                    "هدم المعابد",
+                    "فرض الآلهة اليونانية",
+                    "تقديم القرابين للآلهة وإعادة التماثيل وإنشاء المعابد على الطراز المصري"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما مميزات المعابد البطلمية؟",
+                "options": [
+                    "بنيت على الطراز الروماني",
+                    "من الطوب اللبن",
+                    "تقع في صعيد مصر وبنيت على الطراز المصري وصور البطالمة بملابس الفراعنة",
+                    "تقع في اليونان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا احتلت الإسكندرية مركز الصدارة وتفوقت على أثينا؟",
+                "options": [
+                    "لموقعها الصحراوي",
+                    "لاهتمام البطالمة بالعلم وإنشاء دار العلم والمكتبة واجتذاب العلماء",
+                    "لكثرة الحروب",
+                    "لقلة السكان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما دور مكتبة الإسكندرية في نشر العلم؟",
+                "options": [
+                    "اجتذبت العلماء والدارسين من شتى أنحاء العالم في مختلف العلوم",
+                    "مخزن للحبوب",
+                    "لا دور",
+                    "معبد ديني"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما إسهامات علماء الإسكندرية في الرياضيات؟",
+                "options": [
+                    "اختراع الحاسب",
+                    "وضع إقليدس كتاب الأصول في الهندسة وعرف أرشميدس قانون الطفو",
+                    "اكتشاف الذرة",
+                    "لا إسهامات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما إسهامات علماء الإسكندرية في الطب؟",
+                "options": [
+                    "لا إسهامات",
+                    "برعوا في التشريح والجراحة واكتشف هيروفيلوس الدورة الدموية وقياس النبض",
+                    "التحنيط فقط",
+                    "العلاج بالسحر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما أثر حديقة الحيوان التي أقامها بطليموس الثاني؟",
+                "options": [
+                    "ساعدت على تطور علم الحيوان",
+                    "للصيد",
+                    "للترفيه فقط",
+                    "لا أثر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما إسهامات علماء الإسكندرية في الجغرافيا؟",
+                "options": [
+                    "رسم خرائط القمر",
+                    "لا إسهامات",
+                    "اكتشاف أمريكا",
+                    "نظرية دوران الأرض حول الشمس وقياس محيط الكرة الأرضية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما دور مانيتون في كتابة تاريخ مصر؟",
+                "options": [
+                    "كتب تاريخ روما",
+                    "كتب عن الفرس",
+                    "كتب تاريخ مصر القديم باليونانية وقسمه إلى ثلاثين أسرة وهو التقسيم المتبع حاليًا",
+                    "لا دور"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا يطلق على الأدب اليوناني في العصر البطلمي الأدب السكندري؟",
+                "options": [
+                    "لأنه روماني",
+                    "لأنه مصري قديم",
+                    "لأنه كتب في أثينا",
+                    "لازدهاره الكبير في الإسكندرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أهمية العلم والعلماء في تقدم الأمم كما يتضح من العصر البطلمي؟",
+                "options": [
+                    "العلم يضر الأمم",
+                    "المال أهم من العلم",
+                    "لا أهمية",
+                    "العلم يحقق الصدارة والتفوق والتقدم الحضاري"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا اهتم البطالمة بإنشاء الموانئ على البحرين الأحمر والمتوسط؟",
+                "options": [
+                    "للحروب فقط",
+                    "لإنعاش التجارة الخارجية",
+                    "للصيد فقط",
+                    "لا سبب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر اهتمام البطالمة بالتجارة الداخلية؟",
+                "options": [
+                    "إحكام الرقابة على الأسواق والتدخل في تحديد الأسعار",
+                    "منع البيع",
+                    "ترك الأسواق حرة",
+                    "إغلاق الأسواق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أثر نظام الدورة الزراعية؟",
+                "options": [
+                    "إفساد الأرض",
+                    "الحفاظ على جودة الأرض وخصوبتها",
+                    "لا أثر",
+                    "تقليل الإنتاج"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما القيم المستفادة من دراسة مصر تحت حكم البطالمة؟",
+                "options": [
+                    "تقدير العلم والعلماء والتسامح الديني",
+                    "الكسل",
+                    "الظلم",
+                    "التعصب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا صور البطالمة أنفسهم بملابس الملوك الفراعنة؟",
+                "options": [
+                    "للسخرية من الفراعنة",
+                    "ليظهروا أمام المصريين في مظهر الحكام الوطنيين ويكسبوا ودهم",
+                    "لتقليد الرومان",
+                    "لا سبب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما الدليل على أن البطالمة ورثوا نظام الحكم عن الفراعنة؟",
+                "options": [
+                    "حكموا بالنظام الجمهوري",
+                    "انتخبهم الشعب",
+                    "حكموا بالنظام الملكي القائم على حق الملك في تملك كل شيء وله كل السلطات",
+                    "حكمهم مجلس الشيوخ"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في مصر تحت حكم البطالمة",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "قارة آسيا",
+                    "قارة أوربا",
+                    "سوريا",
+                    "آسيا الصغرى"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        4.5,
+                        4.8,
+                        10.1,
+                        6.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "آسيا الصغرى",
+                    "قارة أوربا",
+                    "قارة آسيا",
+                    "سوريا"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        60.9,
+                        11.4,
+                        10.4,
+                        6.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "سوريا",
+                    "قارة أوربا",
+                    "آسيا الصغرى",
+                    "قارة آسيا"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        18.9,
+                        21.0,
+                        10.1,
+                        5.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "قارة آسيا",
+                    "سوريا",
+                    "قارة أوربا",
+                    "آسيا الصغرى"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        30.1,
+                        28.6,
+                        5.1,
+                        4.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "مصر",
+                    "قارة آسيا",
+                    "قارة أوربا",
+                    "آسيا الصغرى"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        18.6,
+                        41.7,
+                        4.6,
+                        4.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "قارة آسيا",
+                    "آسيا الصغرى",
+                    "قارة أوربا",
+                    "بلاد فارس"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        53.7,
+                        34.5,
+                        8.1,
+                        5.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "بلاد العرب",
+                    "قارة آسيا",
+                    "قارة أوربا",
+                    "آسيا الصغرى"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        37.7,
+                        54.8,
+                        8.3,
+                        4.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "آسيا الصغرى",
+                    "قارة آسيا",
+                    "قارة أوربا",
+                    "بلاد الهند"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        85.1,
+                        56.7,
+                        8.1,
+                        5.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "قارة إفريقيا",
+                    "آسيا الصغرى",
+                    "قارة آسيا",
+                    "قارة أوربا"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        6.6,
+                        64.3,
+                        12.8,
+                        5.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة إمبراطورية الإسكندر الأكبر؟",
+                "options": [
+                    "المحيط الهندي",
+                    "آسيا الصغرى",
+                    "قارة آسيا",
+                    "قارة أوربا"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_empire.jpg",
+                "masks": [
+                    [
+                        64.6,
+                        86.4,
+                        12.2,
+                        5.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحضارة الهلينستية المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة السياسية",
+                    "الحياة الثقافية والعلمية",
+                    "الحياة الاجتماعية",
+                    "الحياة الدينية"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_hellen.jpg",
+                "masks": [
+                    [
+                        34.3,
+                        34.6,
+                        31.9,
+                        21.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحضارة الهلينستية المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الثقافية والعلمية",
+                    "الحياة السياسية",
+                    "الحياة الاجتماعية",
+                    "الحياة الدينية"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_hellen.jpg",
+                "masks": [
+                    [
+                        17.5,
+                        57.2,
+                        30.5,
+                        20.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحضارة الهلينستية المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الاجتماعية",
+                    "الحياة السياسية",
+                    "الحياة الدينية",
+                    "الحياة الثقافية والعلمية"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_hellen.jpg",
+                "masks": [
+                    [
+                        51.3,
+                        57.2,
+                        30.5,
+                        20.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحضارة الهلينستية المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة السياسية",
+                    "الحياة الدينية",
+                    "الحياة الاجتماعية",
+                    "الحياة الثقافية والعلمية"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_hellen.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        78.8,
+                        39.8,
+                        20.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحضارة الهلينستية المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الدينية",
+                    "الحياة السياسية",
+                    "الحياة الاقتصادية",
+                    "الحياة الاجتماعية"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_hellen.jpg",
+                "masks": [
+                    [
+                        65.9,
+                        78.8,
+                        33.6,
+                        20.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما وسيلة النهوض بالزراعة في عهد البطالمة المخفية بعلامة (؟)؟",
+                "options": [
+                    "الاهتمام بزراعة القمح والذرة والشعير واستقدام أنواع جديدة من الفواكه",
+                    "استخدام وسائل الري الحديثة مثل الساقية والطنبور",
+                    "استصلاح مساحات كبيرة من الأراضي الزراعية",
+                    "إصلاح نظم الري وشق القنوات وإقامة الجسور"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_agri.jpg",
+                "masks": [
+                    [
+                        79.2,
+                        35.8,
+                        20.6,
+                        32.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما وسيلة النهوض بالزراعة في عهد البطالمة المخفية بعلامة (؟)؟",
+                "options": [
+                    "إصلاح نظم الري وشق القنوات وإقامة الجسور",
+                    "استصلاح مساحات كبيرة من الأراضي الزراعية",
+                    "استخدام وسائل الري الحديثة مثل الساقية والطنبور",
+                    "الاهتمام بزراعة القمح والذرة والشعير واستقدام أنواع جديدة من الفواكه"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_agri.jpg",
+                "masks": [
+                    [
+                        46.0,
+                        38.9,
+                        30.8,
+                        25.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما وسيلة النهوض بالزراعة في عهد البطالمة المخفية بعلامة (؟)؟",
+                "options": [
+                    "استصلاح مساحات كبيرة من الأراضي الزراعية",
+                    "استخدام وسائل الري الحديثة مثل الساقية والطنبور",
+                    "الاهتمام بزراعة القمح والذرة والشعير واستقدام أنواع جديدة من الفواكه",
+                    "إصلاح نظم الري وشق القنوات وإقامة الجسور"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_agri.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        35.2,
+                        44.3,
+                        33.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما وسيلة النهوض بالزراعة في عهد البطالمة المخفية بعلامة (؟)؟",
+                "options": [
+                    "استخدام وسائل الري الحديثة مثل الساقية والطنبور",
+                    "الاهتمام بزراعة القمح والذرة والشعير واستقدام أنواع جديدة من الفواكه",
+                    "استصلاح مساحات كبيرة من الأراضي الزراعية",
+                    "إصلاح نظم الري وشق القنوات وإقامة الجسور"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_agri.jpg",
+                "masks": [
+                    [
+                        67.2,
+                        70.1,
+                        26.5,
+                        29.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما وسيلة النهوض بالزراعة في عهد البطالمة المخفية بعلامة (؟)؟",
+                "options": [
+                    "استخدام وسائل الري الحديثة مثل الساقية والطنبور",
+                    "اتباع نظام الدورة الزراعية للحفاظ على جودة الأرض",
+                    "إصلاح نظم الري وشق القنوات وإقامة الجسور",
+                    "الاهتمام بزراعة القمح والذرة والشعير واستقدام أنواع جديدة من الفواكه"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_agri.jpg",
+                "masks": [
+                    [
+                        31.4,
+                        70.1,
+                        27.9,
+                        29.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الصناعة المخفية بعلامة (؟) في شكل أهم الصناعات بمصر في عصر البطالمة؟",
+                "options": [
+                    "الفخار والزجاج",
+                    "التعدين وقطع الأحجار",
+                    "الزيوت",
+                    "المنسوجات"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_ind.jpg",
+                "masks": [
+                    [
+                        62.4,
+                        19.1,
+                        32.0,
+                        12.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الصناعة المخفية بعلامة (؟) في شكل أهم الصناعات بمصر في عصر البطالمة؟",
+                "options": [
+                    "المنسوجات",
+                    "التعدين وقطع الأحجار",
+                    "الفخار والزجاج",
+                    "الزيوت"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_ind.jpg",
+                "masks": [
+                    [
+                        62.4,
+                        32.7,
+                        32.0,
+                        12.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الصناعة المخفية بعلامة (؟) في شكل أهم الصناعات بمصر في عصر البطالمة؟",
+                "options": [
+                    "المنسوجات",
+                    "الفخار والزجاج",
+                    "التعدين وقطع الأحجار",
+                    "الزيوت"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_ind.jpg",
+                "masks": [
+                    [
+                        62.4,
+                        46.3,
+                        32.0,
+                        12.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الصناعة المخفية بعلامة (؟) في شكل أهم الصناعات بمصر في عصر البطالمة؟",
+                "options": [
+                    "المنسوجات",
+                    "الزيوت",
+                    "التعدين وقطع الأحجار",
+                    "الفخار والزجاج"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_ind.jpg",
+                "masks": [
+                    [
+                        62.4,
+                        59.9,
+                        32.0,
+                        12.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الصناعة المخفية بعلامة (؟) في شكل أهم الصناعات بمصر في عصر البطالمة؟",
+                "options": [
+                    "التعدين وقطع الأحجار",
+                    "الزيوت",
+                    "الجلود",
+                    "الفخار والزجاج"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_ind.jpg",
+                "masks": [
+                    [
+                        62.4,
+                        73.6,
+                        32.0,
+                        12.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الصناعة المخفية بعلامة (؟) في شكل أهم الصناعات بمصر في عصر البطالمة؟",
+                "options": [
+                    "التعدين وقطع الأحجار",
+                    "الزيوت",
+                    "الورق من نبات البردي",
+                    "الفخار والزجاج"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_ind.jpg",
+                "masks": [
+                    [
+                        62.4,
+                        87.2,
+                        32.0,
+                        12.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما المرحلة التاريخية لدولة البطالمة المخفية بعلامة (؟)؟",
+                "options": [
+                    "مرحلة الحكم الروماني",
+                    "مرحلة الضعف والانهيار من بطليموس الرابع حتى كليوباترا السابعة",
+                    "مرحلة الاحتلال الفارسي",
+                    "مرحلة القوة والازدهار من بطليموس الأول حتى بطليموس الثالث"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_phases.jpg",
+                "masks": [
+                    [
+                        51.8,
+                        45.5,
+                        47.5,
+                        53.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما المرحلة التاريخية لدولة البطالمة المخفية بعلامة (؟)؟",
+                "options": [
+                    "مرحلة الاحتلال الفارسي",
+                    "مرحلة القوة والازدهار من بطليموس الأول حتى بطليموس الثالث",
+                    "مرحلة الحكم الروماني",
+                    "مرحلة الضعف والانهيار من بطليموس الرابع حتى كليوباترا السابعة"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_phases.jpg",
+                "masks": [
+                    [
+                        0.3,
+                        45.5,
+                        49.7,
+                        53.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في عصر البطالمة؟",
+                "options": [
+                    "الرومان",
+                    "يهود الإسكندرية",
+                    "المقدونيون واليونانيون",
+                    "المصريون"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_classes.jpg",
+                "masks": [
+                    [
+                        33.8,
+                        19.7,
+                        32.4,
+                        25.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في عصر البطالمة؟",
+                "options": [
+                    "الرومان",
+                    "يهود الإسكندرية",
+                    "المصريون",
+                    "المقدونيون واليونانيون"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_classes.jpg",
+                "masks": [
+                    [
+                        30.4,
+                        49.3,
+                        37.5,
+                        15.8
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في عصر البطالمة؟",
+                "options": [
+                    "المقدونيون واليونانيون",
+                    "المصريون",
+                    "الرومان",
+                    "يهود الإسكندرية"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_classes.jpg",
+                "masks": [
+                    [
+                        35.5,
+                        77.6,
+                        27.3,
+                        13.8
+                    ]
+                ]
+            },
+            {
+                "q": "ما الموضح في الخريطة؟",
+                "options": [
+                    "موانئ قرطاجة",
+                    "بناء نقراطيس",
+                    "بناء الإسكندرية",
+                    "تخطيط منف"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l2_alex.jpg",
+                "masks": [
+                    [
+                        21.8,
+                        91.3,
+                        48.5,
+                        8.7
+                    ]
+                ]
+            },
+            {
+                "q": "من صاحب التمثال الموضح في الصورة الذي أسس مدينة الإسكندرية؟",
+                "options": [
+                    "الإسكندر الأكبر",
+                    "يوليوس قيصر",
+                    "بطليموس الأول",
+                    "فيليب الثاني"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_statue.jpg",
+                "masks": [
+                    [
+                        22.2,
+                        89.1,
+                        53.4,
+                        10.9
+                    ]
+                ]
+            },
+            {
+                "q": "ما الأثر الموضح في الصورة الذي أنشأه البطالمة لإرشاد السفن؟",
+                "options": [
+                    "معبد فيلة",
+                    "منارة الإسكندرية",
+                    "مكتبة الإسكندرية",
+                    "معبد إدفو"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_pharos.jpg",
+                "masks": [
+                    [
+                        19.7,
+                        91.3,
+                        60.6,
+                        8.7
+                    ]
+                ]
+            },
+            {
+                "q": "من الملك البطلمي الموضح في الصورة الذي لقب بالمنقذ؟",
+                "options": [
+                    "بطليموس الثالث",
+                    "بطليموس الأول",
+                    "بطليموس الخامس",
+                    "بطليموس الثاني"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_p1.jpg",
+                "masks": [
+                    [
+                        13.0,
+                        89.6,
+                        74.0,
+                        10.4
+                    ]
+                ]
+            },
+            {
+                "q": "على من تدل العملة الموضحة في الصورة التي تعود إلى القرن الثالث قبل الميلاد؟",
+                "options": [
+                    "الملك بطليموس الثاني مع زوجته",
+                    "الإسكندر الأكبر",
+                    "بطليموس الرابع",
+                    "كليوباترا السابعة"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_p2.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        69.7,
+                        100.0,
+                        30.3
+                    ]
+                ]
+            },
+            {
+                "q": "صورة من الملك المنقوشة على العملة الذهبية الموضحة؟",
+                "options": [
+                    "بطليموس الثالث",
+                    "الملك بطليموس الرابع",
+                    "بطليموس الأول",
+                    "يوليوس قيصر"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_p4.jpg",
+                "masks": [
+                    [
+                        4.1,
+                        76.2,
+                        91.7,
+                        23.8
+                    ]
+                ]
+            },
+            {
+                "q": "من صاحبة التمثال الموضح في الصورة آخر ملوك البطالمة؟",
+                "options": [
+                    "حتشبسوت",
+                    "كليوباترا السابعة",
+                    "نفرتيتي",
+                    "أرسينوي"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_cleo.jpg",
+                "masks": [
+                    [
+                        22.2,
+                        89.6,
+                        56.6,
+                        10.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المعابد الموضحة في الصورة التي أنشأها البطالمة؟",
+                "options": [
+                    "معبد الكرنك",
+                    "معابد فيلة",
+                    "معبد إدفو",
+                    "معابد أبو سمبل"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_philae.jpg",
+                "masks": [
+                    [
+                        30.5,
+                        85.4,
+                        37.6,
+                        14.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المعبد الموضح في الصورة الذي أنشأه البطالمة على الطراز المصري؟",
+                "options": [
+                    "معبد إدفو",
+                    "معبد الأقصر",
+                    "معابد فيلة",
+                    "معبد هيبس"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l2_edfu.jpg",
+                "masks": [
+                    [
+                        30.5,
+                        84.7,
+                        37.6,
+                        15.3
+                    ]
+                ]
+            },
+            {
+                "q": "من العالم الموضح في الصورة أول من قام بدراسات نسبية لأحجام الشمس والقمر والأرض؟",
+                "options": [
+                    "أرشميدس",
+                    "العالم الفلكي أريستارخوس",
+                    "إقليدس",
+                    "هيروفيلوس"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l2_arist.jpg",
+                "masks": [
+                    [
+                        11.2,
+                        90.6,
+                        79.4,
+                        9.4
+                    ]
+                ]
+            },
+            {
+                "q": "من العالم الموضح في الصورة صاحب قانون الطفو؟",
+                "options": [
+                    "مانيتون",
+                    "أريستارخوس",
+                    "إقليدس",
+                    "أرشميدس"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_archi.jpg",
+                "masks": [
+                    [
+                        24.6,
+                        90.2,
+                        52.6,
+                        9.8
+                    ]
+                ]
+            },
+            {
+                "q": "من العالم الموضح في الصورة الذي وضع كتاب الأصول في الهندسة الرياضية؟",
+                "options": [
+                    "هيروفيلوس",
+                    "أريستارخوس",
+                    "أرشميدس",
+                    "إقليدس"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l2_euclid.jpg",
+                "masks": [
+                    [
+                        28.7,
+                        90.2,
+                        43.9,
+                        9.8
+                    ]
+                ]
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

@@ -1,0 +1,4072 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس الحياة الاقتصادية - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الثَّانَوِيُّ - الْوَحْدَةُ الثَّانِيَةُ - الدَّرْسُ الثَّانِي: الْحَيَاةُ الاقْتِصَادِيَّةُ</h2>
+                    <p style="margin-top: 10px;">التَّارِيخُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "التاريخ: الحياة الاقتصادية - الصف الأول الثانوي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول الحياة الاقتصادية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "من أهم المقومات الاقتصادية التي منحها الله لمصر:",
+                "options": [
+                    "الغابات",
+                    "النيل العظيم",
+                    "البترول",
+                    "الثلوج"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد النيل العامل الرئيس في قيام أقدم الحضارات:",
+                "options": [
+                    "البحرية",
+                    "الزراعية في العالم",
+                    "الصناعية",
+                    "الرعوية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت الزراعة في مصر القديمة أساس:",
+                "options": [
+                    "الحروب",
+                    "الفقر",
+                    "الهجرة",
+                    "رخاء البلاد وثروتها وأهم مصادر الدخل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ارتبط المصري القديم بالأرض الزراعية و:",
+                "options": [
+                    "دافع عنها في مواجهة كل غاصب",
+                    "هجرها",
+                    "أهملها",
+                    "باعها للأجانب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عرفت مصر منذ فجر التاريخ بأنها أرض:",
+                "options": [
+                    "الجفاف",
+                    "الصحراء",
+                    "المجاعات",
+                    "الخيرات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كانت مصر تحقق الاكتفاء الذاتي من المحاصيل ماعدا فترات:",
+                "options": [
+                    "الشتاء",
+                    "الصيف",
+                    "الكوارث وقلة الفيضان",
+                    "الحروب فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أشهر الحبوب في مصر القديمة:",
+                "options": [
+                    "القطن",
+                    "قصب السكر",
+                    "الأرز والذرة",
+                    "القمح والشعير"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "زرع المصريون نبات الكتان لصناعة:",
+                "options": [
+                    "الورق",
+                    "النسيج",
+                    "الزيت",
+                    "الخبز"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "زرع المصريون نبات السمسم لاستخراج:",
+                "options": [
+                    "الزيت",
+                    "الألياف",
+                    "السكر",
+                    "الأصباغ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من البقول التي زرعها المصريون:",
+                "options": [
+                    "القمح",
+                    "السمسم",
+                    "الكتان",
+                    "العدس والترمس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من الخضروات التي زرعها المصريون:",
+                "options": [
+                    "السمسم",
+                    "البصل والثوم والخس",
+                    "القمح والشعير",
+                    "البلح والعنب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من الأشجار المثمرة في مصر القديمة:",
+                "options": [
+                    "القمح",
+                    "البلح والعنب والتين",
+                    "الترمس",
+                    "البصل والثوم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الصوامع أماكن لـ:",
+                "options": [
+                    "دفن الموتى",
+                    "صناعة الفخار",
+                    "عبادة المعبودات",
+                    "تجميع وحفظ الغلال"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كانت الصوامع تبنى على شكل:",
+                "options": [
+                    "دائري مسطح",
+                    "مخروطي له فتحة من أعلى",
+                    "مكعب",
+                    "هرمي مدرج"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت جميع الأراضي الزراعية في مصر القديمة ملكًا لـ:",
+                "options": [
+                    "الأجانب",
+                    "الكهنة فقط",
+                    "الفلاحين",
+                    "الملك (الدولة)"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان الفلاحون مطالبين بتسليم الجزء الأكبر من محصولهم للدولة كـ:",
+                "options": [
+                    "ضرائب",
+                    "هدايا",
+                    "أجور",
+                    "قروض"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان الفرعون يهدي الجنود المخلصين وكبار الموظفين:",
+                "options": [
+                    "قصورًا",
+                    "سفنًا",
+                    "ذهبًا فقط",
+                    "أراضي زراعية تكون ملكًا لهم ولورثتهم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لم تنعدم في مصر القديمة الملكية:",
+                "options": [
+                    "الملكية",
+                    "الدينية",
+                    "الخاصة للأراضي الزراعية",
+                    "العامة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أراضي الأوقاف في مصر القديمة كانت مخصصة لـ:",
+                "options": [
+                    "الجيش",
+                    "الإنفاق على المعابد والمقابر",
+                    "التجارة",
+                    "الأجانب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اشتهر المصريون بحبهم لرعي الحيوان و:",
+                "options": [
+                    "إهماله",
+                    "الرفق به",
+                    "بيعه للخارج",
+                    "إيذائه"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان يقوم برعي الماشية طائفة خاصة من:",
+                "options": [
+                    "التجار",
+                    "الكهنة",
+                    "الرعاة المحترفين",
+                    "الجنود"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كانت أكثر مناطق الثروة الحيوانية ازدهارًا في:",
+                "options": [
+                    "الصعيد فقط",
+                    "الدلتا لتوفر المراعي",
+                    "الصحراء",
+                    "سيناء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "احتل ... المكانة الأولى بين الحيوانات في مصر القديمة:",
+                "options": [
+                    "البقر",
+                    "الحمار",
+                    "الحصان",
+                    "الجمل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من الطيور التي عرفها المصريون:",
+                "options": [
+                    "النعام فقط",
+                    "النسور",
+                    "الصقور فقط",
+                    "البط والأوز والدجاج والحمام"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اعتنى المصريون القدماء بتربية:",
+                "options": [
+                    "النحل",
+                    "الحرير",
+                    "دودة القز",
+                    "اللؤلؤ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صيد البر كان رياضة لعلية القوم مثل صيد:",
+                "options": [
+                    "الغزلان والأسود",
+                    "البجع",
+                    "السمان",
+                    "الأسماك"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صيد الطيور مثل صيد:",
+                "options": [
+                    "الغزلان",
+                    "السمان والبجع",
+                    "الأسود",
+                    "التماسيح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صيد الأسماك كان مصدرًا أساسيًا للغذاء خاصة للطبقات:",
+                "options": [
+                    "الحاكمة",
+                    "الكهنة",
+                    "الغنية",
+                    "الفقيرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ساهمت الحكومة المركزية في النهضة الزراعية من خلال:",
+                "options": [
+                    "إهمال الزراعة",
+                    "مشروعات الري والسدود وزيادة المساحة الزراعية",
+                    "فرض الضرائب فقط",
+                    "الحروب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتسعت جهود الدولة في مشروعات الري لاسيما في الدولة:",
+                "options": [
+                    "القديمة",
+                    "العتيقة",
+                    "الحديثة",
+                    "الوسطى"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تدل قصة يوسف عليه السلام على:",
+                "options": [
+                    "الإدارة الرشيدة في سنوات الجفاف",
+                    "التجارة البحرية",
+                    "الحروب",
+                    "الفوضى"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من إدارات شئون الزراعة:",
+                "options": [
+                    "الجند",
+                    "مسح الأراضي والري والإدارة المحلية والزراعة",
+                    "الجمارك",
+                    "الخزانة فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قام ببناء سد اللاهون:",
+                "options": [
+                    "سنوسرت الثالث",
+                    "منتوحتب الثاني",
+                    "خوفو",
+                    "أمنمحات الثالث"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بني سد اللاهون عند مدخل:",
+                "options": [
+                    "الفيوم",
+                    "سيناء",
+                    "الدلتا",
+                    "أسوان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان هدف سد اللاهون:",
+                "options": [
+                    "الملاحة فقط",
+                    "منع الفيضان من إغراق الأراضي وتخزين مياهه",
+                    "الصيد",
+                    "توليد الكهرباء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ارتبط بمشروع سد اللاهون زراعة نحو:",
+                "options": [
+                    "٢٧ ألف فدان",
+                    "٥ آلاف فدان",
+                    "١٠٠ ألف فدان",
+                    "مليون فدان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "بحيرة الفيوم القديمة تسمى بحيرة:",
+                "options": [
+                    "المنزلة",
+                    "قارون الحديثة",
+                    "ناصر",
+                    "موريس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من مشروعات الدولة حاليًا لزيادة الرقعة الزراعية:",
+                "options": [
+                    "مشروع استصلاح مليون ونصف فدان",
+                    "سد اللاهون",
+                    "قناة سيزوستريس",
+                    "الدير البحري"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أكبر أخطار الأراضي الزراعية حاليًا:",
+                "options": [
+                    "ريها",
+                    "تسميدها",
+                    "زراعتها",
+                    "البناء عليها"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان الصانع المصري غالبًا يرث صناعته عن:",
+                "options": [
+                    "الكهنة",
+                    "الملك",
+                    "أبيه وجده",
+                    "الأجانب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ساعد توريث الحرفة على:",
+                "options": [
+                    "إهمالها",
+                    "إتقان الحرف وتطويرها من جيل إلى جيل",
+                    "تقليد الأجانب",
+                    "اختفائها"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الإتقان يعني:",
+                "options": [
+                    "الكمية",
+                    "الرخص",
+                    "الجودة وهو أحد ركائز التقدم",
+                    "السرعة فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أقدم أنواع الصناعات في مصر القديمة:",
+                "options": [
+                    "الزجاج",
+                    "الورق",
+                    "الصناعات الحجرية",
+                    "الجلود"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "استخدم في الصناعات الفخارية مادة:",
+                "options": [
+                    "الغرين (الطمي)",
+                    "الذهب",
+                    "الكتان",
+                    "الرمال"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "سبق المصريون العالم في صناعة:",
+                "options": [
+                    "الورق المقوى",
+                    "الزجاج من الرمال البيضاء",
+                    "الحديد",
+                    "البلاستيك"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أشهر الأعمال الذهبية:",
+                "options": [
+                    "تابوت الملك توت عنخ آمون",
+                    "سد اللاهون",
+                    "بردية إيبرس",
+                    "حجر باليرمو"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استورد المصري الأخشاب الجيدة من الخارج مثل:",
+                "options": [
+                    "الأرز والأبنوس",
+                    "الجميز",
+                    "النخيل",
+                    "السنط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت مصر أول من صنعت ... في العالم:",
+                "options": [
+                    "الورق",
+                    "الحرير",
+                    "البارود",
+                    "الزجاج الملون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عرف المصري النسيج من نبات الكتان ومن:",
+                "options": [
+                    "البردي",
+                    "الجلود",
+                    "الصوف والحرير",
+                    "القطن فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من منتجات صناعة الجلود:",
+                "options": [
+                    "الأحذية والمقاعد وقرب المياه",
+                    "السفن",
+                    "الأواني الفخارية",
+                    "الحلي"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن الحياة الاقتصادية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "المقوم الاقتصادي الأهم؟",
+                "options": [
+                    "البترول",
+                    "الجبال",
+                    "النيل",
+                    "الغابات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أساس رخاء مصر القديمة؟",
+                "options": [
+                    "الصيد",
+                    "السياحة",
+                    "التعدين",
+                    "الزراعة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لقب مصر منذ فجر التاريخ؟",
+                "options": [
+                    "أرض الصحراء",
+                    "أرض الذهب",
+                    "أرض الخيرات",
+                    "أرض الحروب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حبوب مصرية؟",
+                "options": [
+                    "الأرز",
+                    "الشوفان",
+                    "الذرة الشامية",
+                    "القمح والشعير"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نبات النسيج؟",
+                "options": [
+                    "الكتان",
+                    "السمسم",
+                    "القمح",
+                    "العدس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نبات الزيت؟",
+                "options": [
+                    "الشعير",
+                    "الكتان",
+                    "الخس",
+                    "السمسم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بقول مصرية؟",
+                "options": [
+                    "القمح",
+                    "البصل",
+                    "العنب",
+                    "العدس والترمس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "خضروات مصرية؟",
+                "options": [
+                    "البصل والثوم",
+                    "الشعير",
+                    "البلح",
+                    "الكتان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فاكهة مصرية؟",
+                "options": [
+                    "البطاطس",
+                    "الأرز",
+                    "البلح والعنب والتين",
+                    "الذرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مكان حفظ الغلال؟",
+                "options": [
+                    "الأسواق",
+                    "المقابر",
+                    "المعابد",
+                    "الصوامع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "شكل الصوامع؟",
+                "options": [
+                    "هرمي",
+                    "مستطيل",
+                    "مخروطي",
+                    "مكعب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مالك الأراضي الزراعية؟",
+                "options": [
+                    "التجار",
+                    "الكهنة",
+                    "الفلاحون",
+                    "الملك (الدولة)"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما يدفعه الفلاحون للدولة؟",
+                "options": [
+                    "الهدايا",
+                    "القروض",
+                    "الأجور",
+                    "الضرائب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أراضٍ للمعابد والمقابر؟",
+                "options": [
+                    "الإقطاع",
+                    "الملكية الخاصة",
+                    "الأوقاف",
+                    "الحيازات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حيوان المكانة الأولى؟",
+                "options": [
+                    "الماعز",
+                    "الجمل",
+                    "الحصان",
+                    "البقر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مكان ازدهار الثروة الحيوانية؟",
+                "options": [
+                    "الدلتا",
+                    "سيناء",
+                    "الواحات",
+                    "الصحراء"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حشرة رباها المصريون؟",
+                "options": [
+                    "النمل",
+                    "النحل",
+                    "الجراد",
+                    "دودة القز"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صيد رياضة علية القوم؟",
+                "options": [
+                    "صيد الطيور",
+                    "صيد البر",
+                    "صيد الأسماك",
+                    "صيد الحشرات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صيد لا يحتاج جهدًا كبيرًا؟",
+                "options": [
+                    "صيد التماسيح",
+                    "صيد الأسود",
+                    "صيد الطيور",
+                    "صيد البر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "غذاء الطبقات الفقيرة؟",
+                "options": [
+                    "البجع",
+                    "الأسود",
+                    "الأسماك",
+                    "الغزلان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "دولة اهتمت بالري؟",
+                "options": [
+                    "الوسطى",
+                    "القديمة",
+                    "العتيقة",
+                    "المتأخرة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نبي أدار سنوات الجفاف؟",
+                "options": [
+                    "عيسى",
+                    "موسى عليه السلام",
+                    "إبراهيم",
+                    "يوسف عليه السلام"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "إدارة زراعية؟",
+                "options": [
+                    "مسح الأراضي",
+                    "القوافل",
+                    "الجند",
+                    "الجمارك"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "باني سد اللاهون؟",
+                "options": [
+                    "أحمس",
+                    "سنوسرت الثالث",
+                    "خوفو",
+                    "أمنمحات الثالث"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مكان سد اللاهون؟",
+                "options": [
+                    "الدلتا",
+                    "مدخل الفيوم",
+                    "أسوان",
+                    "سيناء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مساحة مشروع اللاهون؟",
+                "options": [
+                    "مليون فدان",
+                    "٢٧ ألف فدان",
+                    "١٠ آلاف",
+                    "٥٠٠ فدان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بحيرة الفيوم القديمة؟",
+                "options": [
+                    "مريوط",
+                    "البرلس",
+                    "ناصر",
+                    "موريس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مشروع حالي للاستصلاح؟",
+                "options": [
+                    "سد اللاهون",
+                    "بونت",
+                    "مجدو",
+                    "مليون ونصف فدان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "خطر على الأرض الزراعية؟",
+                "options": [
+                    "ريها",
+                    "البناء عليها",
+                    "زراعتها",
+                    "تسميدها"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مصدر حرفة الصانع؟",
+                "options": [
+                    "الأجانب",
+                    "الكتب",
+                    "الوراثة",
+                    "المدارس الحديثة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "معنى الإتقان؟",
+                "options": [
+                    "الكثرة",
+                    "السرعة",
+                    "الجودة",
+                    "الرخص"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أقدم الصناعات؟",
+                "options": [
+                    "الحجرية",
+                    "الجلدية",
+                    "الزجاجية",
+                    "الورقية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مادة الفخار؟",
+                "options": [
+                    "الرمل",
+                    "الذهب",
+                    "الكتان",
+                    "الطمي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مادة الزجاج؟",
+                "options": [
+                    "الحجر الجيري",
+                    "الكتان",
+                    "الرمال البيضاء",
+                    "الطمي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أشهر عمل ذهبي؟",
+                "options": [
+                    "حجر باليرمو",
+                    "تابوت توت عنخ آمون",
+                    "صلاية نعرمر",
+                    "سد اللاهون"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "معدن محدود الاستخدام؟",
+                "options": [
+                    "النحاس",
+                    "الفضة",
+                    "الحجر",
+                    "الذهب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "خشب مستورد؟",
+                "options": [
+                    "النخيل",
+                    "الجميز",
+                    "السنط",
+                    "الأرز"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أول من صنع الورق؟",
+                "options": [
+                    "مصر",
+                    "اليونان",
+                    "روما",
+                    "الصين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصدر الورق المصري؟",
+                "options": [
+                    "نبات البردي",
+                    "الكتان",
+                    "الخشب",
+                    "القطن"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منتجات البردي؟",
+                "options": [
+                    "الحلي",
+                    "السيوف",
+                    "المراكب والسلال والحصر",
+                    "الأحذية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من قام بالغزل؟",
+                "options": [
+                    "الأطفال فقط",
+                    "الجنود",
+                    "الكهنة",
+                    "النساء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "فن صناعة الجلود؟",
+                "options": [
+                    "الخرط",
+                    "الصهر",
+                    "النسج",
+                    "الدباغة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "منتج جلدي؟",
+                "options": [
+                    "قرب المياه",
+                    "الأواني الفخارية",
+                    "الزجاج",
+                    "الورق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أجور العمال؟",
+                "options": [
+                    "فضة",
+                    "مخصصات عينية",
+                    "نقود ذهبية",
+                    "شيكات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عمل منعه الملوك؟",
+                "options": [
+                    "الزراعة",
+                    "السخرة",
+                    "التعدين",
+                    "التجارة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أساس المبادلات التجارية؟",
+                "options": [
+                    "المقايضة",
+                    "الأسهم",
+                    "النقود",
+                    "الشيكات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما قامت عليه المقايضة؟",
+                "options": [
+                    "الخداع",
+                    "الأمانة والثقة",
+                    "القوة",
+                    "الغش"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صاحب وصية الميزان؟",
+                "options": [
+                    "اليوناني",
+                    "هيرودوت",
+                    "الفينيقي",
+                    "المصري القديم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بلد خشب الأرز؟",
+                "options": [
+                    "النوبة",
+                    "بونت",
+                    "فينيقيا",
+                    "ليبيا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "بلد زيت الزيتون؟",
+                "options": [
+                    "النوبة",
+                    "بونت",
+                    "ليبيا",
+                    "فينيقيا"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات الحياة الاقتصادية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «يعد ... العامل الرئيس في قيام أقدم الحضارات الزراعية».",
+                "options": [
+                    "المطر",
+                    "النيل",
+                    "الجبل",
+                    "البحر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كانت الزراعة أساس رخاء البلاد وأهم مصادر ... للمصري القديم».",
+                "options": [
+                    "الترفيه",
+                    "السفر",
+                    "الحرب",
+                    "الدخل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «اعتبر المصري القديم وطنه خير ...».",
+                "options": [
+                    "المدن",
+                    "الأوطان",
+                    "البلاد الغريبة",
+                    "الصحاري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «عرفت مصر منذ فجر التاريخ بأنها أرض ...».",
+                "options": [
+                    "الجفاف",
+                    "الرمال",
+                    "الحروب",
+                    "الخيرات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كانت مصر تحقق الاكتفاء ... من المحاصيل».",
+                "options": [
+                    "المستورد",
+                    "الجزئي",
+                    "الذاتي",
+                    "الخارجي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من أشهر المحاصيل الحبوب مثل القمح و...».",
+                "options": [
+                    "الأرز",
+                    "الشعير",
+                    "الشوفان",
+                    "الذرة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «زرع المصريون نباتات الألياف كالكتان لصناعة ...».",
+                "options": [
+                    "الخبز",
+                    "النسيج",
+                    "الورق",
+                    "الزيت"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «زرع المصريون نباتات زيتية مثل ... لاستخراج الزيت».",
+                "options": [
+                    "الكتان",
+                    "السمسم",
+                    "القمح",
+                    "البصل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «الصوامع أماكن لتجميع وحفظ ...».",
+                "options": [
+                    "المومياوات",
+                    "الأسلحة",
+                    "الذهب",
+                    "الغلال"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كانت الصوامع تبنى على شكل ... له فتحة من أعلى».",
+                "options": [
+                    "مكعب",
+                    "مسطح",
+                    "مخروطي",
+                    "مربع"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كانت جميع الأراضي الزراعية ملكًا لـ... (الدولة)».",
+                "options": [
+                    "الكهنة",
+                    "الملك",
+                    "الفلاحين",
+                    "التجار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان الفلاحون مطالبين بتسليم الجزء الأكبر من محصولهم للدولة كـ...».",
+                "options": [
+                    "أجور",
+                    "ضرائب",
+                    "ديون",
+                    "هدايا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان الفرعون يهدي الجنود المخلصين وكبار ... أراضي زراعية».",
+                "options": [
+                    "الموظفين",
+                    "الأجانب",
+                    "الفلاحين",
+                    "العبيد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «أراضي الأوقاف خاصة بالإنفاق على المعابد و...».",
+                "options": [
+                    "القصور",
+                    "الأسواق",
+                    "المقابر",
+                    "الجيش"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «اشتهر المصريون بحبهم لرعي الحيوان و... به».",
+                "options": [
+                    "القسوة",
+                    "الرفق",
+                    "الاتجار",
+                    "الإهمال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كانت أكثر الثروة الحيوانية ازدهارًا في ... لتوفر المراعي».",
+                "options": [
+                    "الصعيد",
+                    "الدلتا",
+                    "سيناء",
+                    "الواحات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «احتل ... المكانة الأولى بين الحيوانات».",
+                "options": [
+                    "الحصان",
+                    "البقر",
+                    "الجمل",
+                    "الحمار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «اعتنى المصريون القدماء بتربية ...».",
+                "options": [
+                    "النعام",
+                    "الأسود",
+                    "النحل",
+                    "دودة القز"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان الفلاح يستفيد من الحيوانات في أعمال الزراعة و...».",
+                "options": [
+                    "العبادة",
+                    "الحرب فقط",
+                    "النقل",
+                    "الترفيه"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «صيد ... مثل الغزلان والأسود كان رياضة لعلية القوم».",
+                "options": [
+                    "النهر",
+                    "البر",
+                    "البحر",
+                    "الطيور"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «صيد الطيور مثل صيد السمان و...».",
+                "options": [
+                    "الغزلان",
+                    "الأسود",
+                    "التماسيح",
+                    "البجع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «صيد الأسماك يمثل مصدرًا أساسيًا للغذاء خاصة للطبقات ...».",
+                "options": [
+                    "الأجنبية",
+                    "الغنية",
+                    "الحاكمة",
+                    "الفقيرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ساهمت الحكومة المركزية في النهضة الزراعية بإقامة مشروعات ...».",
+                "options": [
+                    "البناء",
+                    "الري",
+                    "التعدين",
+                    "الحروب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «عرفت مصر الإدارة السليمة الحازمة لمواجهة ...».",
+                "options": [
+                    "الأزمات",
+                    "الانتخابات",
+                    "الاحتفالات",
+                    "الأعياد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «قصة يوسف عليه السلام في سنوات ... تدل على الإدارة الرشيدة».",
+                "options": [
+                    "الفيضان العالي",
+                    "الحرب",
+                    "الجفاف",
+                    "الرخاء"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «قام أمنمحات الثالث ببناء سد ... عند مدخل الفيوم».",
+                "options": [
+                    "اللاهون",
+                    "أسوان",
+                    "الدلتا",
+                    "العالي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «ارتبط بمشروع سد اللاهون حفر ترع وعمل ... وجسور».",
+                "options": [
+                    "سفن",
+                    "مصارف",
+                    "معابد",
+                    "مقابر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ارتبط بسد اللاهون زراعة نحو ... ألف فدان».",
+                "options": [
+                    "٢٧",
+                    "٧",
+                    "٥٠",
+                    "١٠٠"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تسعى الدولة حاليًا لزيادة الأراضي الزراعية لسد الفجوة بين الإنتاج و...».",
+                "options": [
+                    "الاستهلاك",
+                    "التصدير",
+                    "التخزين",
+                    "الاستيراد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من المشروعات الحالية مشروع استصلاح مليون ونصف ...».",
+                "options": [
+                    "متر",
+                    "كيلو",
+                    "فدان",
+                    "قيراط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «استثمر المصري القديم الموارد من أخشاب وأحجار و...».",
+                "options": [
+                    "غاز",
+                    "بترول",
+                    "بلاستيك",
+                    "معادن"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان الصانع المصري يرث صناعته عن أبيه و...».",
+                "options": [
+                    "معلمه",
+                    "جده",
+                    "الكاهن",
+                    "الملك"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «الإتقان يعني ... وهو أحد ركائز التقدم».",
+                "options": [
+                    "الكثرة",
+                    "التقليد",
+                    "الجودة",
+                    "السرعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تمثل الصناعات ... أقدم أنواع الصناعات».",
+                "options": [
+                    "الحجرية",
+                    "الورقية",
+                    "المعدنية",
+                    "الزجاجية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «استخدمت في الصناعات الفخارية مادة ... (الطمي)».",
+                "options": [
+                    "الذهب",
+                    "الغرين",
+                    "الكتان",
+                    "الرمال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «سبق المصريون العالم في معرفة صناعة ...».",
+                "options": [
+                    "الزجاج",
+                    "المطاط",
+                    "الحديد",
+                    "البارود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يصنع الزجاج من الرمال ... المنتشرة في صحراء مصر».",
+                "options": [
+                    "السوداء",
+                    "الصفراء",
+                    "الحمراء",
+                    "البيضاء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من أشهر الأعمال الذهبية تابوت الملك توت ...».",
+                "options": [
+                    "موس",
+                    "عنخ آمون",
+                    "محب",
+                    "حتب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «إلى جانب الذهب عرف المصري معدن ... وكان استخدامها محدودًا».",
+                "options": [
+                    "القصدير",
+                    "النحاس",
+                    "الفضة",
+                    "الحديد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «استورد المصري الأخشاب الجيدة مثل الأرز و...».",
+                "options": [
+                    "السنط",
+                    "النخيل",
+                    "الأبنوس",
+                    "الجميز"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كانت مصر أول من صنعت ... في العالم».",
+                "options": [
+                    "البوصلة",
+                    "الورق",
+                    "الحرير",
+                    "البارود"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من نبات البردي صنعت المراكب الخفيفة والسلال و...».",
+                "options": [
+                    "الحبال",
+                    "الحلي",
+                    "السيوف",
+                    "الأحذية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «عرف المصري النسيج من نبات ...».",
+                "options": [
+                    "الكتان",
+                    "السمسم",
+                    "القمح",
+                    "البردي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كانت ... يقمن بعمليات الغزل بمغازل من الخشب».",
+                "options": [
+                    "الكاهنات",
+                    "الرجال",
+                    "الأطفال",
+                    "النساء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تقدم المصري القديم في فن ... الجلود».",
+                "options": [
+                    "النسج",
+                    "الطلاء",
+                    "الدباغة",
+                    "الصهر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «اهتمت الدولة باستخراج المعادن وتوفير الأمن و... لبعثات التعدين».",
+                "options": [
+                    "الطعام فقط",
+                    "الأسلحة",
+                    "السفن",
+                    "الحماية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان الملوك يمنعون عن العمال ...».",
+                "options": [
+                    "الراحة",
+                    "السخرة",
+                    "الأجور",
+                    "الطعام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كانت أجور العمال تصرف على شكل مخصصات ...».",
+                "options": [
+                    "ورقية",
+                    "نقدية",
+                    "عينية",
+                    "ذهبية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كانت ... أساس المبادلات التجارية في الأسواق».",
+                "options": [
+                    "الشيكات",
+                    "القروض",
+                    "النقود",
+                    "المقايضة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كانت المقايضة تقوم على الأمانة و... المتبادلة».",
+                "options": [
+                    "القوة",
+                    "الخوف",
+                    "الثقة",
+                    "الحيلة"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ الحياة الاقتصادية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "يعد النيل العامل الرئيس في قيام أقدم الحضارات الزراعية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت التجارة أساس رخاء مصر القديمة وأهم مصادر الدخل.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت الزراعة أساس رخاء مصر القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت مصر تحقق الاكتفاء الذاتي من المحاصيل.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أشهر الحبوب في مصر القديمة القمح والشعير.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "زرع المصريون الكتان لاستخراج الزيت.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "زرع المصريون السمسم لاستخراج الزيت.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الصوامع أماكن لتجميع وحفظ الغلال.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت الصوامع تبنى على شكل مكعب.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت جميع الأراضي الزراعية ملكًا للملك (الدولة).",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "انعدمت الملكية الخاصة للأراضي في مصر القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أراضي الأوقاف خاصة بالإنفاق على المعابد والمقابر.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "احتل الحصان المكانة الأولى بين الحيوانات في مصر القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "احتل البقر المكانة الأولى بين الحيوانات.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت الثروة الحيوانية أكثر ازدهارًا في الدلتا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اعتنى المصريون القدماء بتربية النحل.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صيد البر كان وسيلة لكسب العيش.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صيد البر كان رياضة لعلية القوم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صيد الأسماك مصدر أساسي لغذاء الطبقات الفقيرة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اتسعت مشروعات الري لاسيما في الدولة الوسطى.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تدل قصة يوسف عليه السلام على الإدارة الرشيدة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قام سنوسرت الثالث ببناء سد اللاهون.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قام أمنمحات الثالث ببناء سد اللاهون.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "بني سد اللاهون عند مدخل الفيوم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ارتبط بسد اللاهون زراعة نحو ٢٧ ألف فدان.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "البناء على الأراضي الزراعية يضر بمصر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان الصانع المصري يرث صناعته عن أبيه وجده.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الصناعات الزجاجية أقدم أنواع الصناعات.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الصناعات الحجرية أقدم أنواع الصناعات.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استخدم الطمي في الصناعات الفخارية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سبق المصريون العالم في صناعة الزجاج.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان استخدام الفضة في مصر القديمة واسعًا جدًا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "توفر خشب الأرز والأبنوس بكثرة في مصر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استورد المصري خشب الأرز والأبنوس من الخارج.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت مصر أول من صنع الورق في العالم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صنع المصريون الورق من نبات الكتان.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صنع المصريون من البردي المراكب والسلال والحبال.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت النساء يقمن بعمليات الغزل.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من منتجات الجلود الأحذية وقرب المياه.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فرض الملوك السخرة على عمال التعدين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت أجور العمال تصرف على شكل مخصصات عينية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت المقايضة أساس المبادلات التجارية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قامت المقايضة على الأمانة والثقة المتبادلة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أرسل الملك سنفرو بعثة لفينيقيا لاستيراد خشب الأرز.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استوردت مصر زيت الزيتون من النوبة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قام نخاو الثاني بأول محاولة للدوران حول إفريقيا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "شق سنوسرت الثالث قناة في صخور الجندل الأول.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قناة سيزوستريس ربطت النيل بالبحر الأحمر.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أرسلت حتشبسوت بعثة تجارية إلى بلاد بونت.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "النقل البحري في مصر القديمة كان من خلال المراكب في النيل فقط.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في الحياة الاقتصادية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "فسر: يعد النيل العامل الرئيس في قيام أقدم الحضارات الزراعية.",
+                "options": [
+                    "لأنه للنقل فقط",
+                    "لأنه مالح",
+                    "لأنه وفر الماء والطمي فكانت الزراعة أساس الرخاء",
+                    "لأنه يمنع الزراعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أشهر المحاصيل الزراعية في مصر القديمة؟",
+                "options": [
+                    "الذرة",
+                    "قصب السكر",
+                    "القمح والشعير والكتان والبقول والخضروات والفاكهة والسمسم",
+                    "الأرز والقطن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما المقصود بالصوامع؟",
+                "options": [
+                    "أماكن مخروطية لتجميع وحفظ الغلال يصعد إليها العمال بسلم",
+                    "معابد",
+                    "مقابر",
+                    "أسواق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف كانت الملكية الزراعية في مصر القديمة؟",
+                "options": [
+                    "ملك للكهنة",
+                    "ملك للأجانب",
+                    "الأراضي ملك للملك مع وجود ملكية خاصة يهديها الفرعون وأراضي أوقاف",
+                    "كلها ملكية خاصة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما المقصود بأراضي الأوقاف؟",
+                "options": [
+                    "أراضٍ خاصة بالإنفاق على المعابد والمقابر",
+                    "أراضي الفلاحين",
+                    "أراضي الأجانب",
+                    "أراضي الجنود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف استفاد الفلاح من الحيوانات؟",
+                "options": [
+                    "في الزراعة والنقل والانتفاع بصوفها ووبرها وشعرها وجلودها ولحومها",
+                    "لا يستفيد",
+                    "في الحرب فقط",
+                    "للزينة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قارن بين أنواع الصيد في مصر القديمة:",
+                "options": [
+                    "متطابقة",
+                    "البر رياضة لعلية القوم، والطيور بلا جهد كبير، والأسماك غذاء الفقراء",
+                    "كلها رياضة",
+                    "كلها للفقراء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما دور الدولة في التنمية الزراعية؟",
+                "options": [
+                    "إقامة مشروعات الري والسدود وزيادة المساحة وإدارات لشئون الزراعة",
+                    "لا دور",
+                    "إهمال الزراعة",
+                    "فرض الضرائب فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما إدارات شئون الزراعة؟",
+                "options": [
+                    "مسح الأراضي والري والإدارة المحلية في الأقاليم والزراعة",
+                    "الجمارك والقوافل",
+                    "الخزانة",
+                    "الجيش"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما المشكلة التي كانت تواجه الفيوم قبل سد اللاهون؟",
+                "options": [
+                    "إغراق الفيضان للأراضي",
+                    "التصحر",
+                    "الزلازل",
+                    "الجفاف التام"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما الهدف من مشروع سد اللاهون؟",
+                "options": [
+                    "الملاحة",
+                    "الحرب",
+                    "منع إغراق الفيضان للأراضي وتخزين المياه للاستفادة منها",
+                    "توليد الكهرباء"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما النتائج المترتبة على مشروع سد اللاهون؟",
+                "options": [
+                    "حفر الترع والمصارف وزراعة ٢٧ ألف فدان وإنشاء مدن جديدة",
+                    "هجرة السكان",
+                    "الفيضان",
+                    "الجفاف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قارن بين سد اللاهون قديمًا والسد العالي حاليًا:",
+                "options": [
+                    "العالي للصيد",
+                    "اللاهون للكهرباء",
+                    "كلاهما للتحكم في الفيضان وتخزين المياه، والعالي أكبر ويولد الكهرباء",
+                    "لا شبه"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ماذا تدل قصة يوسف عليه السلام؟",
+                "options": [
+                    "على الإدارة الرشيدة والتخطيط لمواجهة سنوات الجفاف",
+                    "على الحرب",
+                    "على الفوضى",
+                    "على التجارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فسر: إتقان الصانع المصري لحرفته.",
+                "options": [
+                    "لتوريث الحرفة من الآباء للأبناء ومعرفة خصائص المواد الخام",
+                    "للسخرة",
+                    "لقلة الموارد",
+                    "لكثرة الأجانب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أهم الصناعات المصرية القديمة؟",
+                "options": [
+                    "البترول",
+                    "الحجرية والفخارية والزجاج والمعادن والأخشاب والورق والنسيج والجلود",
+                    "السيارات",
+                    "الإلكترونيات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فسر: استيراد المصري الأخشاب من الخارج.",
+                "options": [
+                    "لكثرتها في مصر",
+                    "لا سبب",
+                    "لرخصها",
+                    "لعدم توفر الأخشاب الجيدة كالأرز والأبنوس في مصر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما دور الدولة في تنمية الصناعة؟",
+                "options": [
+                    "استخراج المعادن وتأمين بعثات التعدين وإعطاء العمال حقوقهم ومنع السخرة",
+                    "إهمال العمال",
+                    "فرض السخرة",
+                    "لا دور"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما المقصود بالمقايضة؟",
+                "options": [
+                    "الاقتراض",
+                    "البيع بالنقود",
+                    "الإيجار",
+                    "تبادل السلع بالسلع دون نقود"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "فسر: لجوء المصري القديم للحكم والوصايا الأخلاقية في التجارة.",
+                "options": [
+                    "لا سبب",
+                    "للتسلية",
+                    "للخداع",
+                    "لأن المقايضة قامت على الأمانة والثقة المتبادلة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما وصايا المصري القديم في التجارة؟",
+                "options": [
+                    "لا تجعل الميزان غير متوازن ولا تغش في القمح ولا تقلل المكاييل",
+                    "لا وصايا",
+                    "ارفع الأسعار",
+                    "اغش في الميزان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أهم البلاد التي ارتبطت بها مصر تجاريًا؟",
+                "options": [
+                    "الهند فقط",
+                    "الصين",
+                    "أمريكا",
+                    "فينيقيا وليبيا والنوبة وبلاد بونت"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ماذا استوردت مصر من النوبة؟",
+                "options": [
+                    "الأبنوس والعاج والذهب",
+                    "زيت الزيتون",
+                    "خشب الأرز",
+                    "الخيول"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ماذا استوردت مصر من ليبيا؟",
+                "options": [
+                    "الزيوت وخاصة زيت الزيتون والماشية",
+                    "الذهب",
+                    "الأبنوس",
+                    "خشب الأرز"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ماذا استوردت مصر من بلاد بونت؟",
+                "options": [
+                    "الخيول",
+                    "الأبنوس والعاج والبخور والعطور وحيوانات نادرة",
+                    "زيت الزيتون",
+                    "الحديد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ماذا كانت مصر تصدر إلى النوبة؟",
+                "options": [
+                    "الذهب",
+                    "الحبوب والكتان والأواني الحجرية والفخارية",
+                    "الأبنوس",
+                    "العاج"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما وسائل النقل في مصر القديمة؟",
+                "options": [
+                    "الطائرات",
+                    "القطارات",
+                    "النقل النهري بالمراكب والبحري بالسفن والبري بالدواب والزحافات والمركبات",
+                    "السيارات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما دور الدولة في تنمية التجارة؟",
+                "options": [
+                    "لا دور",
+                    "فرض المقاطعة",
+                    "إغلاق الأسواق",
+                    "إقامة تحصينات وإدارات للجمارك والقوافل وشق القنوات ووضع القوانين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "فسر: شق سنوسرت الثالث قناة في صخور الجندل الأول.",
+                "options": [
+                    "للري",
+                    "للصيد",
+                    "لتمر فيها السفن عند أسوان لتسهيل التجارة مع شمال السودان",
+                    "للدفاع"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهمية قناة سيزوستريس؟",
+                "options": [
+                    "للري",
+                    "ربطت البحر المتوسط بالأحمر عبر النيل لتسهيل التجارة مع بونت",
+                    "لتوليد الكهرباء",
+                    "للدفاع فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما أهمية رحلة نخاو الثاني؟",
+                "options": [
+                    "اكتشاف أمريكا",
+                    "فتح فينيقيا",
+                    "أول محاولة للدوران حول إفريقيا عادت محملة بالخيرات",
+                    "احتلال إفريقيا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كيف تم التواصل الاقتصادي بين مصر وإفريقيا؟",
+                "options": [
+                    "لم يتم",
+                    "التصدير والاستيراد مع السودان والبعثات التجارية كحرخوف وحتشبسوت",
+                    "بالحرب",
+                    "بالمقاطعة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «ملك بنى سد اللاهون»",
+                "options": [
+                    "أمنمحات الثالث",
+                    "أحمس",
+                    "خوفو",
+                    "سنوسرت الثالث"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أكون؟ «أعظم رحالة في الدولة القديمة»",
+                "options": [
+                    "سنفرو",
+                    "حرخوف",
+                    "حتشبسوت",
+                    "نخاو"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «فرعون حاول الدوران حول إفريقيا»",
+                "options": [
+                    "نخاو الثاني",
+                    "تحتمس الثالث",
+                    "سنوسرت الثالث",
+                    "رمسيس الثاني"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أكون؟ «ملكة أرسلت بعثة لبونت ١٤٩٥ ق.م»",
+                "options": [
+                    "نفرتيتي",
+                    "حتشبسوت",
+                    "كليوباترا",
+                    "تي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «أقدم أنواع الصناعات صناعة الزجاج».",
+                "options": [
+                    "الجلود",
+                    "الفخارية",
+                    "الورق",
+                    "الصناعات الحجرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "صوّب الخطأ: «احتل الجمل المكانة الأولى بين الحيوانات».",
+                "options": [
+                    "البقر",
+                    "الحصان",
+                    "الحمار",
+                    "الماعز"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صوّب الخطأ: «استوردت مصر خشب الأرز من بونت».",
+                "options": [
+                    "من النوبة",
+                    "من اليونان",
+                    "من فينيقيا",
+                    "من ليبيا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صوّب الخطأ: «كانت أجور العمال تصرف نقدًا».",
+                "options": [
+                    "لا أجور",
+                    "على شكل مخصصات عينية",
+                    "بالشيكات",
+                    "بالذهب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استبعد الغريب من الصناعات المصرية: (الحجرية - الفخارية - الزجاج - البلاستيك)",
+                "options": [
+                    "البلاستيك",
+                    "الفخارية",
+                    "الزجاج",
+                    "الحجرية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استبعد الغريب من إدارات الزراعة: (مسح الأراضي - الري - الإدارة المحلية - الجمارك)",
+                "options": [
+                    "الجمارك",
+                    "الإدارة المحلية",
+                    "مسح الأراضي",
+                    "الري"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استبعد الغريب من وسائل النقل القديمة: (المراكب - السفن - الزحافات - القطارات)",
+                "options": [
+                    "القطارات",
+                    "الزحافات",
+                    "المراكب",
+                    "السفن"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أهمية الصيد في حياة المصريين؟",
+                "options": [
+                    "لا أهمية",
+                    "رياضة لعلية القوم ومصدر غذاء أساسي للفقراء",
+                    "للحرب",
+                    "للتجارة الخارجية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما التحديات الحالية التي تواجه الزراعة المصرية؟",
+                "options": [
+                    "وفرة الأراضي",
+                    "كثرة المياه",
+                    "قلة السكان",
+                    "البناء على الأراضي الزراعية والفجوة بين الإنتاج والاستهلاك"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ماذا يحدث إذا استمر البناء على الأراضي الزراعية؟",
+                "options": [
+                    "تقل الرقعة الزراعية ويزيد العجز الغذائي",
+                    "تتحسن الزراعة",
+                    "يزيد الإنتاج",
+                    "لا شيء"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما القيم المستفادة من الحياة الاقتصادية في مصر القديمة؟",
+                "options": [
+                    "الكسل",
+                    "احترام العمل والإتقان والأمانة والثقة والمشاركة والادخار",
+                    "الإسراف",
+                    "الغش"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر التقدم الصناعي في مصر القديمة؟",
+                "options": [
+                    "الاعتماد على الأجانب",
+                    "إتقان الحرف وصناعة الزجاج والورق والحلي الذهبية والنسيج",
+                    "قلة الصناعات",
+                    "التخلف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مشكلات النقل حاليًا وأهم المقترحات لحلها؟",
+                "options": [
+                    "لا مشكلات",
+                    "منع السيارات",
+                    "إغلاق الطرق",
+                    "الزحام وتهالك الطرق، والحل تطوير الطرق والنقل الجماعي والنهري"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا ارتبط المصري القديم بالأرض الزراعية ودافع عنها؟",
+                "options": [
+                    "لأنها مصدر رزقه ورخاء بلاده واعتبر وطنه خير الأوطان",
+                    "لأنه أجبر",
+                    "لا سبب",
+                    "لأنها صحراء"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في الحياة الاقتصادية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما اسم المنطقة المخفية بعلامة (؟) والتي أرسل إليها الملك سنفرو بعثة لاستيراد خشب الأرز في أسطول يضم أربعين سفينة؟",
+                "options": [
+                    "الإقليم السوري (فينيقيا)",
+                    "النوبة",
+                    "بلاد بونت (الصومال)",
+                    "ليبيا"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l2_trademap.jpg",
+                "masks": [
+                    [
+                        3.1,
+                        1.6,
+                        27.1,
+                        5.2
+                    ],
+                    [
+                        66.5,
+                        19.3,
+                        9.3,
+                        11.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنطقة المخفية بعلامة (؟) والتي كانت مصر تستورد منها الزيوت وخاصة زيت الزيتون والماشية؟",
+                "options": [
+                    "بلاد بونت (الصومال)",
+                    "النوبة",
+                    "الإقليم السوري (فينيقيا)",
+                    "ليبيا"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l2_trademap.jpg",
+                "masks": [
+                    [
+                        11.0,
+                        27.3,
+                        12.1,
+                        5.0
+                    ],
+                    [
+                        36.6,
+                        33.2,
+                        6.7,
+                        5.9
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنطقة المخفية بعلامة (؟) والتي استورد منها المصريون الأبنوس والعاج والذهب؟",
+                "options": [
+                    "النوبة",
+                    "بلاد بونت (الصومال)",
+                    "الإقليم السوري (فينيقيا)",
+                    "ليبيا"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l2_trademap.jpg",
+                "masks": [
+                    [
+                        10.3,
+                        45.0,
+                        12.8,
+                        5.5
+                    ],
+                    [
+                        47.0,
+                        54.1,
+                        9.5,
+                        5.9
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنطقة المخفية بعلامة (؟) والتي أرسلت إليها الملكة حتشبسوت بعثتها التجارية الشهيرة؟",
+                "options": [
+                    "الإقليم السوري (فينيقيا)",
+                    "بلاد بونت (الصومال)",
+                    "النوبة",
+                    "ليبيا"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l2_trademap.jpg",
+                "masks": [
+                    [
+                        8.1,
+                        67.3,
+                        18.5,
+                        5.5
+                    ],
+                    [
+                        83.2,
+                        79.5,
+                        10.4,
+                        6.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الاقتصادية المخفي بعلامة (؟) وكان أساس رخاء البلاد وأهم مصادر الدخل؟",
+                "options": [
+                    "التجارة",
+                    "الصيد",
+                    "الزراعة",
+                    "الصناعة"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l2_ecodiagram.jpg",
+                "masks": [
+                    [
+                        80.7,
+                        39.3,
+                        18.6,
+                        18.9
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الاقتصادية المخفي بعلامة (؟) واستثمر فيه المصري الأخشاب والأحجار والمعادن؟",
+                "options": [
+                    "الرعي",
+                    "الصناعة",
+                    "الزراعة",
+                    "التجارة"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l2_ecodiagram.jpg",
+                "masks": [
+                    [
+                        39.7,
+                        39.3,
+                        18.9,
+                        18.9
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الاقتصادية المخفي بعلامة (؟) وشمل المقايضة في الأسواق والعلاقات مع البلاد المجاورة؟",
+                "options": [
+                    "الصناعة",
+                    "الصيد",
+                    "الزراعة",
+                    "التجارة"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l2_ecodiagram.jpg",
+                "masks": [
+                    [
+                        0.3,
+                        39.3,
+                        19.0,
+                        18.9
+                    ]
+                ]
+            },
+            {
+                "q": "تُظهر الصورة الزراعة في مصر القديمة، والعامل الرئيس في قيام أقدم الحضارات الزراعية هو:",
+                "options": [
+                    "الأمطار",
+                    "نهر النيل",
+                    "البحر المتوسط",
+                    "الآبار"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l2_farming.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة أماكن مخروطية الشكل لتجميع وحفظ الغلال، ما اسمها؟",
+                "options": [
+                    "المخازن الملكية",
+                    "الصوامع",
+                    "المصاطب",
+                    "الأهرامات"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l2_granary.jpg",
+                "masks": []
+            },
+            {
+                "q": "توضح الخريطة مشروعًا قام به أمنمحات الثالث عند مدخل الفيوم، ما اسمه؟",
+                "options": [
+                    "السد العالي",
+                    "سد اللاهون",
+                    "قناة سيزوستريس",
+                    "خزان أسوان"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l2_lahun.jpg",
+                "masks": []
+            },
+            {
+                "q": "كان الهدف من المشروع الظاهر في الخريطة:",
+                "options": [
+                    "منع الفيضان من إغراق الأراضي وتخزين مياهه للاستفادة منها",
+                    "صيد الأسماك فقط",
+                    "ربط النيل بالبحر الأحمر",
+                    "توليد الكهرباء"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l2_lahun.jpg",
+                "masks": []
+            },
+            {
+                "q": "من نتائج المشروع الظاهر في الخريطة زراعة نحو:",
+                "options": [
+                    "٢٧ ألف فدان",
+                    "٥ آلاف فدان",
+                    "١٠٠ ألف فدان",
+                    "مليون فدان"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l2_lahun.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة بعض الصناعات المصرية القديمة، وأقدم أنواع الصناعات هي:",
+                "options": [
+                    "الصناعات الحجرية",
+                    "صناعة الجلود",
+                    "صناعة الزجاج",
+                    "صناعة الورق"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l2_crafts.jpg",
+                "masks": []
+            },
+            {
+                "q": "سبق المصريون العالم في صناعة الزجاج من:",
+                "options": [
+                    "الكتان",
+                    "الطمي",
+                    "الرمال البيضاء المنتشرة في الصحراء",
+                    "خشب الأرز"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l2_crafts.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة صانعًا مصريًا، وكان الصانع المصري غالبًا:",
+                "options": [
+                    "أجنبيًا",
+                    "يغير حرفته كل عام",
+                    "يرث صناعته عن أبيه وجده ويورثها لأبنائه",
+                    "يعمل بالسخرة"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l2_craftsman.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة العمليات التجارية في مصر القديمة، وكان أساس المبادلات التجارية:",
+                "options": [
+                    "المقايضة",
+                    "الشيكات",
+                    "العملات الفضية",
+                    "النقود الذهبية"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l2_tradescene.jpg",
+                "masks": []
+            },
+            {
+                "q": "توضح الخريطة أول محاولة في تاريخ الإنسانية للدوران حول إفريقيا، قام بها الفرعون:",
+                "options": [
+                    "حتشبسوت",
+                    "تحتمس الثالث",
+                    "نخاو الثاني",
+                    "سنوسرت الثالث"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l2_neko.jpg",
+                "masks": []
+            },
+            {
+                "q": "استغرقت رحلة الدوران حول إفريقيا الظاهرة في الخريطة:",
+                "options": [
+                    "ستة أشهر",
+                    "عشر سنوات",
+                    "سنة واحدة",
+                    "ثلاث سنوات"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l2_neko.jpg",
+                "masks": []
+            },
+            {
+                "q": "توضح الخريطة قناة ربطت البحر المتوسط بالبحر الأحمر عن طريق النيل، ما اسمها؟",
+                "options": [
+                    "قناة السويس",
+                    "بحر يوسف",
+                    "قناة سيزوستريس",
+                    "قناة الجندل الأول"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l2_canal.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة رحلة الملكة حتشبسوت إلى بلاد بونت مصورة على جدران معبدها في:",
+                "options": [
+                    "الدير البحري",
+                    "إدفو",
+                    "الكرنك",
+                    "أبو سمبل"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l2_hatshepsut.jpg",
+                "masks": []
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

@@ -1,0 +1,4071 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس الحياة السياسية والإدارية - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الثَّانَوِيُّ - الْوَحْدَةُ الثَّانِيَةُ - الدَّرْسُ الثَّالِثُ: الْحَيَاةُ السِّيَاسِيَّةُ وَالإِدَارِيَّةُ</h2>
+                    <p style="margin-top: 10px;">التَّارِيخُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "التاريخ: الحياة السياسية والإدارية - الصف الأول الثانوي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول الحياة السياسية والإدارية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "أدرك المصريون منذ فجر التاريخ أن أمنهم القومي يكمن في:",
+                "options": [
+                    "العزلة",
+                    "الوحدة السياسية",
+                    "التفرقة",
+                    "الحروب الخارجية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان المصريون من أوائل الشعوب التي عرفت:",
+                "options": [
+                    "الديمقراطية الحديثة",
+                    "الإقطاع",
+                    "الوحدة",
+                    "الاستعمار"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "آمن الشعب المصري بأن الوحدة هي الطريق الوحيد لـ:",
+                "options": [
+                    "بناء وتكوين دولة قوية متقدمة",
+                    "الانفصال",
+                    "الهجرة",
+                    "الحرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اقتضت طبيعة الحياة في مصر المعتمدة على النيل والزراعة وجود:",
+                "options": [
+                    "حكم أجنبي",
+                    "تنظيم إداري وسلطة مركزية قوية",
+                    "فوضى",
+                    "نظام قبلي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "في الوحدة القوة والاستقرار وفي التفرقة:",
+                "options": [
+                    "الرخاء",
+                    "القوة",
+                    "الضعف والانهيار",
+                    "الأمن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "استطاعت الدلتا توحيد مصر عام:",
+                "options": [
+                    "١٥٧٠ ق.م",
+                    "٢٨٠٠ ق.م",
+                    "٤٢٤٢ ق.م",
+                    "٣٢٠٠ ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "بعد فشل الوحدة الأولى انقسمت مصر إلى:",
+                "options": [
+                    "ثلاث ممالك",
+                    "مملكتين",
+                    "أربعين إقليمًا مستقلًا",
+                    "دولة واحدة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قامت الوحدة التاريخية عام ٣٢٠٠ ق.م على يد الملك:",
+                "options": [
+                    "نعرمر (مينا)",
+                    "أحمس",
+                    "منتوحتب",
+                    "خوفو"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت الوحدة التاريخية لمصر ثمرة:",
+                "options": [
+                    "كفاح طويل",
+                    "صدفة",
+                    "حرب واحدة",
+                    "تدخل أجنبي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من عوامل تحقيق الوحدة نهر النيل الذي:",
+                "options": [
+                    "منع الاتصال",
+                    "ربط بين القرى والمدن والأقاليم",
+                    "سبب الحروب",
+                    "فصل بين الأقاليم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من عوامل تحقيق الوحدة انبساط أرض الوادي وامتداده من الجنوب إلى الشمال مما ساعد على:",
+                "options": [
+                    "الحرب",
+                    "الاتصال والاختلاط",
+                    "الانفصال",
+                    "العزلة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "خيرات مصر وخصوبة أرضها جعلت المصريين:",
+                "options": [
+                    "يتنازعون",
+                    "يتحدون لاستثمارها ومواجهة الطامعين",
+                    "يتفرقون",
+                    "يهاجرون"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أول عنصر في هرم عناصر الحكم:",
+                "options": [
+                    "الجيش",
+                    "الوزير",
+                    "القضاء",
+                    "الملك"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اعتنق المصريون القدماء فكرة الملكية:",
+                "options": [
+                    "المقيدة منذ البداية",
+                    "الدستورية",
+                    "الانتخابية",
+                    "المقدسة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان الفرعون في نظر المصريين:",
+                "options": [
+                    "إلهًا على الأرض يدير شئون المملكة",
+                    "قائدًا عسكريًا فقط",
+                    "موظفًا عاديًا",
+                    "كاهنًا فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من مهام الملك في السياسة الداخلية:",
+                "options": [
+                    "عقد المعاهدات",
+                    "إعلان الحرب",
+                    "قيادة الجيش",
+                    "تعيين الوزراء وكبار الموظفين والإشراف على المشروعات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من مهام الملك في السياسة الخارجية:",
+                "options": [
+                    "إعلان الحرب وقيادة الجيش وعقد المعاهدات",
+                    "إصدار الضرائب فقط",
+                    "تعيين الوزراء",
+                    "الإشراف على المشروعات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الملك صاحب الحق في إصدار:",
+                "options": [
+                    "المراسيم والقوانين",
+                    "الكتب",
+                    "العملات",
+                    "البرديات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ظهر منصب الوزير في عصر:",
+                "options": [
+                    "الدولة الوسطى",
+                    "الدولة القديمة",
+                    "العصر العتيق",
+                    "الدولة الحديثة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان منصب الوزير في البداية محصورًا في:",
+                "options": [
+                    "أسرة الملك لأنهم أهل الثقة",
+                    "الأجانب",
+                    "الكهنة",
+                    "الجنود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أصبح يشغل منصب الوزير فيما بعد:",
+                "options": [
+                    "أسرة الملك فقط",
+                    "الأجانب",
+                    "الأغنياء فقط",
+                    "أصحاب الكفاءة والعلم ورجاحة العقل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تقديم أهل الكفاءة على أهل الثقة يحقق مبدأ:",
+                "options": [
+                    "الظلم",
+                    "تكافؤ الفرص بين أبناء الوطن",
+                    "الوراثة",
+                    "المحسوبية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "في عصر الدولة الحديثة كان هناك:",
+                "options": [
+                    "ثلاثة وزراء",
+                    "لا وزراء",
+                    "وزير واحد",
+                    "وزيران أحدهما في طيبة والآخر في منف"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان وزير طيبة يشرف على:",
+                "options": [
+                    "النوبة",
+                    "الدلتا فقط",
+                    "الوجه البحري",
+                    "الوجه القبلي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان وزير منف يشرف على:",
+                "options": [
+                    "الوجه البحري ومصر الوسطى",
+                    "النوبة",
+                    "سيناء",
+                    "الوجه القبلي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أشهر الوزراء في عصر الدولة القديمة:",
+                "options": [
+                    "حرخوف",
+                    "ونى",
+                    "إيمحوتب",
+                    "رخميرع"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أشهر الوزراء في عصر الدولة الحديثة:",
+                "options": [
+                    "إيمحوتب",
+                    "بتاح حتب",
+                    "رخميرع",
+                    "حرخوف"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يعد الوزير رئيس:",
+                "options": [
+                    "الأسطول",
+                    "الجيش",
+                    "الإدارة المركزية",
+                    "الكهنة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من مهام الوزير:",
+                "options": [
+                    "التعبد في المعابد",
+                    "مساعدة الفرعون في إدارة الدولة وتنظيم شئونها",
+                    "إعلان الحرب",
+                    "قيادة الأسطول"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد الوزير كبير ... ويرأس المحكمة العليا:",
+                "options": [
+                    "القضاة",
+                    "الكهنة",
+                    "الجنود",
+                    "الكتبة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يسن الوزير بعض القوانين:",
+                "options": [
+                    "بقرار الكهنة",
+                    "بتفويض من الملك",
+                    "بقرار الشعب",
+                    "بدون إذن"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "جرت العادة أن يوجه الملك إلى الوزير خطاب:",
+                "options": [
+                    "التكليف برئاسة الحكومة",
+                    "العزل",
+                    "الحرب",
+                    "الصلح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جاء في خطاب الملك لوزيره أن الوزارة:",
+                "options": [
+                    "حلوة المذاق",
+                    "للراحة",
+                    "ليست حلوة المذاق بل مرة",
+                    "سهلة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من نص تنصيب الوزير: لا تنس أن تحكم بـ:",
+                "options": [
+                    "المحاباة",
+                    "العدل لأن التحيز طغيان على الإله",
+                    "القوة فقط",
+                    "القسوة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تتكون الإدارة المركزية من:",
+                "options": [
+                    "مجلس العشرة الكبار وكاتمي أسرار الملك ودواوين الحكومة",
+                    "الجيش والشرطة",
+                    "حكام الأقاليم فقط",
+                    "الكهنة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مجلس العشرة الكبار يرأسه:",
+                "options": [
+                    "كبير الكهنة",
+                    "قائد الجيش",
+                    "الملك",
+                    "الوزير"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "دور مجلس العشرة الكبار:",
+                "options": [
+                    "قيادة الجيش",
+                    "إدارة المعابد",
+                    "الإشراف الكامل على كل مرافق الدولة",
+                    "جمع الضرائب فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كاتمو أسرار الملك هم:",
+                "options": [
+                    "جنود",
+                    "قضاة",
+                    "معاونون شخصيون للملك يختارهم بنفسه",
+                    "كهنة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "دواوين الحكومة هم:",
+                "options": [
+                    "رؤساء الإدارات العامة",
+                    "الكهنة",
+                    "الفلاحون",
+                    "الجنود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من الإدارات العامة:",
+                "options": [
+                    "الخزانة ومخازن الغلال والسجلات والزراعة والأشغال والقضاء والصناعة",
+                    "الجمارك فقط",
+                    "الشرطة النهرية",
+                    "الأسطول"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت الوظائف الكتابية أحسن وسيلة يضمن بها الشاب:",
+                "options": [
+                    "الثراء السريع",
+                    "السفر",
+                    "مستقبلًا مشرقًا",
+                    "الحرب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كانت مصر مقسمة إلى:",
+                "options": [
+                    "١٠٠ إقليم",
+                    "١٠ أقاليم",
+                    "٢٢ إقليمًا",
+                    "٤٢ إقليمًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "على رأس كل إقليم حاكم يعينه:",
+                "options": [
+                    "الملك ويشرف عليه الوزير",
+                    "الشعب",
+                    "الجيش",
+                    "الكهنة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مع ضعف الدولة تمتع حكام الأقاليم بـ:",
+                "options": [
+                    "نفوذ واسع واستقلال بعضهم",
+                    "فقر",
+                    "طاعة كاملة",
+                    "ضعف شديد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قضى على نفوذ حكام الأقاليم وألغى وراثة المنصب الملك:",
+                "options": [
+                    "سنوسرت الثالث",
+                    "خوفو",
+                    "أمنمحات الأول",
+                    "أحمس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت نظرة المصريين للملك أن له هيبة كبيرة و:",
+                "options": [
+                    "لا سلطة",
+                    "سلطة مطلقة",
+                    "سلطة ضعيفة",
+                    "سلطة مؤقتة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تحول نظام الحكم بعد الثورة الاجتماعية من ملكية مطلقة إلى:",
+                "options": [
+                    "احتلال",
+                    "حكم الكهنة",
+                    "جمهورية",
+                    "ملكية مقيدة يلتزم فيها الفرعون بما يصدره من قوانين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "السلطة المطلقة:",
+                "options": [
+                    "مصلحة مطلقة",
+                    "مفسدة مطلقة",
+                    "أمان مطلق",
+                    "عدل مطلق"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قامت الثورة الاجتماعية في أواخر الأسرة السادسة في عهد الملك:",
+                "options": [
+                    "خوفو",
+                    "زوسر",
+                    "سنفرو",
+                    "ببي الثاني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "انتصر الجيش المصري على شعوب البحر المتوسط في معركة بحرية بقيادة الملك:",
+                "options": [
+                    "سنفرو",
+                    "رمسيس الثالث",
+                    "تحتمس الثالث",
+                    "أحمس"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن الحياة السياسية والإدارية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "سر الأمن القومي للمصريين؟",
+                "options": [
+                    "الوحدة السياسية",
+                    "الثروة",
+                    "الحرب",
+                    "العزلة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما في التفرقة؟",
+                "options": [
+                    "الضعف والانهيار",
+                    "الأمن",
+                    "الرخاء",
+                    "القوة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أول وحدة لمصر؟",
+                "options": [
+                    "٣٢٠٠ ق.م",
+                    "١٥٧٠ ق.م",
+                    "٤٢٤٢ ق.م",
+                    "٢٨٠٠ ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صاحب الوحدة التاريخية؟",
+                "options": [
+                    "أحمس",
+                    "زوسر",
+                    "نعرمر",
+                    "خوفو"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عام الوحدة التاريخية؟",
+                "options": [
+                    "٣٢٠٠ ق.م",
+                    "٢٢٠٠ ق.م",
+                    "١٥٧٠ ق.م",
+                    "٤٢٤٢ ق.م"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عامل ربط القرى بالمدن؟",
+                "options": [
+                    "البحر",
+                    "الصحراء",
+                    "الجبال",
+                    "نهر النيل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عامل الاتصال من الجنوب للشمال؟",
+                "options": [
+                    "الغابات",
+                    "الجبال",
+                    "انبساط الوادي",
+                    "الصحاري"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "قمة هرم الحكم؟",
+                "options": [
+                    "الشرطة",
+                    "الوزير",
+                    "الملك",
+                    "الجيش"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "قاعدة هرم الحكم؟",
+                "options": [
+                    "الشرطة",
+                    "القضاء",
+                    "الوزير",
+                    "الملك"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نوع الملكية القديمة؟",
+                "options": [
+                    "منتخبة",
+                    "دستورية",
+                    "مؤقتة",
+                    "مقدسة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نظرة المصريين للفرعون؟",
+                "options": [
+                    "إله على الأرض",
+                    "تاجر",
+                    "موظف",
+                    "فلاح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من يعين الوزراء؟",
+                "options": [
+                    "الملك",
+                    "الجيش",
+                    "الكهنة",
+                    "الشعب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من يصدر القوانين؟",
+                "options": [
+                    "الملك",
+                    "الفلاح",
+                    "الكاتب",
+                    "التاجر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عصر ظهور الوزير؟",
+                "options": [
+                    "الوسطى",
+                    "الحديثة",
+                    "المتأخر",
+                    "الدولة القديمة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أول شاغلي الوزارة؟",
+                "options": [
+                    "الفلاحون",
+                    "الكهنة",
+                    "الأجانب",
+                    "أسرة الملك"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من شغل الوزارة لاحقًا؟",
+                "options": [
+                    "الأجانب",
+                    "أهل الثقة فقط",
+                    "أهل الكفاءة",
+                    "الأطفال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مبدأ تقديم الكفاءة؟",
+                "options": [
+                    "الوراثة",
+                    "الواسطة",
+                    "المحسوبية",
+                    "تكافؤ الفرص"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عدد وزراء الدولة الحديثة؟",
+                "options": [
+                    "اثنان",
+                    "عشرة",
+                    "ثلاثة",
+                    "واحد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مقر وزير الوجه القبلي؟",
+                "options": [
+                    "أواريس",
+                    "طيبة",
+                    "الإسكندرية",
+                    "منف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مقر وزير الوجه البحري؟",
+                "options": [
+                    "منف",
+                    "أبيدوس",
+                    "أسوان",
+                    "طيبة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وزير الدولة القديمة الشهير؟",
+                "options": [
+                    "ونى",
+                    "رخميرع",
+                    "حرخوف",
+                    "إيمحوتب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "وزير الدولة الحديثة الشهير؟",
+                "options": [
+                    "حور محب",
+                    "إيمحوتب",
+                    "رخميرع",
+                    "بتاح حتب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "رئيس الإدارة المركزية؟",
+                "options": [
+                    "الكاهن",
+                    "القاضي",
+                    "الملك",
+                    "الوزير"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "رئيس المحكمة العليا؟",
+                "options": [
+                    "الوزير",
+                    "قائد الجيش",
+                    "حاكم الإقليم",
+                    "الملك"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وصف الوزارة في خطاب الملك؟",
+                "options": [
+                    "مريحة",
+                    "حلوة المذاق",
+                    "مرة المذاق",
+                    "سهلة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما يجب على الوزير؟",
+                "options": [
+                    "القسوة",
+                    "الغضب",
+                    "العدل",
+                    "التحيز"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مجلس من كبار الموظفين؟",
+                "options": [
+                    "الشيوخ",
+                    "القضاة",
+                    "الكهنة",
+                    "العشرة الكبار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "رئيس مجلس العشرة؟",
+                "options": [
+                    "الملك",
+                    "الوزير",
+                    "الكاهن",
+                    "القائد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "معاونو الملك الشخصيون؟",
+                "options": [
+                    "الدواوين",
+                    "الجنود",
+                    "القضاة",
+                    "كاتمو الأسرار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "رؤساء الإدارات العامة؟",
+                "options": [
+                    "كاتمو الأسرار",
+                    "حكام الأقاليم",
+                    "الكهنة",
+                    "دواوين الحكومة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "إدارة حكومية؟",
+                "options": [
+                    "المعبد",
+                    "الخزانة العامة",
+                    "الجيش",
+                    "الأسطول"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وظيفة تضمن مستقبل الشاب؟",
+                "options": [
+                    "الزراعية",
+                    "الكتابية",
+                    "الصيد",
+                    "الرعي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عدد الأقاليم؟",
+                "options": [
+                    "١٢",
+                    "٢٢",
+                    "٤٢",
+                    "٧٠"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من يعين حاكم الإقليم؟",
+                "options": [
+                    "الوزير",
+                    "الملك",
+                    "الشعب",
+                    "الكهنة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من يشرف على حاكم الإقليم؟",
+                "options": [
+                    "الملك مباشرة",
+                    "الكاهن",
+                    "الوزير",
+                    "القاضي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تقسيم الإقليم؟",
+                "options": [
+                    "مراكز",
+                    "ولايات",
+                    "محافظات",
+                    "دول"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ملك قضى على نفوذ الأقاليم؟",
+                "options": [
+                    "أحمس",
+                    "خوفو",
+                    "أمنمحات الأول",
+                    "سنوسرت الثالث"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما ألغاه سنوسرت الثالث؟",
+                "options": [
+                    "الضرائب",
+                    "الجيش",
+                    "وراثة المنصب",
+                    "الأقاليم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "سلطة الملك القديمة؟",
+                "options": [
+                    "منعدمة",
+                    "شعبية",
+                    "مطلقة",
+                    "مقيدة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "نظام الحكم بعد الثورة؟",
+                "options": [
+                    "ملكية مقيدة",
+                    "جمهورية",
+                    "ملكية مطلقة",
+                    "احتلال"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "السلطة المطلقة؟",
+                "options": [
+                    "مفسدة مطلقة",
+                    "أمان",
+                    "خير مطلق",
+                    "عدل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ملك الثورة الاجتماعية؟",
+                "options": [
+                    "منتوحتب",
+                    "رمسيس",
+                    "خوفو",
+                    "ببي الثاني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مدينة خروج الثورة؟",
+                "options": [
+                    "أواريس",
+                    "أثيت تاوي",
+                    "طيبة",
+                    "منف"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مطلب الثوار؟",
+                "options": [
+                    "الضرائب",
+                    "العدالة الاجتماعية",
+                    "الحرب",
+                    "الهجرة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما يؤدي إليه الظلم؟",
+                "options": [
+                    "الرخاء",
+                    "الاستقرار",
+                    "الأمن",
+                    "الثورات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "السلطة الثانية في مصر القديمة؟",
+                "options": [
+                    "القضاء",
+                    "الأسطول",
+                    "الجيش",
+                    "الشرطة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عدد المحاكم الكبرى؟",
+                "options": [
+                    "محكمة",
+                    "ثلاث",
+                    "خمس",
+                    "محكمتان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مقر المحكمتين؟",
+                "options": [
+                    "الشرق والغرب",
+                    "طيبة فقط",
+                    "منف فقط",
+                    "الجنوب والشمال"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أساس المحاكمات؟",
+                "options": [
+                    "الرشوة",
+                    "الإجراءات القانونية",
+                    "المزاج",
+                    "القوة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قائل الثائر الحق؟",
+                "options": [
+                    "إيمحوتب",
+                    "رخميرع",
+                    "الشيخ الشعراوي",
+                    "آني"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات الحياة السياسية والإدارية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «أدرك المصريون أن أمنهم القومي يكمن في الوحدة ...».",
+                "options": [
+                    "الاقتصادية",
+                    "الدينية",
+                    "السياسية",
+                    "الثقافية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان المصريون من أوائل الشعوب التي عرفت ...».",
+                "options": [
+                    "الوحدة",
+                    "الإقطاع",
+                    "الاستعمار",
+                    "الحرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يحكم الأمة ملك عظيم تتركز في يده ...».",
+                "options": [
+                    "الثروة فقط",
+                    "الكهانة",
+                    "التجارة",
+                    "السلطة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «اقتضت طبيعة الحياة في مصر وجود تنظيم إداري وسلطة ... قوية».",
+                "options": [
+                    "مركزية",
+                    "محلية",
+                    "أجنبية",
+                    "ضعيفة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من مظاهر الوحدة السياسية نظام حكم قوي وقضاء ...».",
+                "options": [
+                    "أجنبي",
+                    "ضعيف",
+                    "عادل",
+                    "ظالم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من مظاهر الوحدة جيش منظم قوي يحمي ... البلاد».",
+                "options": [
+                    "أسواق",
+                    "معابد",
+                    "حدود",
+                    "مقابر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من مظاهر الوحدة شرطة تحافظ على الأمن ...».",
+                "options": [
+                    "البحري",
+                    "الخارجي",
+                    "الحدودي",
+                    "الداخلي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «في الوحدة القوة والاستقرار وفي التفرقة الضعف و...».",
+                "options": [
+                    "القوة",
+                    "الرخاء",
+                    "الانهيار",
+                    "الأمن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «بعد استقرار المصري على ضفاف النيل تكونت ...».",
+                "options": [
+                    "الإمبراطوريات",
+                    "المستعمرات",
+                    "الجمهوريات",
+                    "الأقاليم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «في عام ٤٢٤٢ ق.م استطاعت ... توحيد مصر».",
+                "options": [
+                    "طيبة",
+                    "النوبة",
+                    "الدلتا",
+                    "سيناء"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «فشلت الوحدة الأولى وانقسمت مصر إلى ...».",
+                "options": [
+                    "مملكتين",
+                    "أقاليم مستقلة",
+                    "إمارات",
+                    "ثلاث ممالك"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «قامت الوحدة التاريخية عام ... ق.م».",
+                "options": [
+                    "٣٢٠٠",
+                    "٢٨٠٠",
+                    "٤٢٤٢",
+                    "١٥٧٠"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كانت الوحدة التاريخية لمصر ثمرة كفاح ...».",
+                "options": [
+                    "ضعيف",
+                    "أجنبي",
+                    "طويل",
+                    "قصير"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «نهر النيل ربط بين القرى والمدن و... المختلفة».",
+                "options": [
+                    "الجبال",
+                    "الصحاري",
+                    "الأقاليم",
+                    "البحار"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «انبساط أرض الوادي وامتداده من الجنوب إلى الشمال ساعد على الاتصال و...».",
+                "options": [
+                    "الانفصال",
+                    "العزلة",
+                    "الحرب",
+                    "الاختلاط"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «خيرات مصر وخصوبة أرضها جعلت المصريين يتحدون لاستثمارها ومواجهة ... فيها».",
+                "options": [
+                    "التجار",
+                    "الأصدقاء",
+                    "الزائرين",
+                    "الطامعين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «اعتنق المصريون القدماء فكرة الملكية ...».",
+                "options": [
+                    "المقيدة",
+                    "المقدسة",
+                    "الشعبية",
+                    "الدستورية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان الفرعون في نظر المصريين إلهًا على ...».",
+                "options": [
+                    "الأرض",
+                    "البحر",
+                    "الجبل",
+                    "السماء"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يدير الملك السياسة الداخلية مثل تعيين الوزراء وكبار ...».",
+                "options": [
+                    "الموظفين",
+                    "التجار",
+                    "الكهنة",
+                    "الجنود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يدير الملك السياسة الخارجية من إعلان الحرب وقيادة الجيش وعقد ...».",
+                "options": [
+                    "الاحتفالات",
+                    "المعاهدات",
+                    "الأسواق",
+                    "الضرائب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «الملك صاحب الحق في إصدار المراسيم و...».",
+                "options": [
+                    "الأشعار",
+                    "القوانين",
+                    "العملات",
+                    "الكتب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ظهر منصب الوزير في عصر الدولة ...».",
+                "options": [
+                    "الحديثة",
+                    "الوسطى",
+                    "القديمة",
+                    "المتأخرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان منصب الوزير محصورًا في أسرة الملك لأنهم أهل ...».",
+                "options": [
+                    "الكفاءة",
+                    "العلم",
+                    "الحرب",
+                    "الثقة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أصبح يشغل منصب الوزير أصحاب الكفاءة والعلم و... العقل».",
+                "options": [
+                    "ضعف",
+                    "خفة",
+                    "رجاحة",
+                    "قلة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تقديم أهل الكفاءة على أهل الثقة يحقق مبدأ ... الفرص».",
+                "options": [
+                    "تقليل",
+                    "حصر",
+                    "منع",
+                    "تكافؤ"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «في الدولة الحديثة كان هناك وزيران أحدهما يقيم في ...».",
+                "options": [
+                    "الإسكندرية",
+                    "بابل",
+                    "طيبة",
+                    "أواريس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان وزير طيبة يشرف على الوجه ...».",
+                "options": [
+                    "البحري",
+                    "الغربي",
+                    "الشرقي",
+                    "القبلي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان الوزير الثاني يقيم في ...».",
+                "options": [
+                    "أسوان",
+                    "طيبة",
+                    "منف",
+                    "أبيدوس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من أشهر الوزراء في الدولة القديمة ...».",
+                "options": [
+                    "رخميرع",
+                    "ونى",
+                    "حرخوف",
+                    "إيمحوتب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من أشهر الوزراء في الدولة الحديثة ...».",
+                "options": [
+                    "آني",
+                    "إيمحوتب",
+                    "رخميرع",
+                    "بتاح حتب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يعد الوزير رئيس الإدارة ...».",
+                "options": [
+                    "المحلية",
+                    "العسكرية",
+                    "الدينية",
+                    "المركزية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يعد الوزير كبير القضاة ويرأس المحكمة ...».",
+                "options": [
+                    "الإقليمية",
+                    "العليا",
+                    "الصغرى",
+                    "الدينية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يسن الوزير بعض القوانين بتفويض من ...».",
+                "options": [
+                    "الملك",
+                    "الشعب",
+                    "الجيش",
+                    "الكهنة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «قال الملك لوزيره: الوزارة ليست حلوة المذاق بل إنها ...».",
+                "options": [
+                    "مرة",
+                    "مريحة",
+                    "سهلة",
+                    "لذيذة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «ليس الغرض أن يتخذ الوزير لنفسه ... من الشعب».",
+                "options": [
+                    "أصدقاء",
+                    "أعوانًا",
+                    "عبيدًا",
+                    "جنودًا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «فنجاح الرجل أن يعمل حسبما يقال له وألا يتوانى في إقامة ...».",
+                "options": [
+                    "العدل",
+                    "الحروب",
+                    "الحفلات",
+                    "المعابد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «لا تنس أن تحكم بالعدل لأن التحيز يعد ... على الإله».",
+                "options": [
+                    "تقربًا",
+                    "عبادة",
+                    "طاعة",
+                    "طغيانًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «عامل من تعرفه معاملة من لا ...».",
+                "options": [
+                    "تعرفه",
+                    "تحبه",
+                    "تكرهه",
+                    "تخافه"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تتكون الإدارة المركزية من مجلس العشرة ... وكاتمي أسرار الملك ودواوين الحكومة».",
+                "options": [
+                    "الحكماء",
+                    "القضاة",
+                    "الصغار",
+                    "الكبار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يختار الملك مجلس العشرة الكبار ويرأسه ...».",
+                "options": [
+                    "الوزير",
+                    "الكاهن",
+                    "الكاتب",
+                    "القائد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كاتمو أسرار الملك يختارهم الملك وهم معاونون ... للملك».",
+                "options": [
+                    "أجانب",
+                    "دينيون",
+                    "شخصيون",
+                    "عسكريون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «دواوين الحكومة هم رؤساء الإدارات ...».",
+                "options": [
+                    "العسكرية",
+                    "الدينية",
+                    "الخاصة",
+                    "العامة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كانت الوظائف ... أحسن وسيلة لمستقبل مشرق للشاب».",
+                "options": [
+                    "الحربية",
+                    "الكتابية",
+                    "الزراعية",
+                    "التجارية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كانت مصر مقسمة إلى ... إقليمًا».",
+                "options": [
+                    "٤٢",
+                    "١٢",
+                    "٣٢",
+                    "٢٢"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «ينقسم الإقليم إلى عدة ... والمراكز تنقسم إلى مدن وقرى».",
+                "options": [
+                    "ممالك",
+                    "ولايات",
+                    "دول",
+                    "مراكز"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «قام سنوسرت الثالث بتنظيم إدارة الأقاليم وألغى ... المنصب».",
+                "options": [
+                    "إلغاء",
+                    "وراثة",
+                    "ضرائب",
+                    "تعيين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تحول نظام الحكم من ملكية مطلقة إلى ملكية ...».",
+                "options": [
+                    "ديمقراطية",
+                    "مقيدة",
+                    "دستورية حديثة",
+                    "جمهورية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «السلطة المطلقة ... مطلقة».",
+                "options": [
+                    "مفسدة",
+                    "قوة",
+                    "عدالة",
+                    "مصلحة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «قامت الثورة الاجتماعية في أواخر الأسرة ... في عهد ببي الثاني».",
+                "options": [
+                    "السادسة",
+                    "الرابعة",
+                    "الثامنة عشرة",
+                    "الثانية عشرة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يمثل القضاء السلطة ...».",
+                "options": [
+                    "الثالثة",
+                    "الأولى",
+                    "الثانية",
+                    "الأخيرة"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ الحياة السياسية والإدارية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "أدرك المصريون أن أمنهم القومي يكمن في الوحدة السياسية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان المصريون من آخر الشعوب التي عرفت الوحدة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "في الوحدة القوة وفي التفرقة الضعف.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استطاعت الدلتا توحيد مصر عام ٤٢٤٢ ق.م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استمرت الوحدة الأولى عام ٤٢٤٢ ق.م دون انقطاع.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قامت الوحدة التاريخية على يد الملك نعرمر عام ٣٢٠٠ ق.م.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "نهر النيل من عوامل تحقيق الوحدة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وجود عوائق طبيعية بين أراضي مصر ساعد على الوحدة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اعتنق المصريون فكرة الملكية المقدسة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان الفرعون يدير السياسة الداخلية والخارجية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الوزير صاحب الحق الوحيد في إصدار المراسيم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ظهر منصب الوزير في عصر الدولة القديمة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ظل منصب الوزير محصورًا في أسرة الملك طوال العصور.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أصبح أصحاب الكفاءة يشغلون منصب الوزير.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقديم أهل الكفاءة يحقق مبدأ تكافؤ الفرص.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان في الدولة الحديثة وزيران.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان وزير طيبة يشرف على الوجه البحري.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان وزير منف يشرف على الوجه البحري ومصر الوسطى.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "إيمحوتب من أشهر وزراء الدولة القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "رخميرع من أشهر وزراء الدولة القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد الوزير رئيس الإدارة المركزية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يعد الوزير كبير القضاة ويرأس المحكمة العليا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يسن الوزير القوانين دون تفويض من الملك.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وصف الملك الوزارة بأنها مرة المذاق.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يرأس الملك مجلس العشرة الكبار.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يرأس الوزير مجلس العشرة الكبار.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كاتمو أسرار الملك معاونون شخصيون له.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "دواوين الحكومة هم رؤساء الإدارات العامة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت الوظائف الكتابية أحسن وسيلة لمستقبل الشاب.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت مصر مقسمة إلى ٤٢ إقليمًا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يعين الشعب حاكم الإقليم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان منصب حاكم الإقليم وراثيًا في بعض الأحيان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قضى سنوسرت الثالث على نفوذ حكام الأقاليم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ألغى أمنمحات الأول وراثة منصب حاكم الإقليم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تحول الحكم بعد الثورة الاجتماعية إلى ملكية مقيدة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "السلطة المطلقة مفسدة مطلقة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قامت الثورة الاجتماعية في عهد الملك ببي الثاني.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "خرجت الثورة الاجتماعية من طيبة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "خرجت الثورة الاجتماعية من منف.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أسباب الثورة كثرة المظالم وضعف سلطة الملك.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "رفعت الثورة من قيمة الفرد ونشرت فكرة المساواة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بعد الثورة تفاخر الملوك بعدالتهم بين الناس.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الظلم يؤدي إلى الثورات.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يمثل القضاء السلطة الثانية في مصر القديمة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت هناك محكمة واحدة في مصر القديمة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت المحاكمات تسير طبقًا للإجراءات القانونية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عرفت مصر جيشًا موحدًا منذ البداية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ظهر الجيش النظامي في عصر الدولة الحديثة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ظهرت الشرطة ككيان مستقل عن الجيش في عصر الدولة الحديثة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عرف المصري القديم الأساطيل البحرية منذ الدولة القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في الحياة السياسية والإدارية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "فسر: أدرك المصريون أن أمنهم القومي يكمن في الوحدة السياسية.",
+                "options": [
+                    "لأن الوحدة هي الطريق الوحيد لبناء دولة قوية متقدمة، وفي التفرقة الضعف",
+                    "لا سبب",
+                    "للعزلة",
+                    "لحب الحرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مظاهر الوحدة السياسية في مصر القديمة؟",
+                "options": [
+                    "الاحتلال",
+                    "الفوضى",
+                    "التفرقة",
+                    "نظام حكم قوي وقضاء عادل وجيش منظم وشرطة للأمن الداخلي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما عوامل تحقيق الوحدة في مصر القديمة؟",
+                "options": [
+                    "الجبال",
+                    "الأجانب",
+                    "الحروب",
+                    "نهر النيل وانبساط أرض الوادي وخيرات مصر وخصوبة أرضها"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ماذا يحدث إذا كانت الأرض المصرية تفصلها عوائق طبيعية؟",
+                "options": [
+                    "لا شيء",
+                    "تسهل الوحدة",
+                    "يصعب الاتصال وتتعذر الوحدة",
+                    "تزداد التجارة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أساليب دعم الوحدة الوطنية في مصر؟",
+                "options": [
+                    "الفرقة",
+                    "التعاون والتسامح والانتماء ونبذ التعصب واحترام القانون",
+                    "العنف",
+                    "التعصب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "رتب مراحل تطور الوحدة: (الوحدة التاريخية - تكوين الأقاليم - وحدة الدلتا - الانقسام لمملكتين)",
+                "options": [
+                    "الانقسام أولًا",
+                    "الوحدة التاريخية أولًا",
+                    "لا ترتيب",
+                    "تكوين الأقاليم ثم وحدة الدلتا ثم الانقسام ثم الوحدة التاريخية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما عناصر الحكم في مصر القديمة؟",
+                "options": [
+                    "الملك والوزير والإدارة المحلية والقضاء والجيش والأسطول والشرطة",
+                    "البرلمان",
+                    "الملك فقط",
+                    "الأحزاب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أنواع السلطات التي تتركز في يد الفرعون؟",
+                "options": [
+                    "لا سلطات",
+                    "التجارية فقط",
+                    "التشريعية والتنفيذية والقضائية والعسكرية والدينية",
+                    "السلطة الدينية فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهم مهام الملك؟",
+                "options": [
+                    "التجارة",
+                    "الزراعة",
+                    "إدارة السياسة الداخلية والخارجية وإصدار المراسيم والقوانين",
+                    "الكتابة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهم مهام الوزير؟",
+                "options": [
+                    "الكهانة",
+                    "الزراعة",
+                    "رئيس الإدارة المركزية ومساعدة الفرعون وكبير القضاة وسن بعض القوانين بتفويض",
+                    "قيادة الأسطول"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما المبادئ التي يجب أن يتحلى بها الوزير من خطاب التكليف؟",
+                "options": [
+                    "الغضب",
+                    "المحاباة",
+                    "القسوة",
+                    "العدل وعدم التحيز والمساواة بين الناس وعدم اتخاذ الشعب عبيدًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ماذا يحدث إذا نفذ الوزير خطاب التكليف؟",
+                "options": [
+                    "لا شيء",
+                    "تنهار الدولة",
+                    "يسود العدل ويطمئن الناس وتستقر الدولة",
+                    "يزيد الظلم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "فسر: تحول منصب الوزير من أهل الثقة إلى أهل الكفاءة.",
+                "options": [
+                    "لكثرة الأقارب",
+                    "لا سبب",
+                    "لتحقيق تكافؤ الفرص واختيار الأصلح لإدارة الدولة",
+                    "للحرب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما مكونات الإدارة المركزية؟",
+                "options": [
+                    "الكهنة",
+                    "حكام الأقاليم",
+                    "الجيش والأسطول",
+                    "مجلس العشرة الكبار وكاتمو أسرار الملك ودواوين الحكومة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما دور مجلس العشرة الكبار؟",
+                "options": [
+                    "قيادة الجيش",
+                    "الإشراف الكامل على كل مرافق الدولة",
+                    "الزراعة",
+                    "إدارة المعابد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما الإدارات العامة في دواوين الحكومة؟",
+                "options": [
+                    "الجمارك",
+                    "الأسطول",
+                    "الخزانة ومخازن الغلال والسجلات والزراعة والأشغال والقضاء والصناعة",
+                    "الشرطة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كيف كانت الإدارة المحلية في مصر القديمة؟",
+                "options": [
+                    "٤٢ إقليمًا على رأس كل منها حاكم يعينه الملك ويشرف عليه الوزير",
+                    "حكم ذاتي كامل",
+                    "حكم الكهنة",
+                    "لا أقاليم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فسر: سعي الدولة للسيطرة على حكام الأقاليم.",
+                "options": [
+                    "لكثرتهم",
+                    "لحبهم",
+                    "لا سبب",
+                    "لأن نفوذهم يمثل تهديدًا للسلطة المركزية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما دور سنوسرت الثالث في إدارة الأقاليم؟",
+                "options": [
+                    "قضى على نفوذ حكامها وألغى الوراثة وأخضعها لسلطة الملك",
+                    "زاد نفوذهم",
+                    "منحهم الاستقلال",
+                    "لا دور"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف تغيرت العلاقة بين الحاكم والشعب؟",
+                "options": [
+                    "انتهت الملكية",
+                    "أصبحت أكثر استبدادًا",
+                    "لم تتغير",
+                    "تحولت من ملكية مطلقة إلى مقيدة بعد الثورة الاجتماعية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أسباب الثورة الاجتماعية؟",
+                "options": [
+                    "ضعف سلطة ببي الثاني ونفوذ حكام الأقاليم والكهنة واستغلال الموارد وكثرة المظالم",
+                    "قوة الملك",
+                    "الرخاء",
+                    "العدل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أحداث الثورة الاجتماعية؟",
+                "options": [
+                    "انتخابات",
+                    "احتفالات",
+                    "هجرة",
+                    "رفض الشعب نظام الحكم وخرج من منف مطالبًا بالعدالة الاجتماعية فاستمرت الفوضى فترة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما النتائج الإيجابية للثورة الاجتماعية؟",
+                "options": [
+                    "زيادة الظلم",
+                    "خروج مصر أقوى ورفع قيمة الفرد والمساواة وظهور طبقة تعتمد على قدرتها ونظرة جديدة للملك",
+                    "انهيار تام",
+                    "الاحتلال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قارن بين الثورة الاجتماعية وثورتي ٢٥ يناير و٣٠ يونيو:",
+                "options": [
+                    "الحديثة دينية",
+                    "كلها ضد الظلم والفساد ومطالبة بالعدالة، والقديمة حولت الملكية لمقيدة",
+                    "لا شبه",
+                    "القديمة ضد الأجانب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما الدروس المستفادة من أول ثورة اجتماعية؟",
+                "options": [
+                    "لا دروس",
+                    "الثورة سيئة دائمًا",
+                    "الظلم مقبول",
+                    "الظلم يؤدي للثورات والسلطة المطلقة مفسدة والعدل أساس الحكم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اشرح قول الشيخ الشعراوي: الثائر الحق يثور على الفساد ثم يهدأ ليبني الأمجاد.",
+                "options": [
+                    "الثورة وسيلة للإصلاح يعقبها البناء والعمل لا الفوضى",
+                    "الفوضى هدف",
+                    "الثورة دائمة",
+                    "لا يجب الثورة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما المقصود بالسلطة المطلقة مفسدة مطلقة؟",
+                "options": [
+                    "غياب الرقابة على الحاكم يؤدي للظلم والفساد",
+                    "السلطة خير",
+                    "لا معنى",
+                    "السلطة ضعيفة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف كان القضاء في مصر القديمة؟",
+                "options": [
+                    "حكم الكهنة",
+                    "السلطة الثانية بمحكمتين في الجنوب والشمال ومحاكم الأقاليم وفق الإجراءات القانونية",
+                    "محكمة واحدة",
+                    "بلا قضاء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما الدليل على عدالة القضاء من كلمات الوزير رخميرع؟",
+                "options": [
+                    "أمر بالظلم",
+                    "لم يتحدث",
+                    "أمر بالنظر في الشكوى والحكم بالعدل وإزالة أسباب الشكوى",
+                    "أمر بالرشوة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أكون؟ «ملك وحد مصر عام ٣٢٠٠ ق.م»",
+                "options": [
+                    "أحمس",
+                    "ببي الثاني",
+                    "خوفو",
+                    "نعرمر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أكون؟ «وزير شهير في الدولة القديمة»",
+                "options": [
+                    "رخميرع",
+                    "إيمحوتب",
+                    "ونى",
+                    "حرخوف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «وزير شهير في الدولة الحديثة»",
+                "options": [
+                    "رخميرع",
+                    "بتاح حتب",
+                    "آني",
+                    "إيمحوتب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أكون؟ «ملك ألغى وراثة منصب حكام الأقاليم»",
+                "options": [
+                    "أمنمحات الأول",
+                    "خوفو",
+                    "سنوسرت الثالث",
+                    "ببي الثاني"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أكون؟ «ملك قامت في عهده أول ثورة اجتماعية»",
+                "options": [
+                    "خوفو",
+                    "رمسيس الثاني",
+                    "إخناتون",
+                    "ببي الثاني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "صوّب الخطأ: «يرأس الملك مجلس العشرة الكبار».",
+                "options": [
+                    "الوزير",
+                    "الكاهن",
+                    "القائد",
+                    "حاكم الإقليم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صوّب الخطأ: «كانت مصر مقسمة إلى ٢٢ إقليمًا».",
+                "options": [
+                    "١٢ إقليمًا",
+                    "١٠٠ إقليم",
+                    "٤٢ إقليمًا",
+                    "٧ أقاليم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صوّب الخطأ: «خرجت الثورة الاجتماعية من طيبة».",
+                "options": [
+                    "منف",
+                    "أثيت تاوي",
+                    "أبيدوس",
+                    "أواريس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صوّب الخطأ: «تحول الحكم بعد الثورة إلى ملكية مطلقة».",
+                "options": [
+                    "احتلال",
+                    "جمهورية",
+                    "حكم الكهنة",
+                    "ملكية مقيدة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استبعد الغريب من عناصر الحكم: (الملك - الوزير - القضاء - التجار)",
+                "options": [
+                    "الملك",
+                    "الوزير",
+                    "القضاء",
+                    "التجار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استبعد الغريب من الإدارة المركزية: (مجلس العشرة - كاتمو الأسرار - الدواوين - حكام الأقاليم)",
+                "options": [
+                    "حكام الأقاليم",
+                    "كاتمو الأسرار",
+                    "مجلس العشرة",
+                    "الدواوين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استبعد الغريب من عوامل الوحدة: (النيل - انبساط الوادي - خيرات مصر - العوائق الطبيعية)",
+                "options": [
+                    "انبساط الوادي",
+                    "خيرات مصر",
+                    "النيل",
+                    "العوائق الطبيعية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قارن بين رئيس الحكومة قديمًا وحاليًا:",
+                "options": [
+                    "قديمًا الوزير يعينه الملك ويرأس الإدارة والقضاء، وحاليًا يكلفه رئيس الجمهورية وفق الدستور",
+                    "لا فرق",
+                    "الوزير قديمًا منتخب",
+                    "حاليًا يرأس القضاء"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما دور الجيش والشرطة في حماية الأمن القومي؟",
+                "options": [
+                    "الجيش للتجارة",
+                    "لا دور",
+                    "الجيش يحمي الحدود والشرطة تحفظ الأمن الداخلي",
+                    "الشرطة للزراعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "فسر: كانت الوظائف الكتابية مرغوبة.",
+                "options": [
+                    "لرخصها",
+                    "لسهولتها",
+                    "لا سبب",
+                    "لأنها أحسن وسيلة يضمن بها الشاب مستقبلًا مشرقًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما المقصود بالملكية المقيدة؟",
+                "options": [
+                    "يلتزم فيها الفرعون بما يصدره من قوانين",
+                    "حكم الشعب",
+                    "لا ملك",
+                    "سلطة بلا حدود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا كان المصري يحتاج سلطة مركزية قوية؟",
+                "options": [
+                    "لأن الحياة تعتمد على النيل والزراعة وتحتاج تنظيمًا إداريًا للري",
+                    "للحرب",
+                    "للتجارة الخارجية",
+                    "لا حاجة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما القيم المستفادة من الحياة السياسية في مصر القديمة؟",
+                "options": [
+                    "التفرقة",
+                    "الظلم",
+                    "الوحدة والإخاء والعدل والاعتزاز بالجيش المصري",
+                    "الاستبداد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أخلاق الجيش المصري كما عبر عنها القائد ونى؟",
+                "options": [
+                    "نهب المدن",
+                    "لا أخلاق",
+                    "لم يشاجر أحدًا ولم ينهب أو يسرق من المدنيين",
+                    "ظلم الأعداء والمدنيين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما نتائج معركة مجدو ١٤٧٩ ق.م؟",
+                "options": [
+                    "تأمين حدود مصر الشمالية والشرقية وتدعيم النفوذ المصري في آسيا",
+                    "توقف التجارة",
+                    "احتلال مصر",
+                    "هزيمة تحتمس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا أطلق المصريون على النوبة اسم تاستي؟",
+                "options": [
+                    "لا سبب",
+                    "لأنهم امتازوا بمهارة استعمال الأقواس والسهام فهي أرض أهل الأقواس",
+                    "لكثرة الأمطار",
+                    "لكثرة الذهب"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في الحياة السياسية والإدارية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما عنصر الحكم المخفي بعلامة (؟) في هرم عناصر الحكم؟",
+                "options": [
+                    "الوزير",
+                    "القضاء",
+                    "الإدارة المحلية (حكام الأقاليم)",
+                    "الملك"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l3_pyramid.jpg",
+                "masks": [
+                    [
+                        43.3,
+                        8.1,
+                        12.2,
+                        7.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر الحكم المخفي بعلامة (؟) في هرم عناصر الحكم؟",
+                "options": [
+                    "القضاء",
+                    "الوزير",
+                    "الإدارة المحلية (حكام الأقاليم)",
+                    "الجيش"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l3_pyramid.jpg",
+                "masks": [
+                    [
+                        41.1,
+                        22.3,
+                        16.7,
+                        7.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر الحكم المخفي بعلامة (؟) في هرم عناصر الحكم؟",
+                "options": [
+                    "القضاء",
+                    "الجيش",
+                    "الأسطول",
+                    "الإدارة المحلية (حكام الأقاليم)"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l3_pyramid.jpg",
+                "masks": [
+                    [
+                        31.1,
+                        36.1,
+                        36.7,
+                        6.8
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر الحكم المخفي بعلامة (؟) في هرم عناصر الحكم؟",
+                "options": [
+                    "الأسطول",
+                    "الشرطة",
+                    "الجيش",
+                    "القضاء"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l3_pyramid.jpg",
+                "masks": [
+                    [
+                        37.8,
+                        49.4,
+                        23.3,
+                        7.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر الحكم المخفي بعلامة (؟) في هرم عناصر الحكم؟",
+                "options": [
+                    "الشرطة",
+                    "الملك",
+                    "الجيش",
+                    "الأسطول"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l3_pyramid.jpg",
+                "masks": [
+                    [
+                        35.6,
+                        63.2,
+                        26.7,
+                        7.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر الحكم المخفي بعلامة (؟) في هرم عناصر الحكم؟",
+                "options": [
+                    "الملك",
+                    "الشرطة",
+                    "الأسطول",
+                    "الوزير"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l3_pyramid.jpg",
+                "masks": [
+                    [
+                        32.2,
+                        76.8,
+                        32.2,
+                        7.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر الحكم المخفي بعلامة (؟) في هرم عناصر الحكم؟",
+                "options": [
+                    "الملك",
+                    "الشرطة",
+                    "الوزير",
+                    "الإدارة المحلية (حكام الأقاليم)"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l3_pyramid.jpg",
+                "masks": [
+                    [
+                        31.1,
+                        90.3,
+                        36.7,
+                        7.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما عامل تحقيق الوحدة المخفي بعلامة (؟) والذي ربط بين القرى والمدن والأقاليم؟",
+                "options": [
+                    "نهر النيل",
+                    "خيرات مصر وخصوبة أرضها",
+                    "الصحراء",
+                    "انبساط أرض الوادي وامتداده"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l3_unity.jpg",
+                "masks": [
+                    [
+                        78.4,
+                        44.4,
+                        21.4,
+                        21.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما عامل تحقيق الوحدة المخفي بعلامة (؟) والذي امتد من الجنوب إلى الشمال فساعد على الاتصال والاختلاط؟",
+                "options": [
+                    "نهر النيل",
+                    "انبساط أرض الوادي وامتداده",
+                    "خيرات مصر وخصوبة أرضها",
+                    "الجبال"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l3_unity.jpg",
+                "masks": [
+                    [
+                        40.4,
+                        44.4,
+                        32.5,
+                        21.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما عامل تحقيق الوحدة المخفي بعلامة (؟) والذي جعل المصريين يتحدون لاستثماره ومواجهة الطامعين؟",
+                "options": [
+                    "نهر النيل",
+                    "البحار",
+                    "انبساط أرض الوادي وامتداده",
+                    "خيرات مصر وخصوبة أرضها"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l3_unity.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        44.4,
+                        34.9,
+                        21.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المملكة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "مملكة الشمال",
+                    "مملكة النوبة",
+                    "مملكة الجنوب",
+                    "مملكة الهكسوس"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l3_kingdoms.jpg",
+                "masks": [
+                    [
+                        16.6,
+                        7.5,
+                        17.9,
+                        7.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المملكة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "مملكة الجنوب",
+                    "مملكة الشمال",
+                    "مملكة النوبة",
+                    "مملكة بونت"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l3_kingdoms.jpg",
+                "masks": [
+                    [
+                        62.3,
+                        67.8,
+                        15.0,
+                        7.8
+                    ]
+                ]
+            },
+            {
+                "q": "توضح الخريطة مملكتي الشمال والجنوب قبل الوحدة، وقد قامت الوحدة التاريخية عام ٣٢٠٠ ق.م على يد:",
+                "options": [
+                    "الملك زوسر",
+                    "الملك أحمس",
+                    "الملك خوفو",
+                    "الملك نعرمر (مينا)"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l3_kingdoms.jpg",
+                "masks": []
+            },
+            {
+                "q": "توضح الصورة أهم مهام الملك، ومن مهامه في السياسة الخارجية:",
+                "options": [
+                    "إعلان الحرب وقيادة الجيش وعقد المعاهدات",
+                    "جمع الضرائب بنفسه",
+                    "كتابة البرديات",
+                    "زراعة الأرض"
+                ],
+                "ans": 0,
+                "img": "images/s1u2l3_kingtasks.jpg",
+                "masks": []
+            },
+            {
+                "q": "توضح الصورة أهم مهام الوزير، فهو رئيس الإدارة المركزية و:",
+                "options": [
+                    "كبير الكهنة",
+                    "حاكم إقليم",
+                    "قائد الأسطول",
+                    "كبير القضاة ويرأس المحكمة العليا"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l3_viziertasks.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة أول ثورة اجتماعية في التاريخ، والتي قامت في أواخر الأسرة السادسة في عهد الملك:",
+                "options": [
+                    "أخناتون",
+                    "ببي الثاني",
+                    "خوفو",
+                    "رمسيس الثاني"
+                ],
+                "ans": 1,
+                "img": "images/s1u2l3_revolt.jpg",
+                "masks": []
+            },
+            {
+                "q": "من النتائج الإيجابية للثورة الظاهرة في الصورة:",
+                "options": [
+                    "زيادة الظلم",
+                    "سقوط مصر في يد الهكسوس",
+                    "بناء الأهرامات",
+                    "رفعت من قيمة الفرد وانتشرت فكرة المساواة"
+                ],
+                "ans": 3,
+                "img": "images/s1u2l3_revolt.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة نموذجًا لجنود مصريين، وقد ظهر الجيش النظامي في عصر:",
+                "options": [
+                    "الدولة القديمة فقط",
+                    "العصر المتأخر",
+                    "الدولة الحديثة بعد طرد الهكسوس",
+                    "العصر العتيق"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l3_army.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة الملك وزوجته، وقد اعتنق المصريون فكرة الملكية:",
+                "options": [
+                    "الانتخابية",
+                    "المؤقتة",
+                    "المقدسة",
+                    "الدستورية"
+                ],
+                "ans": 2,
+                "img": "images/s1u2l3_header.jpg",
+                "masks": []
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

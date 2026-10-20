@@ -1,0 +1,4253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس مصر تحت حكم الرومان - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الثَّانَوِيُّ - الْوَحْدَةُ الرَّابِعَةُ - الدَّرْسُ الرَّابِعُ: مِصْرُ تَحْتَ حُكْمِ الرُّومَانِ</h2>
+                    <p style="margin-top: 10px;">التَّارِيخُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "التاريخ: مصر تحت حكم الرومان - الصف الأول الثانوي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول مصر تحت حكم الرومان",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "امتد حكم الرومان لمصر من:",
+                "options": [
+                    "332 ق.م إلى 30 ق.م",
+                    "395 م إلى 1453 م",
+                    "30 ق.م إلى 641 م",
+                    "27 ق.م إلى 476 م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تمتعت مصر بمركز خاص بين ولايات الإمبراطورية الرومانية بسبب:",
+                "options": [
+                    "فقرها",
+                    "موقعها الجغرافي وإمداد روما بالقمح",
+                    "بعدها عن روما",
+                    "صغر مساحتها"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من وسائل اهتمام الرومان بالزراعة في مصر:",
+                "options": [
+                    "ردم الترع",
+                    "زراعة القطن فقط",
+                    "حفر ترع جديدة وتطهير الترع القديمة وضبط مياه النيل",
+                    "إهمال الري"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كانت مصر المصدر الوحيد في العالم لـ:",
+                "options": [
+                    "الحرير",
+                    "ورق البردي",
+                    "البخور",
+                    "الذهب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد ... المصري من أجود أنواع الأقمشة آنذاك:",
+                "options": [
+                    "الصوف فقط",
+                    "نسيج الكتان",
+                    "الحرير",
+                    "القطن"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ذكر أن صانعي الزجاج بالإسكندرية كانت لديهم أسرار خاصة بهذه الصناعة المؤرخ:",
+                "options": [
+                    "استرابون",
+                    "هيرودوت",
+                    "إدريس بل",
+                    "مانيتون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وصف الإسكندرية بأنها مدينة غنية لا يوجد بها عاطل عن العمل الإمبراطور:",
+                "options": [
+                    "دقلديانوس",
+                    "هادريان",
+                    "نيرون",
+                    "أغسطس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عدل الرومان تقويمهم الذي قسم السنة إلى ... أشهر ليصبح كالتقويم المصري:",
+                "options": [
+                    "أربعة عشر",
+                    "عشرة",
+                    "ثمانية",
+                    "ستة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يتكون التقويم المصري من:",
+                "options": [
+                    "ثلاثة عشر شهرًا",
+                    "اثني عشر شهرًا",
+                    "تسعة أشهر",
+                    "عشرة أشهر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعتمد التقويم المصري على السنة الشمسية التي تتكون من:",
+                "options": [
+                    "365 يومًا وربع اليوم",
+                    "300 يوم",
+                    "360 يومًا",
+                    "354 يومًا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مارس سكان مصر التجارة الداخلية:",
+                "options": [
+                    "تحت حظر كامل",
+                    "بشكل سري",
+                    "بكل حرية",
+                    "بإذن الإمبراطور فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أعاد الرومان حفر القناة التي كانت تصل النيل بالبحر:",
+                "options": [
+                    "الميت",
+                    "الأسود",
+                    "المتوسط",
+                    "الأحمر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تعد ... أهم ما كان يسعى إليه الرومان في مصر:",
+                "options": [
+                    "التعليم",
+                    "الضرائب",
+                    "العدالة",
+                    "نشر الثقافة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فرض الرومان على سكان مصر أكثر من:",
+                "options": [
+                    "200 نوع من الضرائب",
+                    "50 نوعًا",
+                    "1000 نوع",
+                    "10 أنواع"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نظام الخدمات الإلزامية هو:",
+                "options": [
+                    "تعليم إلزامي",
+                    "خدمات طبية مجانية",
+                    "أعمال تفرض على الأهالي بدون مقابل",
+                    "خدمة عسكرية مدفوعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "وصف تاريخ مصر الروماني بأنه قصة محزنة من قصص الاستغلال المؤرخ الغربي:",
+                "options": [
+                    "بوليبيوس",
+                    "استرابون",
+                    "هيرودوت",
+                    "إدريس بل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قرر الإمبراطور أغسطس أن يكون حاكم مصر من طبقة:",
+                "options": [
+                    "العبيد",
+                    "الأشراف",
+                    "الفرسان الموالية له",
+                    "مجلس الشيوخ"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حظر أغسطس على أي عضو من أعضاء ... دخول مصر إلا بإذن مباشر منه:",
+                "options": [
+                    "التجار",
+                    "الكهنة",
+                    "السناتو",
+                    "الجيش"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "قسمت مصر في العصر الروماني إداريًا إلى:",
+                "options": [
+                    "قسمين",
+                    "ثلاثة أقسام",
+                    "أربعة أقسام",
+                    "خمسة أقسام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مصر السفلى هي:",
+                "options": [
+                    "القسم الشمالي من الوجه القبلي",
+                    "الواحات",
+                    "الوجه البحري",
+                    "القسم الجنوبي من الوجه القبلي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تمتعت ... بكافة الامتيازات المالية والقانونية في مصر:",
+                "options": [
+                    "طبقة المصريين",
+                    "طبقة إغريق الريف",
+                    "طبقة اليهود",
+                    "طبقة الرومان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان الوالي الروماني يقيم في:",
+                "options": [
+                    "طيبة",
+                    "بطلمية",
+                    "منف",
+                    "الإسكندرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أهم امتياز لإغريق المدن الأربع أنهم:",
+                "options": [
+                    "امتلكوا كل الأراضي",
+                    "أعفوا من الجيش فقط",
+                    "لم يدفعوا ضريبة الرأس (الجزية)",
+                    "حكموا مصر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من المدن الأربع في العصر الروماني:",
+                "options": [
+                    "منف وطيبة وأسيوط وإدفو",
+                    "نقراطيس والإسكندرية وبطلميس وأنطينوبوليس",
+                    "سيوة والخارجة وفيلة وأسوان",
+                    "روما وأثينا وصور وبابل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عاش اليهود في مصر في أحياء مخصصة مثل:",
+                "options": [
+                    "الحي الرابع بالإسكندرية",
+                    "حي الأشراف بروما",
+                    "طيبة",
+                    "منف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت تفرض على ... كافة الأعباء الضريبية وليست لهم حقوق قانونية:",
+                "options": [
+                    "المصريين",
+                    "الرومان",
+                    "إغريق المدن الأربع",
+                    "الجنود الرومان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استبدل الرومان عبادة الملوك البطالمة بعبادة:",
+                "options": [
+                    "آمون",
+                    "زيوس",
+                    "إيزيس فقط",
+                    "الأباطرة الرومان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أهم متغير ديني في القرون الثلاثة الأولى الميلادية:",
+                "options": [
+                    "عبادة جوبيتر",
+                    "ظهور الديانة المسيحية",
+                    "عبادة آتون",
+                    "عبادة سرابيس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أقام الإمبراطور هادريان معبدًا للإله السكندري:",
+                "options": [
+                    "سرابيس",
+                    "جوبيتر",
+                    "أوزوريس",
+                    "آمون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أنشأ هادريان مدينة أنطينوبوليس وهي الآن قرية:",
+                "options": [
+                    "الزعفرانة",
+                    "نقراطيس",
+                    "الشيخ عبادة تجاه مدينة ملوي",
+                    "وادي النطرون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ولد السيد المسيح عيسى عليه السلام في بيت لحم في عهد الإمبراطور:",
+                "options": [
+                    "هادريان",
+                    "أغسطس",
+                    "نيرون",
+                    "دقلديانوس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "دخلت المسيحية مصر على يد القديس:",
+                "options": [
+                    "أنطونيوس",
+                    "بنيامين",
+                    "بيشوي",
+                    "مرقس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "دخلت المسيحية مصر في عهد الإمبراطور:",
+                "options": [
+                    "قسطنطين",
+                    "نيرون",
+                    "أغسطس",
+                    "ثيودوسيوس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "نشأت ... المسيحية في مصر حيث حاول المسيحيون الابتعاد عن بطش السلطة الحاكمة:",
+                "options": [
+                    "الكنيسة المعلقة",
+                    "الرهبنة",
+                    "الأديرة الرومانية",
+                    "المدرسة اللاهوتية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سمي عهد الإمبراطور دقلديانوس بـ:",
+                "options": [
+                    "عصر الازدهار",
+                    "عصر التسامح",
+                    "عصر الشهداء",
+                    "العصر الذهبي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "اتخذت الكنيسة القبطية عام ... بداية للتقويم القبطي:",
+                "options": [
+                    "313 م",
+                    "641 م",
+                    "284 م",
+                    "395 م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أصدر الإمبراطور قسطنطين الأول مرسوم ميلان عام:",
+                "options": [
+                    "476 م",
+                    "395 م",
+                    "284 م",
+                    "313 م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أصدر مرسومًا بإلغاء الوثنية والاعتراف بالمسيحية ديانة رسمية للدولة الإمبراطور:",
+                "options": [
+                    "دقلديانوس",
+                    "ثيودوسيوس الأول",
+                    "نيرون",
+                    "قسطنطين الأول"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كلمة الأقباط تطلق على:",
+                "options": [
+                    "المصريين جميعًا",
+                    "اليونانيين",
+                    "الرومان",
+                    "الرهبان فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أشهر فلاسفة العصر الروماني وهو مصري من أبناء أسيوط:",
+                "options": [
+                    "أفلاطون",
+                    "أرسطو",
+                    "سقراط",
+                    "أفلوطين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أغراض الأدب القبطي:",
+                "options": [
+                    "وصف الحروب",
+                    "السخرية من الناس",
+                    "الحث على الفضائل ومكارم الأخلاق",
+                    "تمجيد الأباطرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يعرض الفن الذي عثر عليه في الإسكندرية في المتحف:",
+                "options": [
+                    "اليوناني الروماني",
+                    "الإسلامي",
+                    "المصري بالتحرير",
+                    "القبطي فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يمثل فن الطبقة الحاكمة:",
+                "options": [
+                    "الكنائس",
+                    "الفسيفساء الشعبية فقط",
+                    "تماثيل الأباطرة الرومان والنقوش على جدران التوابيت الحجرية",
+                    "الأواني الفخارية الشعبية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تقع الكنيسة المعلقة في:",
+                "options": [
+                    "الإسكندرية",
+                    "حي مصر القديمة بالقاهرة",
+                    "وادي النطرون",
+                    "أسيوط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يشتهر دير المحرق بأسيوط باسم:",
+                "options": [
+                    "دير السيدة العذراء مريم",
+                    "دير الأنبا بيشوي",
+                    "دير الأنبا أنطونيوس",
+                    "دير سانت كاترين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يقع دير الأنبا أنطونيوس بالقرب من مدينة:",
+                "options": [
+                    "أسيوط",
+                    "الزعفرانة بمحافظة البحر الأحمر",
+                    "دمياط",
+                    "ملوي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يقع المتحف القبطي داخل أسوار حصن:",
+                "options": [
+                    "صلاح الدين",
+                    "الإسكندرية",
+                    "بابليون",
+                    "قايتباي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من مظاهر الفساد في الحكم الروماني لمصر:",
+                "options": [
+                    "فداحة الضرائب وتعددها والعنف في جمعها",
+                    "احترام المصريين",
+                    "العدالة الاجتماعية",
+                    "إلغاء الضرائب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جاء الفتح العربي الإسلامي لمصر عام:",
+                "options": [
+                    "476 م",
+                    "313 م",
+                    "30 ق.م",
+                    "641 م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أصدر عمرو بن العاص خطاب أمان للبابا:",
+                "options": [
+                    "مرقس",
+                    "أنطونيوس",
+                    "بنيامين",
+                    "بيشوي"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن مصر تحت حكم الرومان",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "عام بدء الحكم الروماني؟",
+                "options": [
+                    "27 ق.م",
+                    "641 م",
+                    "30 ق.م",
+                    "332 ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عام نهاية الحكم الروماني؟",
+                "options": [
+                    "476 م",
+                    "30 ق.م",
+                    "641 م",
+                    "395 م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "محصول تمد به مصر روما؟",
+                "options": [
+                    "البن",
+                    "الأرز",
+                    "القطن",
+                    "القمح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مصدر البردي الوحيد؟",
+                "options": [
+                    "روما",
+                    "اليونان",
+                    "الشام",
+                    "مصر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أجود الأقمشة آنذاك؟",
+                "options": [
+                    "القطن",
+                    "الكتان",
+                    "الحرير",
+                    "الصوف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مؤرخ زار مصر أوائل الحكم الروماني؟",
+                "options": [
+                    "استرابون",
+                    "إدريس بل",
+                    "مانيتون",
+                    "هيرودوت"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صناعة سكندرية لها أسرار؟",
+                "options": [
+                    "الحلي",
+                    "النسيج",
+                    "الزجاج",
+                    "البردي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "إمبراطور وصف الإسكندرية؟",
+                "options": [
+                    "نيرون",
+                    "قسطنطين",
+                    "هادريان",
+                    "أغسطس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عدد أشهر التقويم المصري؟",
+                "options": [
+                    "تسعة",
+                    "عشرة",
+                    "ثلاثة عشر",
+                    "اثنا عشر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عدد أيام السنة الشمسية؟",
+                "options": [
+                    "354",
+                    "360",
+                    "366",
+                    "365 وربع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قناة أعاد الرومان حفرها؟",
+                "options": [
+                    "السويس",
+                    "النيل والأحمر",
+                    "المحمودية",
+                    "الإبراهيمية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أهم ما سعى إليه الرومان؟",
+                "options": [
+                    "الضرائب",
+                    "الفن",
+                    "الدين",
+                    "التعليم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عدد أنواع الضرائب؟",
+                "options": [
+                    "أكثر من 200",
+                    "50",
+                    "20",
+                    "10"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نظام عد السكان؟",
+                "options": [
+                    "الإقطاع",
+                    "الجزية",
+                    "السخرة",
+                    "الإحصاء السكاني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أعمال بلا مقابل؟",
+                "options": [
+                    "الرواتب",
+                    "الخدمات الإلزامية",
+                    "الضرائب",
+                    "الجزية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مؤرخ وصف الاستغلال؟",
+                "options": [
+                    "فرجيل",
+                    "إدريس بل",
+                    "كاتو",
+                    "استرابون"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "طبقة حاكم مصر؟",
+                "options": [
+                    "الكهنة",
+                    "الفرسان",
+                    "العبيد",
+                    "الشيوخ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ممنوعون من دخول مصر؟",
+                "options": [
+                    "الفلاحون",
+                    "التجار",
+                    "أعضاء السناتو",
+                    "الجنود"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عدد الأقسام الإدارية؟",
+                "options": [
+                    "ثلاثة",
+                    "أربعة",
+                    "اثنان",
+                    "خمسة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اسم الوجه البحري؟",
+                "options": [
+                    "مصر السفلى",
+                    "الصعيد",
+                    "مصر العليا",
+                    "مصر الوسطى"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قمة الهرم الاجتماعي؟",
+                "options": [
+                    "الجندي",
+                    "الفلاح",
+                    "التاجر",
+                    "الوالي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مقر الوالي الروماني؟",
+                "options": [
+                    "الإسكندرية",
+                    "طيبة",
+                    "أسيوط",
+                    "منف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الطبقة الوسطى؟",
+                "options": [
+                    "الرومان",
+                    "اليهود",
+                    "إغريق المدن الأربع",
+                    "المصريون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ضريبة الرأس؟",
+                "options": [
+                    "الجزية",
+                    "الزكاة",
+                    "العشور",
+                    "الخراج"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مدينة من المدن الأربع؟",
+                "options": [
+                    "منف",
+                    "طيبة",
+                    "أنطينوبوليس",
+                    "أسيوط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حي اليهود بالإسكندرية؟",
+                "options": [
+                    "الحي الأول",
+                    "حي الملوك",
+                    "حي الميناء",
+                    "الحي الرابع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "طبقة بلا حقوق قانونية؟",
+                "options": [
+                    "اليهود",
+                    "الإغريق",
+                    "المصريون",
+                    "الرومان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عبادة حلت محل البطالمة؟",
+                "options": [
+                    "الأباطرة",
+                    "آمون",
+                    "زيوس",
+                    "آتون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معبود بنى له هادريان معبدًا؟",
+                "options": [
+                    "جوبيتر",
+                    "إيزيس",
+                    "سرابيس",
+                    "آمون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صديق هادريان الغريق؟",
+                "options": [
+                    "بنيامين",
+                    "أنطينوس",
+                    "مرقس",
+                    "أفلوطين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "محافظة الشيخ عبادة؟",
+                "options": [
+                    "أسيوط",
+                    "الفيوم",
+                    "المنيا",
+                    "سوهاج"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مكان مولد المسيح؟",
+                "options": [
+                    "القدس",
+                    "الإسكندرية",
+                    "بيت لحم",
+                    "الناصرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ناشر المسيحية بمصر؟",
+                "options": [
+                    "مرقس",
+                    "بولس",
+                    "يوحنا",
+                    "بطرس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "إمبراطور دخول المسيحية مصر؟",
+                "options": [
+                    "هادريان",
+                    "قسطنطين",
+                    "نيرون",
+                    "أغسطس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عهد ذروة الاضطهاد الأولى؟",
+                "options": [
+                    "هادريان",
+                    "ثيودوسيوس",
+                    "نيرون",
+                    "قسطنطين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صاحب عصر الشهداء؟",
+                "options": [
+                    "قسطنطين",
+                    "أغسطس",
+                    "نيرون",
+                    "دقلديانوس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عام بداية التقويم القبطي؟",
+                "options": [
+                    "641 م",
+                    "313 م",
+                    "395 م",
+                    "284 م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مرسوم الحرية الدينية؟",
+                "options": [
+                    "القسطنطينية",
+                    "ميلان",
+                    "روما",
+                    "الإسكندرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عام مرسوم ميلان؟",
+                "options": [
+                    "476 م",
+                    "395 م",
+                    "313 م",
+                    "284 م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "معلن المسيحية رسمية؟",
+                "options": [
+                    "دقلديانوس",
+                    "قسطنطين",
+                    "نيرون",
+                    "ثيودوسيوس الأول"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "معنى كلمة الأقباط؟",
+                "options": [
+                    "الكهنة",
+                    "الرهبان",
+                    "المصريون جميعًا",
+                    "الرومان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "فيلسوف من أسيوط؟",
+                "options": [
+                    "زينون",
+                    "أرسطو",
+                    "سقراط",
+                    "أفلوطين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نوع أدب مواعظ دينية؟",
+                "options": [
+                    "الأدب السكندري",
+                    "الشعر الغنائي",
+                    "الملاحم",
+                    "الأدب القبطي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "فن في الأرضيات؟",
+                "options": [
+                    "الفسيفساء",
+                    "النقش",
+                    "النحت",
+                    "الرسم الهزلي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كنيسة بمصر القديمة؟",
+                "options": [
+                    "المعلقة",
+                    "الأنبا أنطونيوس",
+                    "المحرق",
+                    "الأنبا بيشوي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "دير بأسيوط؟",
+                "options": [
+                    "الأنبا بيشوي",
+                    "الأنبا أنطونيوس",
+                    "سانت كاترين",
+                    "المحرق"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عدد أديرة وادي النطرون؟",
+                "options": [
+                    "أربعة",
+                    "سبعة",
+                    "خمسة",
+                    "ثلاثة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حصن المتحف القبطي؟",
+                "options": [
+                    "نابليون",
+                    "بابليون",
+                    "قايتباي",
+                    "صلاح الدين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قائد الفتح الإسلامي؟",
+                "options": [
+                    "عقبة بن نافع",
+                    "عمرو بن العاص",
+                    "طارق بن زياد",
+                    "صلاح الدين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مدة اختباء البابا بنيامين؟",
+                "options": [
+                    "خمسة أعوام",
+                    "سنة",
+                    "ثلاثة عشر عامًا",
+                    "عشرون عامًا"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات مصر تحت حكم الرومان",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «تمتعت مصر بمركز خاص لأهمية موقعها في ملتقى قارات العالم القديم والتحكم في طرق ...».",
+                "options": [
+                    "التجارة",
+                    "الصيد",
+                    "الحرب",
+                    "الحج"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «حاول الرومان النهوض بمرافق البلاد اقتصاديًا لاهتمام الأباطرة بالانتفاع بموارد ...».",
+                "options": [
+                    "الشام",
+                    "اليونان",
+                    "مصر",
+                    "روما"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من وسائل الاهتمام بالزراعة زيادة المحاصيل الزراعية وفي مقدمتها ...».",
+                "options": [
+                    "الأرز",
+                    "القصب",
+                    "القطن",
+                    "القمح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «اهتم الرومان بزيادة محاصيل الفواكه والخضروات والبردي ونباتات ...».",
+                "options": [
+                    "العطور",
+                    "الطب",
+                    "الزينة",
+                    "الصباغة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «اهتم الرومان بالصناعات التي أتقنها المصريون القدماء أيام ...».",
+                "options": [
+                    "الهكسوس",
+                    "البطالمة",
+                    "الفراعنة",
+                    "الفرس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من الصناعات المصرية صناعة الحلي الذهبية والفضية وتصنيع ...».",
+                "options": [
+                    "البلاستيك",
+                    "الورق المطبوع",
+                    "السيارات",
+                    "المعادن"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من الصناعات صناعة الزيوت والعطور والعقاقير ...».",
+                "options": [
+                    "الكيميائية الحديثة",
+                    "الطبية",
+                    "الزراعية",
+                    "الحربية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ذكر استرابون أن تربة مصر تحتوي على مادة تصلح لصناعة الزجاج متعدد ...».",
+                "options": [
+                    "الأحجام",
+                    "الألوان",
+                    "الأشكال",
+                    "الاستخدامات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «قال هادريان عن الإسكندرية: حتى الذين فقدوا أيديهم لا يقضون حياتهم ...».",
+                "options": [
+                    "مرضى",
+                    "عاطلين",
+                    "فقراء",
+                    "سعداء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «اهتم الرومان بتحسين ... وتمهيدها لخدمة التجارة الداخلية».",
+                "options": [
+                    "المعابد",
+                    "الطرق",
+                    "الأسواق",
+                    "الموانئ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كانت الإدارة الرومانية ترسل ممثلين لها مع السفن التجارية في البحر المتوسط و...».",
+                "options": [
+                    "قزوين",
+                    "الأحمر",
+                    "الأسود",
+                    "الميت"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «وضع الرومان نظام ضرائب في منتهى ... لم نسمع عنه في العالم القديم كله».",
+                "options": [
+                    "الدقة",
+                    "السهولة",
+                    "العدالة",
+                    "البساطة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «استخدم الرومان نظام الإحصاء السكاني الذي يحدد أعداد السكان وأعمالهم و...».",
+                "options": [
+                    "ديانتهم",
+                    "أعمارهم فقط",
+                    "أنواعهم",
+                    "أسماءهم فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يقول إدريس بل إن تاريخ مصر الروماني ينتهي حتمًا بالانهيار الاقتصادي و...».",
+                "options": [
+                    "العسكري",
+                    "الثقافي",
+                    "الديني",
+                    "الاجتماعي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان النظام السياسي يقضي بأن يحكم الولايات ... سابق».",
+                "options": [
+                    "كاهن",
+                    "ملك",
+                    "قنصل",
+                    "قائد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «قرر أغسطس أن يكون حاكم مصر يتبعه ... ويتلقى الأوامر منه».",
+                "options": [
+                    "مباشرة",
+                    "عن طريق القناصل",
+                    "عن طريق الكهنة",
+                    "عن طريق السناتو"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «مصر الوسطى هي القسم ... من الوجه القبلي».",
+                "options": [
+                    "الغربي",
+                    "الجنوبي",
+                    "الشمالي",
+                    "الشرقي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «مصر العليا هي القسم ... من الوجه القبلي».",
+                "options": [
+                    "الشمالي",
+                    "الغربي",
+                    "الجنوبي",
+                    "الشرقي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان على رأس كل قسم إداري حاكم ...».",
+                "options": [
+                    "روماني",
+                    "يوناني",
+                    "يهودي",
+                    "مصري"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «مصر بالنسبة للرومان ولاية تابعة لهم ومورد اقتصادي كبير ينعش الخزانة الرومانية بالمال و...».",
+                "options": [
+                    "الغلال",
+                    "الأسلحة",
+                    "العبيد",
+                    "الذهب فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يساعد الوالي الروماني حكام ...».",
+                "options": [
+                    "المديريات",
+                    "المدن الأربع",
+                    "المعابد",
+                    "الأديرة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «الجنود الرومان هم جنود الحاميات الرومانية وتضم الفرسان و...».",
+                "options": [
+                    "البحارة",
+                    "الحراس فقط",
+                    "الرماة فقط",
+                    "المشاة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «قدم المواطنون الرومان إلى مصر للتجارة نظرًا لغناها ...».",
+                "options": [
+                    "الثقافي",
+                    "الاقتصادي",
+                    "العسكري",
+                    "الديني"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «شكل إغريق المدن الأربع الطبقة ... داخل المجتمع المصري».",
+                "options": [
+                    "الدنيا",
+                    "الوسطى",
+                    "العليا",
+                    "الحاكمة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان إغريق الريف ينتشرون في عواصم ... ويعملون في التجارة».",
+                "options": [
+                    "الأقاليم",
+                    "المدن الأربع",
+                    "روما",
+                    "اليونان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كان اليهود أصحاب رءوس أموال ويعملون في التجارة والبنوك و...».",
+                "options": [
+                    "الكهانة",
+                    "الرعي",
+                    "المراباة",
+                    "الزراعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «المصريون هم كل من يعيش في ربوع مصر وليس رومانيًا أو من سكان المدن ...».",
+                "options": [
+                    "الأربع",
+                    "الصعيدية",
+                    "الساحلية",
+                    "الكبرى"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «لا يسمح لأي فئة سكانية أن ترقى إلى الفئة الأعلى إلا بقانون يصدر من ... نفسه».",
+                "options": [
+                    "الإمبراطور",
+                    "السناتو",
+                    "الوالي",
+                    "الكاهن"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «اعتبر المصريون الإمبراطور هو الوريث الشرعي للملك الفرعوني و...».",
+                "options": [
+                    "الفارسي",
+                    "اليوناني",
+                    "الآشوري",
+                    "البطلمي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «الشعب المصري يمتاز بـ...».",
+                "options": [
+                    "تدينه",
+                    "عزلته",
+                    "عدوانيته",
+                    "كسله"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «قام هادريان برحلة إلى الصعيد عن طريق نهر النيل ووصل إلى ...».",
+                "options": [
+                    "أسيوط",
+                    "الفيوم",
+                    "أسوان",
+                    "الأقصر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان السيد المسيح يدعو للإيمان بالله الواحد والمحبة والسلام والإخاء و...».",
+                "options": [
+                    "الثأر",
+                    "التعصب",
+                    "الحرب",
+                    "التسامح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أقبل المصريون على المسيحية لأنهم وجدوا فيها مبادئ سامية وخلاصًا من واقعهم المضطرب و... والذل».",
+                "options": [
+                    "الرخاء",
+                    "القهر",
+                    "العدل",
+                    "الثراء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تعرض المسيح وتلاميذه للاضطهاد لأن مبادئ المسيحية تخالف ... الرومانية».",
+                "options": [
+                    "اليهودية",
+                    "المسيحية",
+                    "الوثنية",
+                    "الإسلامية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «رفض المسيحيون تقديس صور ... الرومان».",
+                "options": [
+                    "الآلهة المصرية",
+                    "الكهنة",
+                    "الجنود",
+                    "الأباطرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أصدر دقلديانوس مرسومًا بهدم الكنائس وحرق الكتب ... وإعدام من يتبع المسيحية».",
+                "options": [
+                    "المقدسة",
+                    "التاريخية",
+                    "الأدبية",
+                    "العلمية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «مرسوم ميلان أعطى ... الدينية للمسيحيين».",
+                "options": [
+                    "الضرائب",
+                    "القيود",
+                    "الحرية",
+                    "الاضطهاد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ظلت الإسكندرية مركزًا للعلم و... خلال العصر الروماني».",
+                "options": [
+                    "الزراعة",
+                    "الحرب",
+                    "الرعي",
+                    "الفن"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ازدهرت بالإسكندرية علوم الطب والهندسة و... والجغرافيا والتاريخ والفلسفة».",
+                "options": [
+                    "الميكانيكا",
+                    "الذرة",
+                    "الإلكترونيات",
+                    "الكيمياء الحديثة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «اقتصرت الدراسات الأدبية في العصر الروماني على نشر وشرح الأعمال الأدبية ...».",
+                "options": [
+                    "القديمة",
+                    "الحديثة",
+                    "المسيحية",
+                    "الرومانية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «قامت المدرسة ... بالإسكندرية بدور فعال في إثراء الحياة الثقافية».",
+                "options": [
+                    "الرومانية",
+                    "الوثنية",
+                    "اليهودية",
+                    "المسيحية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «لم يدم ازدهار منشآت الإسكندرية طويلًا فقد دمرها الرومان عدة مرات نتيجة قيام ... واضطرابات بها».",
+                "options": [
+                    "ثورات",
+                    "أوبئة",
+                    "فيضانات",
+                    "زلازل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كانت الأديرة في مصر بها مراكز علمية ممتازة لعلوم ...».",
+                "options": [
+                    "الكنيسة",
+                    "الحرب",
+                    "الفلك",
+                    "التجارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «قام الرهبان بدور فعال في نسخ ... ومن أهمها الكتاب المقدس».",
+                "options": [
+                    "العملات",
+                    "التماثيل",
+                    "المخطوطات",
+                    "الخرائط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من الفن الشعبي آلاف التماثيل الصغيرة والأواني الفخارية والحجرية و...».",
+                "options": [
+                    "البلاستيكية",
+                    "المعدنية",
+                    "الورقية",
+                    "الزجاجية الحديثة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «نشأ في ظل المسيحية فن يعبر عن الدين الجديد في إطار الموروث العميق من الفن المصري و...».",
+                "options": [
+                    "الروماني فقط",
+                    "الأوروبي",
+                    "اليوناني فقط",
+                    "الشرقي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تأثر الفنان القبطي بخصائص الفن المصري القديم في التصوير والرسم التشكيلي والنحت و...».",
+                "options": [
+                    "الكتابة",
+                    "الحساب",
+                    "الموسيقى",
+                    "العمارة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «المتحف القبطي يتسم بالطابع القبطي الممزوج بالتقاليد المصرية القديمة والهلينستية والبيزنطية و...».",
+                "options": [
+                    "الفارسية",
+                    "الإسلامية",
+                    "الصينية",
+                    "الهندية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «اعتبر الرومان أرض مصر كلها ... يمنح قطعًا منها للمقربين منه».",
+                "options": [
+                    "للإغريق",
+                    "للمصريين",
+                    "للإمبراطور",
+                    "للكنيسة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «دخلت مصر عصرًا جديدًا تحت الحكم الإسلامي الذي تميز بالتسامح الديني و...».",
+                "options": [
+                    "احترام الأديان",
+                    "التعصب",
+                    "فرض الضرائب الباهظة",
+                    "الاضطهاد"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ مصر تحت حكم الرومان",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "امتد حكم الرومان لمصر من 30 ق.م إلى 641 م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت مصر تمد روما بالقمح اللازم لإطعام السكان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أهمل الرومان الزراعة في مصر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت مصر المصدر الوحيد في العالم لورق البردي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد نسيج الكتان المصري من أجود أنواع الأقمشة آنذاك.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ذكر استرابون أن صانعي الزجاج بالإسكندرية لديهم أسرار خاصة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وصف هادريان الإسكندرية بأنها مدينة فقيرة يكثر بها العاطلون.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عدل الرومان تقويمهم ليصبح كالتقويم المصري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يتكون التقويم المصري من عشرة أشهر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مارس سكان مصر التجارة الداخلية بكل حرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أعاد الرومان حفر القناة التي تصل النيل بالبحر الأحمر.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فرض الرومان على سكان مصر أكثر من 200 نوع من الضرائب.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الخدمات الإلزامية أعمال تفرض على الأهالي بأجر مرتفع.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وصف إدريس بل تاريخ مصر الروماني بأنه قصة محزنة من قصص الاستغلال.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان حاكم مصر الروماني من طبقة مجلس الشيوخ.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حظر أغسطس على أعضاء السناتو دخول مصر إلا بإذن مباشر منه.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قسمت مصر إداريًا إلى ثلاثة أقسام.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصر العليا هي الوجه البحري.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان الوالي الروماني على رأس الهرم الاجتماعي ويقيم في الإسكندرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لم يتمتع الرومان بأي امتيازات في مصر.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لم يدفع إغريق المدن الأربع ضريبة الرأس (الجزية).",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من المدن الأربع نقراطيس والإسكندرية وبطلميس وأنطينوبوليس.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عاش اليهود في أحياء مخصصة مثل الحي الرابع بالإسكندرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان للمصريين حقوق قانونية كاملة في العصر الروماني.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان يمكن لأي فئة أن ترقى إلى الفئة الأعلى بقانون من الإمبراطور.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استبدل الرومان عبادة البطالمة بعبادة الأباطرة الرومان.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أقام هادريان معبدًا للإله سرابيس.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أنشأ هادريان مدينة أنطينوبوليس تخليدًا لصديقه الغريق.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مدينة أنطينوبوليس الآن هي قرية الشيخ عبادة بمحافظة أسيوط.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ولد السيد المسيح في بيت لحم بفلسطين في عهد أغسطس.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "دخلت المسيحية مصر على يد القديس مرقس.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "دخلت المسيحية مصر في عهد قسطنطين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نشأت الرهبنة المسيحية في مصر.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بلغ الاضطهاد الروماني للمسيحيين حدًا كبيرًا في عهد نيرون.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سمي عهد دقلديانوس بعصر الشهداء.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتخذت الكنيسة القبطية عام 313 م بداية للتقويم القبطي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أصدر قسطنطين الأول مرسوم ميلان عام 313 م.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أصدر ثيودوسيوس الأول مرسومًا بالاعتراف بالمسيحية ديانة رسمية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الأقباط كلمة تطلق على المصريين جميعًا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فقدت الإسكندرية مكانتها العلمية تمامًا في العصر الروماني.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أفلوطين فيلسوف مصري من أبناء أسيوط.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان الغرض من الأدب القبطي الحث على الفضائل ومكارم الأخلاق.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قسم الفن في العصر الروماني إلى فن الطبقة الحاكمة والفن الشعبي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تقع الكنيسة المعلقة في أسيوط.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يشتهر دير المحرق باسم دير السيدة العذراء مريم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يقع المتحف القبطي داخل أسوار حصن بابليون.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تميز الحكم الروماني لمصر بالعدل وقلة الضرائب.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قاوم المصريون الرومان بالثورات وهجرة القرى وترك الحقول.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "جاء الفتح العربي الإسلامي لمصر عام 641 م.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أمر عمرو بن العاص باسترداد الكنائس التي استولى عليها الروم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في مصر تحت حكم الرومان",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "لماذا تمتعت مصر بمركز خاص بين ولايات الإمبراطورية الرومانية؟",
+                "options": [
+                    "لأهمية موقعها في ملتقى القارات والتحكم في طرق التجارة وإمداد روما بالقمح",
+                    "لفقرها",
+                    "لكثرة جبالها",
+                    "لبعدها"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أحوال مصر تحت الحكم الروماني؟",
+                "options": [
+                    "الحياة الاقتصادية والسياسية والاجتماعية والدينية والثقافية والفنية",
+                    "الدينية فقط",
+                    "الزراعية فقط",
+                    "الحياة العسكرية فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مظاهر اهتمام الرومان بالزراعة في مصر؟",
+                "options": [
+                    "زراعة القطن فقط",
+                    "حفر ترع جديدة وتطهير القديمة وضبط مياه النيل وزيادة المحاصيل وفي مقدمتها القمح",
+                    "ردم الترع",
+                    "إهمال الزراعة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا اهتم الرومان بالزراعة والصناعة في مصر؟",
+                "options": [
+                    "لا سبب",
+                    "لإسعاد المصريين",
+                    "لاهتمام الأباطرة بالانتفاع بموارد مصر",
+                    "لنشر الثقافة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهم الصناعات المصرية في العصر الروماني؟",
+                "options": [
+                    "البلاستيك",
+                    "البردي ونسيج الكتان والزجاج والفخار والحلي والزيوت والعطور والعقاقير",
+                    "الطائرات",
+                    "السيارات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ماذا تستنتج من قول استرابون عن صناعة الزجاج بالإسكندرية؟",
+                "options": [
+                    "لا شيء",
+                    "تخلف الصناعة",
+                    "تقدم المصريين في صناعة الزجاج وتوافر المقومات الطبيعية والبشرية في مصر",
+                    "اعتمادهم على الرومان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ماذا تقول عن مصر وما تمتلكه من مقومات طبيعية وبشرية؟",
+                "options": [
+                    "تعتمد على الاستيراد",
+                    "فقيرة في الموارد",
+                    "تمتلك موارد طبيعية وأيدي عاملة ماهرة تؤهلها للتقدم الصناعي",
+                    "لا تصلح للصناعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ماذا تستخرج من نص هادريان عن الإسكندرية؟",
+                "options": [
+                    "أنها فقيرة",
+                    "صغيرة",
+                    "أنها مدينة غنية تتمتع بالثراء والرخاء ولا يوجد بها عاطل",
+                    "كثيرة البطالة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "اقترح وسائل للنهوض بمدن مصر حاليًا:",
+                "options": [
+                    "الاعتماد على الاستيراد",
+                    "ترك المصانع",
+                    "تشجيع الصناعة وتوفير فرص العمل والاهتمام بالتعليم والتدريب",
+                    "إهمال العمل"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما الدليل على التواصل الحضاري في مجال التقويم؟",
+                "options": [
+                    "لا دليل",
+                    "التقويم القمري",
+                    "أخذ المصريون التقويم الروماني",
+                    "عدل الرومان تقويمهم ذا العشرة أشهر ليصبح كالتقويم المصري ذي الاثني عشر شهرًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا يعد التقويم المصري الأهم؟",
+                "options": [
+                    "لأنه يعتمد على السنة الشمسية التي تتكون من 365 يومًا وربع اليوم",
+                    "لأنه روماني",
+                    "لأنه قمري",
+                    "لأنه عشرة أشهر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قارن بين موقف الرومان من التجارة الداخلية والخارجية في مصر:",
+                "options": [
+                    "الداخلية ممنوعة",
+                    "الخارجية حرة تمامًا",
+                    "متطابقة",
+                    "الداخلية مارسها السكان بحرية والخارجية أشرف عليها الرومان إشرافًا كاملًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا أعاد الرومان حفر القناة التي تصل النيل بالبحر الأحمر؟",
+                "options": [
+                    "للحرب",
+                    "لا سبب",
+                    "لتنشيط التجارة",
+                    "للزراعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا وضع الرومان نظامًا ضريبيًا دقيقًا في مصر؟",
+                "options": [
+                    "لمساعدة الفقراء",
+                    "لأن الضرائب أهم ما سعوا إليه فأرادوا تحصيل أية مبالغ من الأهالي لتورد للدولة",
+                    "لتشجيع التجارة",
+                    "لتحقيق العدالة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر النظام الضريبي الروماني في مصر؟",
+                "options": [
+                    "نظام الإحصاء السكاني وفرض أكثر من 200 نوع من الضرائب ونظام الخدمات الإلزامية",
+                    "إلغاء الضرائب",
+                    "ضريبة واحدة",
+                    "الإعفاء الكامل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا وصف إدريس بل استعمار الرومان لمصر بالقصة المحزنة؟",
+                "options": [
+                    "لأنه حقق الرخاء",
+                    "لأنه نشر العدل",
+                    "لأنه استغلال قصير النظر للموارد والسكان",
+                    "لأنه قصير المدة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا تنبأ إدريس بل بانهيار الرومان في مصر؟",
+                "options": [
+                    "لا سبب",
+                    "لعدالة حكمهم",
+                    "لأن الاستغلال قصير النظر ينتهي حتمًا بالانهيار الاقتصادي والاجتماعي",
+                    "لقوة الرومان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا جعل أغسطس حاكم مصر يتبعه مباشرة؟",
+                "options": [
+                    "لكره المصريين",
+                    "نظرًا لأهمية مصر الاقتصادية والجغرافية",
+                    "لصغر مصر",
+                    "لبعد مصر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا حظر أغسطس على أعضاء السناتو دخول مصر إلا بإذنه؟",
+                "options": [
+                    "لأن مصر فقيرة",
+                    "للحفاظ على سيطرته المباشرة على مصر لأهميتها",
+                    "لا سبب",
+                    "لحمايتهم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما الأقسام الإدارية لمصر في العصر الروماني؟",
+                "options": [
+                    "خمسة أقاليم",
+                    "مصر السفلى (الوجه البحري) ومصر الوسطى ومصر العليا",
+                    "الدلتا والصعيد فقط",
+                    "42 إقليمًا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما طبقات المجتمع في مصر تحت الحكم الروماني؟",
+                "options": [
+                    "المصريون في القمة",
+                    "الرومان ثم إغريق المدن الأربع ثم إغريق الريف ثم اليهود ثم المصريون",
+                    "طبقة واحدة",
+                    "الرومان والمصريون فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما رأيك في التقسيم الطبقي الروماني ولماذا كان الإغريق أعلى من المصريين؟",
+                "options": [
+                    "تقسيم عادل",
+                    "لأن الإغريق أكثر عددًا",
+                    "تقسيم ظالم قائم على التمييز لأن الرومان اعتمدوا على الإغريق ونظروا للمصريين كمصدر للضرائب",
+                    "لأن المصريين أجانب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مم تكونت طبقة الرومان في مصر؟",
+                "options": [
+                    "الوالي والجنود الرومان والمواطنين الرومان",
+                    "اليهود",
+                    "المصريين",
+                    "الإغريق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما وضع المصريين في المجتمع الروماني؟",
+                "options": [
+                    "لهم كل الحقوق",
+                    "طبقة حاكمة",
+                    "معفون من الضرائب",
+                    "فرضت عليهم كافة الأعباء الضريبية وليست لهم حقوق قانونية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما مظاهر الحياة الدينية في العصر الروماني؟",
+                "options": [
+                    "عبادة آتون",
+                    "استبدال عبادة البطالمة بعبادة الأباطرة وظهور الديانة المسيحية",
+                    "التوحيد الفرعوني",
+                    "إلغاء الأديان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا اهتم هادريان بإنشاء مدينة أنطينوبوليس؟",
+                "options": [
+                    "للزراعة",
+                    "للحرب",
+                    "للتجارة",
+                    "تخليدًا لصديقه أنطينوس الذي غرق في النيل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كيف دخلت المسيحية مصر؟",
+                "options": [
+                    "بغزو عسكري",
+                    "على يد هادريان",
+                    "على يد القديس مرقس في منتصف القرن الأول الميلادي في عهد نيرون",
+                    "على يد عمرو بن العاص"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا أقبل المصريون على اعتناق المسيحية؟",
+                "options": [
+                    "للتجارة",
+                    "لأنهم وجدوا فيها مبادئ سامية وخلاصًا من واقعهم المضطرب والقهر والذل",
+                    "خوفًا من الضرائب",
+                    "بأمر الرومان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا نشأت الرهبنة المسيحية في مصر؟",
+                "options": [
+                    "للتجارة",
+                    "بأمر الإمبراطور",
+                    "للحرب",
+                    "لمحاولة المسيحيين الابتعاد عن بطش السلطة الحاكمة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا تعرض المسيحيون للاضطهاد الروماني؟",
+                "options": [
+                    "لأنهم أغنياء",
+                    "لأنهم رفضوا التجارة",
+                    "لأن مبادئ المسيحية تخالف الوثنية الرومانية ورفض المسيحيون تقديس صور الأباطرة",
+                    "لا سبب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا سمي عهد دقلديانوس بعصر الشهداء؟",
+                "options": [
+                    "لكثرة الفيضانات",
+                    "لانتشار الأوبئة",
+                    "لما تعرض له المصريون من اضطهاد بهدم الكنائس وحرق الكتب المقدسة وإعدام المسيحيين",
+                    "لكثرة الحروب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا اتخذت الكنيسة القبطية عام 284 م بداية للتقويم القبطي؟",
+                "options": [
+                    "لا سبب",
+                    "لأنه عام ميلاد المسيح",
+                    "تخليدًا لشهداء الأقباط في عهد دقلديانوس",
+                    "لأنه عام مرسوم ميلان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهمية مرسوم ميلان؟",
+                "options": [
+                    "أصدره قسطنطين عام 313 م للتسامح مع المسيحيين وأعطاهم الحرية الدينية",
+                    "ألغى المسيحية",
+                    "فرض الوثنية",
+                    "زاد الاضطهاد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "رتب: مرسوم ميلان - عصر الشهداء - مرسوم ثيودوسيوس:",
+                "options": [
+                    "مرسوم ميلان أولًا",
+                    "عصر الشهداء أخيرًا",
+                    "ثيودوسيوس أولًا",
+                    "عصر الشهداء ثم مرسوم ميلان ثم مرسوم ثيودوسيوس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما مظاهر الحياة الثقافية في مصر الرومانية؟",
+                "options": [
+                    "إغلاق المدارس",
+                    "الثقافة الرومانية فقط",
+                    "ظلت الإسكندرية مركزًا للعلم وازدهرت العلوم والفلسفة ودور المدرسة المسيحية والأدب القبطي",
+                    "لا ثقافة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا لم يدم ازدهار منشآت الإسكندرية الثقافية طويلًا؟",
+                "options": [
+                    "بسبب الزلازل",
+                    "بسبب الفيضان",
+                    "لأن الرومان دمروا المدينة عدة مرات نتيجة قيام ثورات واضطرابات بها",
+                    "بسبب الفتح الإسلامي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما دور الأديرة في الحياة الثقافية؟",
+                "options": [
+                    "لا دور",
+                    "مراكز عسكرية",
+                    "كانت مراكز علمية لعلوم الكنيسة وقام الرهبان بنسخ المخطوطات",
+                    "مراكز تجارية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أغراض الأدب القبطي؟",
+                "options": [
+                    "وصف الحروب",
+                    "السخرية",
+                    "تمجيد الأباطرة",
+                    "الحث على الفضائل ومكارم الأخلاق من خلال قصص القديسين وشرح الكتاب المقدس وتراجم الشهداء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قارن بين فن الطبقة الحاكمة والفن الشعبي:",
+                "options": [
+                    "لا فرق",
+                    "متطابقان",
+                    "الحاكمة تماثيل الأباطرة ونقوش التوابيت والشعبي تماثيل صغيرة وأوانٍ وفسيفساء",
+                    "الشعبي تماثيل الأباطرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما المقصود بالفن القبطي؟",
+                "options": [
+                    "فن فرعوني خالص",
+                    "فن روماني",
+                    "فن نشأ في ظل المسيحية يعبر عن الدين الجديد في إطار الموروث المصري والشرقي",
+                    "فن يوناني"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أمثلة الآثار القبطية في مصر؟",
+                "options": [
+                    "معبد الكرنك",
+                    "المسرح الروماني فقط",
+                    "الأهرامات",
+                    "الكنيسة المعلقة ودير المحرق ودير الأنبا أنطونيوس وأديرة وادي النطرون والمتحف القبطي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما مظاهر الفساد في الحكم الروماني لمصر؟",
+                "options": [
+                    "المساواة",
+                    "العدل",
+                    "التسامح",
+                    "استبداد الحكام والنظام الإقطاعي وفداحة الضرائب واعتبار المصريين طبقة أقل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كيف قاوم المصريون الرومان؟",
+                "options": [
+                    "بالتحالف معهم",
+                    "بالثورات وهجرة القرى وترك الحقول وإهمال الزراعة كوسيلة سلمية",
+                    "لم يقاوموا",
+                    "بالاستسلام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما نتائج الفتح العربي الإسلامي لمصر عام 641 م؟",
+                "options": [
+                    "زيادة الاضطهاد",
+                    "هدم الكنائس",
+                    "دخلت مصر عصرًا جديدًا تميز بالتسامح الديني واحترام الأديان",
+                    "فرض الوثنية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما مظاهر التسامح الديني لعمرو بن العاص؟",
+                "options": [
+                    "نفى البابا",
+                    "فرض الضرائب الباهظة",
+                    "أصدر خطاب أمان للبابا بنيامين وأمر باسترداد الكنائس التي استولى عليها الروم",
+                    "هدم الكنائس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما مكانة أهل مصر في الإسلام؟",
+                "options": [
+                    "أعداء",
+                    "لا ذكر لهم",
+                    "أوصى رسول الله ﷺ بأهل مصر خيرًا ووصف جندها بخير أجناد الأرض",
+                    "لا مكانة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما المقصود بالنظام الملكي؟",
+                "options": [
+                    "حكم الكهنة",
+                    "حكم الشعب",
+                    "نظام قائم على فرد واحد يحكم مدى الحياة ويورث الحكم من بعده",
+                    "تقسيم السلطات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما المقصود بالنظام الجمهوري؟",
+                "options": [
+                    "حكم عسكري",
+                    "نظام حكم يقوم على أساس تقسيم السلطات وتوزيعها بين هيئات متعددة",
+                    "حكم فرد مدى الحياة",
+                    "حكم وراثي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما المقصود بالديكتاتورية؟",
+                "options": [
+                    "حكم الشعب",
+                    "تركيز السلطات في يد فرد واحد دون الاستناد لقوانين ويخضع له المحكومون بدافع الخوف",
+                    "تقسيم السلطات",
+                    "الديمقراطية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما أهمية الوحدة الوطنية كما يتضح من تاريخ مصر الروماني؟",
+                "options": [
+                    "الخضوع للمحتل",
+                    "تفرق المصريين",
+                    "توحد المصريين في مقاومة الظلم والحفاظ على هويتهم",
+                    "لا أهمية"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في مصر تحت حكم الرومان",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما جانب أحوال مصر تحت الحكم الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الفنية",
+                    "الحياة الاجتماعية",
+                    "الحياة الدينية",
+                    "الحياة الاقتصادية"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_cond.jpg",
+                "masks": [
+                    [
+                        80.3,
+                        47.5,
+                        19.4,
+                        24.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب أحوال مصر تحت الحكم الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الاجتماعية",
+                    "الحياة الفنية",
+                    "الحياة الدينية",
+                    "الحياة الاقتصادية"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l4_cond.jpg",
+                "masks": [
+                    [
+                        51.9,
+                        47.5,
+                        19.4,
+                        24.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب أحوال مصر تحت الحكم الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الاجتماعية",
+                    "الحياة الاقتصادية",
+                    "الحياة الدينية",
+                    "الحياة الفنية"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l4_cond.jpg",
+                "masks": [
+                    [
+                        29.3,
+                        47.5,
+                        19.4,
+                        24.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب أحوال مصر تحت الحكم الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الاجتماعية",
+                    "الحياة الفنية",
+                    "الحياة الدينية",
+                    "الحياة الاقتصادية"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l4_cond.jpg",
+                "masks": [
+                    [
+                        0.4,
+                        47.5,
+                        19.4,
+                        24.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب أحوال مصر تحت الحكم الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الاقتصادية",
+                    "الحياة الاجتماعية",
+                    "الحياة الدينية",
+                    "الحياة السياسية"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_cond.jpg",
+                "masks": [
+                    [
+                        67.9,
+                        73.7,
+                        19.6,
+                        24.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب أحوال مصر تحت الحكم الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "الحياة الدينية",
+                    "الحياة الثقافية",
+                    "الحياة الاجتماعية",
+                    "الحياة الاقتصادية"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l4_cond.jpg",
+                "masks": [
+                    [
+                        13.3,
+                        73.7,
+                        19.4,
+                        24.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما القسم الإداري لمصر في العصر الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "سيناء والواحات",
+                    "مصر العليا (القسم الجنوبي من الوجه القبلي)",
+                    "مصر الوسطى (القسم الشمالي من الوجه القبلي)",
+                    "مصر السفلى (الوجه البحري)"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_admin.jpg",
+                "masks": [
+                    [
+                        69.4,
+                        52.3,
+                        30.3,
+                        46.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما القسم الإداري لمصر في العصر الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "مصر السفلى (الوجه البحري)",
+                    "مصر الوسطى (القسم الشمالي من الوجه القبلي)",
+                    "سيناء والواحات",
+                    "مصر العليا (القسم الجنوبي من الوجه القبلي)"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l4_admin.jpg",
+                "masks": [
+                    [
+                        35.2,
+                        52.3,
+                        32.7,
+                        46.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما القسم الإداري لمصر في العصر الروماني المخفي بعلامة (؟)؟",
+                "options": [
+                    "مصر الوسطى (القسم الشمالي من الوجه القبلي)",
+                    "مصر السفلى (الوجه البحري)",
+                    "مصر العليا (القسم الجنوبي من الوجه القبلي)",
+                    "سيناء والواحات"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l4_admin.jpg",
+                "masks": [
+                    [
+                        0.3,
+                        52.3,
+                        32.4,
+                        46.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في مصر تحت الحكم الروماني؟",
+                "options": [
+                    "اليهود",
+                    "إغريق المدن الأربع",
+                    "إغريق الريف المصري",
+                    "الرومان"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_classes.jpg",
+                "masks": [
+                    [
+                        38.8,
+                        11.4,
+                        19.8,
+                        9.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في مصر تحت الحكم الروماني؟",
+                "options": [
+                    "اليهود",
+                    "إغريق المدن الأربع",
+                    "الرومان",
+                    "إغريق الريف المصري"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l4_classes.jpg",
+                "masks": [
+                    [
+                        32.2,
+                        29.5,
+                        33.0,
+                        9.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في مصر تحت الحكم الروماني؟",
+                "options": [
+                    "إغريق المدن الأربع",
+                    "إغريق الريف المصري",
+                    "اليهود",
+                    "الرومان"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l4_classes.jpg",
+                "masks": [
+                    [
+                        30.9,
+                        48.5,
+                        35.6,
+                        9.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في مصر تحت الحكم الروماني؟",
+                "options": [
+                    "إغريق الريف المصري",
+                    "الرومان",
+                    "إغريق المدن الأربع",
+                    "اليهود"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_classes.jpg",
+                "masks": [
+                    [
+                        41.4,
+                        67.4,
+                        15.8,
+                        9.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع في مصر تحت الحكم الروماني؟",
+                "options": [
+                    "إغريق الريف المصري",
+                    "إغريق المدن الأربع",
+                    "الرومان",
+                    "المصريون"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_classes.jpg",
+                "masks": [
+                    [
+                        38.8,
+                        86.4,
+                        21.1,
+                        9.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما المفهوم المخفي بعلامة (؟) في مفاهيم الوحدة الرابعة؟",
+                "options": [
+                    "ديكتاتورية",
+                    "نظام ملكي",
+                    "نظام جمهوري",
+                    "إغريق"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_concepts.jpg",
+                "masks": [
+                    [
+                        79.3,
+                        0.0,
+                        20.7,
+                        9.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما المفهوم المخفي بعلامة (؟) في مفاهيم الوحدة الرابعة؟",
+                "options": [
+                    "إغريق",
+                    "ديكتاتورية",
+                    "نظام جمهوري",
+                    "نظام ملكي"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_concepts.jpg",
+                "masks": [
+                    [
+                        79.3,
+                        21.8,
+                        20.7,
+                        9.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما المفهوم المخفي بعلامة (؟) في مفاهيم الوحدة الرابعة؟",
+                "options": [
+                    "ديكتاتورية",
+                    "نظام ملكي",
+                    "إغريق",
+                    "نظام جمهوري"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_concepts.jpg",
+                "masks": [
+                    [
+                        79.3,
+                        38.5,
+                        20.7,
+                        9.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما المفهوم المخفي بعلامة (؟) في مفاهيم الوحدة الرابعة؟",
+                "options": [
+                    "نظام ملكي",
+                    "نظام جمهوري",
+                    "ديكتاتورية",
+                    "إغريق"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l4_concepts.jpg",
+                "masks": [
+                    [
+                        79.3,
+                        56.0,
+                        20.7,
+                        9.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما المفهوم المخفي بعلامة (؟) في مفاهيم الوحدة الرابعة؟",
+                "options": [
+                    "حضارة هلينستية",
+                    "نظام جمهوري",
+                    "إغريق",
+                    "نظام ملكي"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l4_concepts.jpg",
+                "masks": [
+                    [
+                        79.3,
+                        79.7,
+                        20.7,
+                        15.4
+                    ]
+                ]
+            },
+            {
+                "q": "من الإمبراطور الروماني الموضح في الصورة الذي زار مصر وأنشأ مدينة أنطينوبوليس؟",
+                "options": [
+                    "نيرون",
+                    "الإمبراطور هادريان",
+                    "دقلديانوس",
+                    "قسطنطين"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l4_hadrian.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        88.2,
+                        100.0,
+                        11.8
+                    ]
+                ]
+            },
+            {
+                "q": "من الإمبراطور الموضح في الصورة الذي بلغ في عهده اضطهاد المسيحيين حدًا كبيرًا؟",
+                "options": [
+                    "قسطنطين",
+                    "هادريان",
+                    "ثيودوسيوس",
+                    "الإمبراطور نيرون"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l4_nero.jpg",
+                "masks": [
+                    [
+                        15.1,
+                        88.8,
+                        82.2,
+                        11.2
+                    ]
+                ]
+            },
+            {
+                "q": "من الإمبراطور الموضح في الصورة الذي سمي عهده بعصر الشهداء؟",
+                "options": [
+                    "الإمبراطور دقلديانوس",
+                    "قسطنطين",
+                    "أغسطس",
+                    "نيرون"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l4_dioc.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        89.7,
+                        100.0,
+                        10.3
+                    ]
+                ]
+            },
+            {
+                "q": "من الإمبراطور الموضح في الصورة الذي أصدر مرسوم ميلان للتسامح مع المسيحيين؟",
+                "options": [
+                    "نيرون",
+                    "هادريان",
+                    "الإمبراطور قسطنطين",
+                    "دقلديانوس"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l4_const.jpg",
+                "masks": [
+                    [
+                        4.8,
+                        88.7,
+                        95.2,
+                        11.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الأثر القبطي الموضح في الصورة الذي يشتهر باسم دير السيدة العذراء مريم بأسيوط؟",
+                "options": [
+                    "الكنيسة المعلقة",
+                    "دير الأنبا بيشوي",
+                    "دير المحرق",
+                    "دير الأنبا أنطونيوس"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l4_muharraq.jpg",
+                "masks": [
+                    [
+                        27.1,
+                        88.3,
+                        47.6,
+                        11.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما الدير الموضح في الصورة الذي يقع بالقرب من الزعفرانة بمحافظة البحر الأحمر؟",
+                "options": [
+                    "دير الأنبا أنطونيوس",
+                    "دير الأنبا بيشوي",
+                    "الكنيسة المعلقة",
+                    "دير المحرق"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l4_antonius.jpg",
+                "masks": [
+                    [
+                        15.2,
+                        87.0,
+                        69.0,
+                        13.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما الدير الموضح في الصورة من أديرة وادي النطرون؟",
+                "options": [
+                    "دير الأنبا بيشوي بوادي النطرون",
+                    "دير المحرق",
+                    "دير الأنبا أنطونيوس",
+                    "الكنيسة المعلقة"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l4_bishoy.jpg",
+                "masks": [
+                    [
+                        1.0,
+                        86.1,
+                        99.0,
+                        13.9
+                    ]
+                ]
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

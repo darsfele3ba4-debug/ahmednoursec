@@ -1,0 +1,3952 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس عوامل قيام الحضارات - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الثَّانَوِيُّ - الْوَحْدَةُ الأُولَى - الدَّرْسُ الثَّالِثُ: عَوَامِلُ قِيَامِ الْحَضَارَاتِ</h2>
+                    <p style="margin-top: 10px;">التَّارِيخُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "التاريخ: عوامل قيام الحضارات - الصف الأول الثانوي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول عوامل قيام الحضارات",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "منح الله المنطقة العربية العديد من المقومات التي أسهمت في:",
+                "options": [
+                    "الحروب الدائمة",
+                    "عزلة الشعوب",
+                    "قيام حضارات مزدهرة رائدة",
+                    "انهيار الحضارات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من عوامل قيام حضارات العالم القديم وجود:",
+                "options": [
+                    "الجبال الجليدية",
+                    "الصحاري فقط",
+                    "الغابات الكثيفة",
+                    "الأنهار مثل النيل ودجلة والفرات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تساعد الأنهار على:",
+                "options": [
+                    "الزراعة والاستقرار",
+                    "الحروب",
+                    "الهجرة الدائمة",
+                    "الرعي فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من عوامل قيام الحضارات الموقع الجغرافي المتوسط بالإضافة إلى:",
+                "options": [
+                    "الجفاف التام",
+                    "كثرة الأعاصير",
+                    "اعتدال المناخ وملاءمته للنشاط الإنساني",
+                    "شدة البرودة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "وفرة الثروات المعدنية والنباتات والحيوانات أتاحت الفرصة:",
+                "options": [
+                    "لإهمالها",
+                    "للهجرة",
+                    "لاستثمارها",
+                    "لتدميرها"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عدم وجود حواجز أو موانع طبيعية بين أجزاء العالم القديم:",
+                "options": [
+                    "منع التواصل",
+                    "سبب الحروب",
+                    "عزز الالتقاء والتواصل بين الشعوب والحضارات",
+                    "عزل الحضارات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من عوامل قيام الحضارات كفاح الإنسان و:",
+                "options": [
+                    "تدميره للبيئة",
+                    "هجره لبيئته",
+                    "استسلامه للطبيعة",
+                    "تكيفه مع بيئته الجغرافية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اتخذ الكتاب ... نموذجًا لدراسة عوامل قيام الحضارة:",
+                "options": [
+                    "مصر",
+                    "روما",
+                    "اليونان",
+                    "العراق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تعد مصر صاحبة:",
+                "options": [
+                    "حضارة بلا أثر",
+                    "أقدم حضارات العالم القديم",
+                    "أصغر الحضارات",
+                    "أحدث الحضارات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وهب الله مصر نيلًا فياضًا ساهم في:",
+                "options": [
+                    "ضعفها",
+                    "وحدتها وتماسكها",
+                    "تقسيمها",
+                    "عزلتها"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يرجع سر عظمة نهر النيل إلى:",
+                "options": [
+                    "قصر طوله",
+                    "ملوحة مياهه",
+                    "جريانه من الشمال للجنوب",
+                    "تكوينه الطبيعي ينحدر من الجنوب إلى الشمال حاملًا الماء والطمي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يحمل النيل معه الماء و... الذي ساعد على قيام الزراعة:",
+                "options": [
+                    "الملح",
+                    "الحصى",
+                    "الرمال",
+                    "الطمي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان فيضان النيل سببًا في توحد جهود المصريين لـ:",
+                "options": [
+                    "إقامة الجسور والحفاظ على مياه الفيضان",
+                    "الحرب",
+                    "الهجرة",
+                    "الانفصال"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عاش المصريون شعبًا واحدًا عبر التاريخ بفضل:",
+                "options": [
+                    "فيضان النيل وتوحد جهودهم",
+                    "العزلة",
+                    "الحروب",
+                    "الصحراء"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تبادل المصريون المحاصيل فنشطت التجارة الداخلية بين:",
+                "options": [
+                    "مصر والعراق",
+                    "الشمال والجنوب",
+                    "الشرق والغرب",
+                    "مصر واليونان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ساعد وجود النيل المصريين على الاهتمام بـ:",
+                "options": [
+                    "التعدين فقط",
+                    "بناء الحصون فقط",
+                    "بناء السفن",
+                    "الرعي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يحمل تيار النيل السفن نحو:",
+                "options": [
+                    "الشمال",
+                    "الشرق",
+                    "الغرب",
+                    "الجنوب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تدفع الرياح الشمالية السائدة السفن نحو:",
+                "options": [
+                    "الشرق",
+                    "الجنوب",
+                    "الشمال",
+                    "الغرب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من القيم التي اكتسبها المصريون من النيل:",
+                "options": [
+                    "الأنانية",
+                    "العزلة",
+                    "الوحدة والتضامن والتكافل والتكامل والتواصل",
+                    "التفرقة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تقع مصر عند ملتقى قارات:",
+                "options": [
+                    "آسيا وأمريكا",
+                    "أوروبا وأمريكا",
+                    "آسيا وإفريقيا وأوروبا",
+                    "إفريقيا وأستراليا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "سهل موقع مصر الاتصال والتأثير والتأثر بالحضارات التي قامت في:",
+                "options": [
+                    "أستراليا",
+                    "القارات الثلاث",
+                    "أمريكا",
+                    "قارة واحدة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تطل مصر على بحرين مهمين هما:",
+                "options": [
+                    "البحر الأحمر والبحر المتوسط",
+                    "بحر العرب والأحمر",
+                    "البحر الأسود والمتوسط",
+                    "البحر الميت والأحمر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تعد مصر بمثابة ... من العالم القديم:",
+                "options": [
+                    "القلب",
+                    "الطرف",
+                    "الهامش",
+                    "الحدود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يقول جمال حمدان إن مصر حجر الزاوية في:",
+                "options": [
+                    "آسيا فقط",
+                    "القارة الأمريكية",
+                    "الثلاثية القارية للعالم القديم",
+                    "القارة الأوروبية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مصر هي الوحيدة التي تلتقي فيها:",
+                "options": [
+                    "ثلاث قارات مباشرة",
+                    "قارتان وتقترب منها ثالثة",
+                    "أربع قارات",
+                    "قارة واحدة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تعد مصر المدخل الحقيقي لإفريقيا من:",
+                "options": [
+                    "الشرق",
+                    "الجنوب",
+                    "الشمال",
+                    "الغرب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كتاب «شخصية مصر» من تأليف:",
+                "options": [
+                    "هيرودوت",
+                    "ول ديورانت",
+                    "جمال حمدان",
+                    "طه حسين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "النيل هو النهر الوحيد الذي بفضله تصبح مصر:",
+                "options": [
+                    "معزولة",
+                    "المدخل الوحيد إلى قلب القارة الإفريقية",
+                    "بلا أهمية",
+                    "صحراء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "طريقا مصر إلى آسيا شمالًا:",
+                "options": [
+                    "اليونان",
+                    "سوريا والعراق",
+                    "فارس فقط",
+                    "روما"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "طريق مصر إلى آسيا جنوبًا عبر:",
+                "options": [
+                    "إفريقيا",
+                    "أوروبا",
+                    "غرب شبه الجزيرة العربية حتى الخليج",
+                    "البحر المتوسط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مصر الوحيدة التي يقترب عندها أطول:",
+                "options": [
+                    "صحراوين",
+                    "بحرين هما الأحمر والمتوسط",
+                    "جبلين",
+                    "نهرين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وهب الله مصر من المعادن:",
+                "options": [
+                    "البترول فقط",
+                    "الفحم فقط",
+                    "الذهب والنحاس والحديد",
+                    "اليورانيوم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "وهب الله مصر من الصخور:",
+                "options": [
+                    "الصخور البركانية فقط",
+                    "الجليد",
+                    "الرمال المتحركة",
+                    "الجرانيت والرخام والأحجار الكريمة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من الصخور والمعادن صنع المصريون:",
+                "options": [
+                    "الطائرات",
+                    "أدواتهم وأهراماتهم وتماثيلهم وحليهم",
+                    "الحواسيب",
+                    "السيارات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تتمتع مصر بحدود طبيعية آمنة منها:",
+                "options": [
+                    "محيطات",
+                    "صحراوات في الشرق والغرب وجنادل في الجنوب",
+                    "جبال جليدية",
+                    "غابات كثيفة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الجنادل في جنوب مصر:",
+                "options": [
+                    "بحيرات",
+                    "كتل صخرية ضخمة",
+                    "غابات",
+                    "سهول"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تمثل حدود مصر الطبيعية:",
+                "options": [
+                    "دروعًا واقية ساعدت على الدفاع عن البلاد",
+                    "سببًا للعزلة التامة",
+                    "عوائق للتجارة",
+                    "سببًا للضعف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حققت حدود مصر الطبيعية للمصريين قدرًا من:",
+                "options": [
+                    "الخوف",
+                    "الفوضى",
+                    "الأمن والاستقرار",
+                    "الفقر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ساعد المناخ المعتدل على:",
+                "options": [
+                    "الهجرة",
+                    "نشاط الإنسان وحماية الآثار القديمة",
+                    "تدمير الآثار",
+                    "الكسل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ساعد مناخ مصر الجاف على:",
+                "options": [
+                    "كثرة الأمطار",
+                    "حماية آثارها القديمة",
+                    "الفيضانات",
+                    "تلف الآثار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ساعد اختلاف درجة حرارة الفصول على:",
+                "options": [
+                    "تنوع الغلات مما أدى للرخاء ورغد العيش",
+                    "المجاعات",
+                    "الجفاف",
+                    "قلة المحاصيل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ذكر هيرودوت أن مصر:",
+                "options": [
+                    "هبة النيل",
+                    "هبة الجبال",
+                    "هبة البحر",
+                    "هبة الصحراء"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يرى المؤلفون أن مصر هبة:",
+                "options": [
+                    "النيل والمصريين",
+                    "الصحراء",
+                    "الرياح",
+                    "النيل فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حجرا الأساس اللذان قامت عليهما الحضارة المصرية:",
+                "options": [
+                    "الجهاد والكفاح",
+                    "العزلة والانغلاق",
+                    "الحرب والغزو",
+                    "الثروة والترف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لولا كفاح المصريين لما ظهرت:",
+                "options": [
+                    "الأهرامات فقط",
+                    "الحروب",
+                    "المجاعات",
+                    "الحضارة العظيمة التي أثرت في حضارات العالم القديم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من حضارات العالم القديم التي قامت في قارة إفريقيا:",
+                "options": [
+                    "الحضارة الرومانية",
+                    "الحضارة المصرية القديمة",
+                    "الحضارة اليونانية",
+                    "حضارة العراق"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من حضارات العالم القديم التي قامت في قارة آسيا:",
+                "options": [
+                    "الحضارة اليونانية",
+                    "حضارة بلاد العراق وفينيقيا واليمن",
+                    "الحضارة الرومانية",
+                    "الحضارة المصرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من حضارات العالم القديم التي قامت في قارة أوروبا:",
+                "options": [
+                    "اليونانية والرومانية",
+                    "العراقية",
+                    "الفينيقية",
+                    "المصرية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "القاسم المشترك لمقومات الحضارة:",
+                "options": [
+                    "الجبال",
+                    "الأنهار والموقع والمناخ والثروات وكفاح الإنسان",
+                    "الحروب",
+                    "البرودة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من القضايا المتضمنة في الدرس:",
+                "options": [
+                    "التلوث",
+                    "الأمن القومي وحسن استخدام الموارد",
+                    "البطالة",
+                    "الزحام"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن عوامل قيام الحضارات",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "نهر حضارة مصر؟",
+                "options": [
+                    "الفرات",
+                    "النيل",
+                    "الأردن",
+                    "دجلة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "نهرا حضارة العراق؟",
+                "options": [
+                    "العاصي",
+                    "الليطاني",
+                    "دجلة والفرات",
+                    "النيل والأردن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما يحمله النيل للزراعة؟",
+                "options": [
+                    "الرمال",
+                    "الطمي",
+                    "الملح",
+                    "الحصى"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتجاه جريان النيل؟",
+                "options": [
+                    "من الجنوب للشمال",
+                    "من الشرق للغرب",
+                    "من الغرب للشرق",
+                    "من الشمال للجنوب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أقامه المصريون للفيضان؟",
+                "options": [
+                    "القلاع",
+                    "الأهرامات",
+                    "المعابد",
+                    "الجسور"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قيمة من فيضان النيل؟",
+                "options": [
+                    "الفرقة",
+                    "الأنانية",
+                    "العزلة",
+                    "الوحدة والتضامن"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تجارة نشطت بالنيل؟",
+                "options": [
+                    "الخارجية فقط",
+                    "البحرية فقط",
+                    "الدولية فقط",
+                    "الداخلية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما اهتم به المصريون بفضل النيل؟",
+                "options": [
+                    "بناء السفن",
+                    "الصيد البري",
+                    "التعدين فقط",
+                    "الرعي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اتجاه تيار النيل بالسفن؟",
+                "options": [
+                    "الشمال",
+                    "الجنوب",
+                    "الشرق",
+                    "الغرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اتجاه الرياح السائدة بالسفن؟",
+                "options": [
+                    "الشمال",
+                    "الغرب",
+                    "الشرق",
+                    "الجنوب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ملتقى قارات مصر؟",
+                "options": [
+                    "أمريكا وأوروبا",
+                    "آسيا وإفريقيا وأوروبا",
+                    "آسيا وأستراليا",
+                    "إفريقيا وأمريكا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بحرا مصر؟",
+                "options": [
+                    "العرب والأحمر",
+                    "الميت والمتوسط",
+                    "الأسود والأحمر",
+                    "الأحمر والمتوسط"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مكانة مصر في العالم القديم؟",
+                "options": [
+                    "القلب",
+                    "الهامش",
+                    "الحدود",
+                    "الطرف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صاحب كتاب شخصية مصر؟",
+                "options": [
+                    "طه حسين",
+                    "ول ديورانت",
+                    "جمال حمدان",
+                    "هيرودوت"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مدخل إفريقيا من الشمال؟",
+                "options": [
+                    "تونس",
+                    "مصر",
+                    "ليبيا",
+                    "المغرب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "طريق آسيا الشمالي؟",
+                "options": [
+                    "عمان",
+                    "اليمن",
+                    "سوريا والعراق",
+                    "الحجاز"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "معدن وهبه الله لمصر؟",
+                "options": [
+                    "البترول",
+                    "الذهب",
+                    "الفحم",
+                    "اليورانيوم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صخر مصري؟",
+                "options": [
+                    "البازلت فقط",
+                    "الحجر الرملي فقط",
+                    "الجرانيت",
+                    "الجليد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما صنعه المصريون من الأحجار؟",
+                "options": [
+                    "التماثيل",
+                    "الطائرات",
+                    "السيارات",
+                    "الحواسيب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حدود مصر الشرقية والغربية؟",
+                "options": [
+                    "جبال جليدية",
+                    "أنهار",
+                    "صحراوات",
+                    "غابات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حدود مصر الجنوبية؟",
+                "options": [
+                    "الغابات",
+                    "الجنادل",
+                    "الصحراء",
+                    "البحر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الجنادل؟",
+                "options": [
+                    "مستنقعات",
+                    "بحيرات",
+                    "سهول",
+                    "كتل صخرية ضخمة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "حدود مصر الشمالية؟",
+                "options": [
+                    "الصحراء",
+                    "الجنادل",
+                    "البحر الأحمر",
+                    "البحر المتوسط"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "وظيفة حدود مصر الطبيعية؟",
+                "options": [
+                    "عوائق تجارية",
+                    "حدود ضعيفة",
+                    "دروع واقية",
+                    "لا وظيفة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما حققته الحدود الآمنة؟",
+                "options": [
+                    "الخوف",
+                    "الأمن والاستقرار",
+                    "الفقر",
+                    "الفوضى"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مناخ مصر؟",
+                "options": [
+                    "قطبي",
+                    "متجمد",
+                    "استوائي ممطر",
+                    "معتدل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما حماه المناخ الجاف؟",
+                "options": [
+                    "البحيرات",
+                    "الغابات",
+                    "الثلوج",
+                    "الآثار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أثر اختلاف حرارة الفصول؟",
+                "options": [
+                    "تنوع الغلات",
+                    "الجفاف",
+                    "قلة المحاصيل",
+                    "المجاعة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قول هيرودوت عن مصر؟",
+                "options": [
+                    "قلب العالم",
+                    "هبة الصحراء",
+                    "أم الدنيا",
+                    "هبة النيل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مصر هبة النيل و؟",
+                "options": [
+                    "الرياح",
+                    "الصحراء",
+                    "المصريين",
+                    "البحر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حجرا أساس حضارة مصر؟",
+                "options": [
+                    "الحرب والغزو",
+                    "العزلة",
+                    "الثروة",
+                    "الجهاد والكفاح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أقدم حضارات العالم؟",
+                "options": [
+                    "الحديثة",
+                    "المصرية",
+                    "اليونانية",
+                    "الرومانية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حضارة إفريقية قديمة؟",
+                "options": [
+                    "الرومانية",
+                    "الفينيقية",
+                    "المصرية",
+                    "اليونانية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حضارة آسيوية قديمة؟",
+                "options": [
+                    "اليونان",
+                    "مصر",
+                    "فينيقيا",
+                    "روما"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حضارة أوروبية قديمة؟",
+                "options": [
+                    "العراقية",
+                    "اليمنية",
+                    "اليونانية",
+                    "الفينيقية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حضارة في جنوب الجزيرة العربية؟",
+                "options": [
+                    "فينيقيا",
+                    "اليمن",
+                    "العراق",
+                    "فارس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عامل طبيعي للحضارة؟",
+                "options": [
+                    "البنوك",
+                    "المطارات",
+                    "الأنهار",
+                    "المصانع"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عامل بشري للحضارة؟",
+                "options": [
+                    "كفاح الإنسان",
+                    "المناخ",
+                    "المعادن",
+                    "الأنهار"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أثر غياب الحواجز الطبيعية؟",
+                "options": [
+                    "الحرب",
+                    "التواصل بين الشعوب",
+                    "العزلة",
+                    "الانقسام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أثر وفرة الثروات؟",
+                "options": [
+                    "الإهمال",
+                    "الحروب فقط",
+                    "الاستثمار",
+                    "الهدر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ميزة الموقع المتوسط؟",
+                "options": [
+                    "الأعاصير",
+                    "اعتدال المناخ",
+                    "البرودة",
+                    "الجفاف التام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قضية في الدرس؟",
+                "options": [
+                    "الأمن القومي",
+                    "التصحر",
+                    "البطالة",
+                    "الزحام"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قيمة في الدرس؟",
+                "options": [
+                    "التبذير",
+                    "حسن استخدام الموارد",
+                    "الإسراف",
+                    "الإهمال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مهارة في الدرس؟",
+                "options": [
+                    "الرسم",
+                    "الطبخ",
+                    "التفكير المستقبلي",
+                    "السباحة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "نموذج دراسة عوامل الحضارة؟",
+                "options": [
+                    "العراق",
+                    "مصر",
+                    "اليونان",
+                    "روما"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما ساعد على الدفاع عن مصر؟",
+                "options": [
+                    "كثرة السكان",
+                    "الثروات فقط",
+                    "المناخ فقط",
+                    "الحدود الطبيعية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مادة صنع منها المصريون الحلي؟",
+                "options": [
+                    "الذهب",
+                    "الحديد الصلب",
+                    "البلاستيك",
+                    "الألومنيوم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما يميز شمس مصر؟",
+                "options": [
+                    "محجوبة دائمًا",
+                    "مشرقة",
+                    "غائبة",
+                    "ضعيفة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سماء مصر؟",
+                "options": [
+                    "ثلجية",
+                    "صافية",
+                    "ملبدة دائمًا",
+                    "ممطرة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مصدر عبارة «عبقرية المكان»؟",
+                "options": [
+                    "قصة الحضارة",
+                    "تمحيص الأخبار",
+                    "الإلياذة",
+                    "شخصية مصر لجمال حمدان"
+                ],
+                "ans": 3
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات عوامل قيام الحضارات",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «من عوامل قيام الحضارات وجود ... مثل نهر النيل».",
+                "options": [
+                    "الغابات",
+                    "الجبال",
+                    "الصحاري",
+                    "الأنهار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تساعد الأنهار على الزراعة و...».",
+                "options": [
+                    "الاستقرار",
+                    "العزلة",
+                    "الهجرة",
+                    "الحرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من عوامل قيام الحضارات الموقع الجغرافي المتوسط واعتدال ...».",
+                "options": [
+                    "الأسعار",
+                    "السكان",
+                    "المناخ",
+                    "الحدود"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من عوامل الحضارة وفرة الثروات ... من صخور ومعادن».",
+                "options": [
+                    "البحرية",
+                    "الصناعية",
+                    "البترولية",
+                    "المعدنية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «عدم وجود حواجز طبيعية عزز الالتقاء و... بين الشعوب».",
+                "options": [
+                    "العزلة",
+                    "التواصل",
+                    "الحرب",
+                    "الانقسام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من عوامل الحضارة كفاح الإنسان وتكيفه مع بيئته ...».",
+                "options": [
+                    "الحديثة",
+                    "الصناعية",
+                    "الجغرافية",
+                    "الاقتصادية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «لما كانت مصر صاحبة أقدم حضارات العالم القديم اتخذناها ...».",
+                "options": [
+                    "هدفًا",
+                    "نموذجًا",
+                    "حدودًا",
+                    "عدوًا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «وهب الله مصر نيلًا ... ساهم في وحدتها».",
+                "options": [
+                    "صغيرًا",
+                    "جافًا",
+                    "فياضًا",
+                    "مالحًا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ينحدر النيل من الجنوب إلى الشمال حاملًا الماء و...».",
+                "options": [
+                    "الأسماك فقط",
+                    "الحصى",
+                    "الطمي",
+                    "الرمال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان فيضان النيل سببًا في توحد جهود المصريين لإقامة ...».",
+                "options": [
+                    "الحصون",
+                    "الجسور",
+                    "المصانع",
+                    "المطارات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «عاش المصريون شعبًا ... عبر التاريخ».",
+                "options": [
+                    "مهاجرًا",
+                    "متحاربًا",
+                    "متفرقًا",
+                    "واحدًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تبادل المصريون المحاصيل فنشطت التجارة ... بين الشمال والجنوب».",
+                "options": [
+                    "الدولية",
+                    "البحرية",
+                    "الخارجية",
+                    "الداخلية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ساعد النيل على الاهتمام ببناء ...».",
+                "options": [
+                    "القطارات",
+                    "المصانع",
+                    "السفن",
+                    "الطائرات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يحمل تيار النيل السفن نحو ... وتدفعها الرياح نحو الجنوب».",
+                "options": [
+                    "الغرب",
+                    "الشرق",
+                    "البحر الأحمر",
+                    "الشمال"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تدفع الرياح ... السائدة السفن نحو الجنوب».",
+                "options": [
+                    "الجنوبية",
+                    "الغربية",
+                    "الشرقية",
+                    "الشمالية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان التأثير و... الذي تميزت به الحضارة المصرية».",
+                "options": [
+                    "التأثر",
+                    "الحرب",
+                    "الانعزال",
+                    "الانغلاق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تقع مصر عند ملتقى قارات ثلاث هي آسيا وإفريقيا و...».",
+                "options": [
+                    "القطبية",
+                    "أوروبا",
+                    "أستراليا",
+                    "أمريكا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تطل مصر على البحر الأحمر والبحر ...».",
+                "options": [
+                    "المتوسط",
+                    "العربي",
+                    "الميت",
+                    "الأسود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «مصر بمثابة ... من العالم القديم».",
+                "options": [
+                    "القلب",
+                    "الطرف",
+                    "الهامش",
+                    "الذيل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «مصر حلقة الاتصال بين أقطار العالم القديم و...».",
+                "options": [
+                    "بحاره",
+                    "صحاريه",
+                    "جباله",
+                    "شعوبه"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «مصر حجر الزاوية في ... القارية».",
+                "options": [
+                    "الثنائية",
+                    "الرباعية",
+                    "الأحادية",
+                    "الثلاثية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «مصر بوابة مشتركة لإفريقيا و...».",
+                "options": [
+                    "آسيا",
+                    "أمريكا",
+                    "أستراليا",
+                    "أوروبا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «مصر المدخل الحقيقي لإفريقيا من ...».",
+                "options": [
+                    "الشمال",
+                    "الجنوب",
+                    "الشرق",
+                    "الغرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «النيل هو النهر الوحيد الذي بفضله تصبح مصر المدخل الوحيد إلى قلب ...».",
+                "options": [
+                    "البحر",
+                    "الصحراء",
+                    "القارة",
+                    "العالم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «طريق آسيا شمالًا هو سوريا و...».",
+                "options": [
+                    "العراق",
+                    "فارس",
+                    "اليمن",
+                    "الحجاز"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «مقتبس «عبقرية المكان» من كتاب شخصية مصر لـ...».",
+                "options": [
+                    "طه حسين",
+                    "العقاد",
+                    "هيرودوت",
+                    "جمال حمدان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «وهب الله مصر معادن كالذهب والنحاس و...».",
+                "options": [
+                    "الحديد",
+                    "البترول",
+                    "الفحم",
+                    "اليورانيوم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «وهب الله مصر صخورًا من جرانيت و... وأحجار كريمة».",
+                "options": [
+                    "جليد",
+                    "ملح",
+                    "رخام",
+                    "طين فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «صنع المصريون من الصخور والمعادن أدواتهم وبنوا ...».",
+                "options": [
+                    "مصانعهم",
+                    "مطاراتهم",
+                    "أهراماتهم",
+                    "جامعاتهم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «صنع المصريون من المعادن ... البديعة».",
+                "options": [
+                    "سياراتهم",
+                    "ساعاتهم",
+                    "حليهم",
+                    "أجهزتهم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تتمتع مصر بحدود طبيعية ...».",
+                "options": [
+                    "متغيرة",
+                    "ضعيفة",
+                    "مفتوحة",
+                    "آمنة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يحد مصر في الجنوب جنادل وهي كتل ... ضخمة».",
+                "options": [
+                    "صخرية",
+                    "جليدية",
+                    "طينية",
+                    "رملية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تمثل حدود مصر دروعًا ... ساعدت على الدفاع».",
+                "options": [
+                    "ورقية",
+                    "واقية",
+                    "مكسورة",
+                    "ضعيفة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «حققت الحدود الطبيعية لمصر قدرًا من الأمن و...».",
+                "options": [
+                    "الخوف",
+                    "الحرب",
+                    "الفوضى",
+                    "الاستقرار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «وهب الله مصر مناخًا ... وشمسًا مشرقة».",
+                "options": [
+                    "متجمدًا",
+                    "قطبيًا",
+                    "ممطرًا",
+                    "معتدلًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ساعد المناخ الجاف على حماية ... مصر القديمة».",
+                "options": [
+                    "آثار",
+                    "ثلوج",
+                    "غابات",
+                    "بحيرات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «ساعد اختلاف حرارة الفصول على تنوع ...».",
+                "options": [
+                    "الغلات",
+                    "الحروب",
+                    "الأنهار",
+                    "السكان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «أدى تنوع الغلات إلى الرخاء و... العيش».",
+                "options": [
+                    "قسوة",
+                    "رغد",
+                    "ضيق",
+                    "صعوبة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «بذل المصريون جهودًا عظيمة من أجل ... كل ما وهبه الله».",
+                "options": [
+                    "هجر",
+                    "إهمال",
+                    "تسخير",
+                    "تدمير"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان الجهاد و... هما حجرا الأساس للحضارة المصرية».",
+                "options": [
+                    "الكفاح",
+                    "الكسل",
+                    "الترف",
+                    "الحرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «لم تكن مصر هبة النيل فقط بل هبة النيل و...».",
+                "options": [
+                    "الشمس",
+                    "البحر",
+                    "المصريين",
+                    "الصحراء"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ذكر ... أن مصر هبة النيل».",
+                "options": [
+                    "مانيتون",
+                    "هيرودوت",
+                    "ول ديورانت",
+                    "جمال حمدان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «لولا كفاح المصريين لما ظهرت هذه الحضارة العظيمة التي أثرت في حضارات العالم ...».",
+                "options": [
+                    "الجديد",
+                    "الحديث",
+                    "القديم",
+                    "المعاصر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من الحضارات التي قامت في آسيا حضارة بلاد ... القديم».",
+                "options": [
+                    "اليونان",
+                    "العراق",
+                    "مصر",
+                    "روما"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من الحضارات التي قامت في أوروبا الحضارة اليونانية و...».",
+                "options": [
+                    "الفينيقية",
+                    "الرومانية",
+                    "المصرية",
+                    "البابلية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من الحضارات التي قامت في إفريقيا الحضارة ... القديمة».",
+                "options": [
+                    "المصرية",
+                    "الرومانية",
+                    "العراقية",
+                    "اليونانية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «منح الله المنطقة ... العديد من المقومات للحضارة».",
+                "options": [
+                    "الأوروبية",
+                    "العربية",
+                    "الأمريكية",
+                    "القطبية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من قضايا الدرس الأمن ...».",
+                "options": [
+                    "المائي فقط",
+                    "الغذائي فقط",
+                    "القومي",
+                    "الصحي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من قضايا الدرس حسن استخدام ...».",
+                "options": [
+                    "الوقت فقط",
+                    "الأسلحة",
+                    "الهاتف",
+                    "الموارد"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يقدر الطالب عظمة الله في توافر المقومات ... التي ساعدت على قيام الحضارات».",
+                "options": [
+                    "الطبيعية",
+                    "الحديثة",
+                    "البشرية فقط",
+                    "الصناعية"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ عوامل قيام الحضارات",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "من عوامل قيام الحضارات وجود الأنهار.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وجود الحواجز الطبيعية ساعد على التواصل بين الحضارات.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عدم وجود حواجز طبيعية عزز التواصل بين الشعوب.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وفرة الثروات المعدنية من عوامل قيام الحضارات.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كفاح الإنسان وتكيفه مع بيئته من عوامل قيام الحضارات.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصر صاحبة أقدم حضارات العالم القديم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ينحدر نهر النيل من الشمال إلى الجنوب.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يحمل النيل الماء والطمي الذي ساعد على الزراعة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان فيضان النيل سببًا في تفرق المصريين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان فيضان النيل سببًا في توحد جهود المصريين.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نشطت التجارة الداخلية بين الشمال والجنوب بفضل النيل.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ساعد النيل المصريين على بناء السفن.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تدفع الرياح الشمالية السفن نحو الشمال.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يحمل تيار النيل السفن نحو الشمال.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقع مصر عند ملتقى قارات آسيا وإفريقيا وأوروبا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تطل مصر على البحر الأسود والبحر المتوسط.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصر بمثابة القلب من العالم القديم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كتاب شخصية مصر من تأليف هيرودوت.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كتاب شخصية مصر من تأليف جمال حمدان.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصر بوابة مشتركة لإفريقيا وآسيا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصر المدخل الحقيقي لإفريقيا من الجنوب.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وهب الله مصر معادن الذهب والنحاس والحديد.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صنع المصريون من الصخور أهراماتهم وتماثيلهم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تحد مصر جنوبًا جنادل وهي كتل صخرية ضخمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حدود مصر الطبيعية سببت لها الضعف.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ساعدت حدود مصر الطبيعية على الدفاع عنها.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مناخ مصر المعتدل ساعد على نشاط الإنسان.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ساعد المناخ الجاف على تلف آثار مصر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ساعد المناخ الجاف على حماية آثار مصر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أدى اختلاف حرارة الفصول إلى تنوع الغلات.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ذكر هيرودوت أن مصر هبة النيل.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصر هبة النيل والمصريين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الجهاد والكفاح حجرا أساس الحضارة المصرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لولا كفاح المصريين لظهرت الحضارة المصرية بسهولة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الحضارة الرومانية من حضارات قارة آسيا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حضارة فينيقيا من حضارات قارة آسيا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الحضارة اليونانية من حضارات قارة أوروبا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الحضارة المصرية من حضارات قارة إفريقيا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حضارة بلاد العراق قامت على نهري دجلة والفرات.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اتخذ الكتاب العراق نموذجًا لدراسة عوامل قيام الحضارة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عاش المصريون شعبًا واحدًا عبر التاريخ.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تقترب عند مصر أطول بحرين هما الأحمر والمتوسط.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "للتجارة المصرية طريقان إلى آسيا شمالًا وجنوبًا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الأمن القومي من القضايا المتضمنة في الدرس.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "المناخ المعتدل من العوامل البشرية لقيام الحضارة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كفاح الإنسان من العوامل البشرية لقيام الحضارة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الأنهار من العوامل الطبيعية لقيام الحضارة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تعد مصر حلقة الاتصال بين أقطار العالم القديم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الموقع الجغرافي لمصر صعّب الاتصال بالحضارات الأخرى.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استفادت مصر من موقعها في التأثير والتأثر بالحضارات.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في عوامل قيام الحضارات",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "ما عوامل قيام حضارات العالم القديم؟",
+                "options": [
+                    "الجبال",
+                    "البرودة",
+                    "الحروب",
+                    "الأنهار والموقع المتوسط واعتدال المناخ والثروات وعدم وجود حواجز وكفاح الإنسان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "صنف عوامل قيام الحضارة المصرية إلى طبيعية وبشرية:",
+                "options": [
+                    "كلها طبيعية",
+                    "لا عوامل",
+                    "طبيعية: النيل والموقع والثروات والحدود والمناخ، بشرية: جهود المصريين وكفاحهم",
+                    "كلها بشرية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما القاسم المشترك لمقومات الحضارات؟",
+                "options": [
+                    "الجبال",
+                    "الحروب",
+                    "الثلوج",
+                    "وجود الأنهار والموقع المتوسط واعتدال المناخ والثروات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما العلاقة بين نهر النيل وقيام الحضارة المصرية؟",
+                "options": [
+                    "النيل سبب الهجرة",
+                    "لا علاقة",
+                    "النيل وفر الماء والطمي للزراعة والاستقرار ووحّد المصريين",
+                    "النيل عطل الحضارة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "فسر سر عظمة نهر النيل:",
+                "options": [
+                    "جريانه للجنوب",
+                    "قصره",
+                    "ملوحة مياهه",
+                    "تكوينه الطبيعي ينحدر من الجنوب للشمال حاملًا الماء والطمي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما القيم التي اكتسبها المصريون من النيل؟",
+                "options": [
+                    "الأنانية",
+                    "التعصب",
+                    "العزلة",
+                    "الوحدة والتضامن والتكافل والتكامل والتواصل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كيف ساهم النيل في الوحدة والتضامن؟",
+                "options": [
+                    "لا دور",
+                    "فيضانه وحد جهود المصريين لإقامة الجسور والحفاظ على مياهه",
+                    "بتقسيم البلاد",
+                    "بالحروب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كيف ساهم النيل في التكافل والتكامل؟",
+                "options": [
+                    "بالهجرة",
+                    "بتبادل المحاصيل ونشاط التجارة الداخلية بين الشمال والجنوب",
+                    "بالعزلة",
+                    "بالحروب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كيف ساهم النيل في التواصل؟",
+                "options": [
+                    "بالعزلة",
+                    "بمنع السفر",
+                    "بناء السفن التي يحملها التيار شمالًا والرياح جنوبًا",
+                    "لا دور"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "فسر: تميز موقع مصر الجغرافي.",
+                "options": [
+                    "بعيدة عن البحار",
+                    "معزولة",
+                    "تقع عند ملتقى ثلاث قارات وتطل على بحرين مهمين فهي قلب العالم القديم",
+                    "تقع في أطراف العالم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أثر موقع مصر على حضارتها؟",
+                "options": [
+                    "لا أثر",
+                    "عزلها",
+                    "سهل الاتصال والتأثير والتأثر بالحضارات الأخرى",
+                    "أضعفها"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "هل استفادت مصر حاليًا من عبقرية موقعها الجغرافي؟",
+                "options": [
+                    "استفادة عسكرية فقط",
+                    "لا يوجد موقع",
+                    "لا",
+                    "نعم في التجارة العالمية عبر قناة السويس والموانئ والربط بين القارات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أهمية الثروات المعدنية في قيام الحضارة المصرية؟",
+                "options": [
+                    "للحروب فقط",
+                    "صنع منها المصريون أدواتهم وأهراماتهم وتماثيلهم وحليهم",
+                    "للتصدير فقط",
+                    "لا أهمية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما أهمية الحدود الطبيعية لمصر؟",
+                "options": [
+                    "دروع واقية ساعدت على الدفاع وحققت الأمن والاستقرار",
+                    "سببت العزلة التامة",
+                    "أضعفت مصر",
+                    "لا أهمية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أهمية المناخ المعتدل لمصر؟",
+                "options": [
+                    "ساعد على نشاط الإنسان وحماية الآثار وتنوع الغلات والرخاء",
+                    "سبب الكسل",
+                    "سبب الجفاف",
+                    "أتلف الآثار"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فسر: احتفاظ مصر بآثارها القديمة.",
+                "options": [
+                    "لأن مناخها جاف ساعد على حمايتها",
+                    "لبرودة المناخ",
+                    "لكثرة الأمطار",
+                    "بلا سبب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فسر: مصر هبة النيل والمصريين.",
+                "options": [
+                    "لأن الصحراء صنعتها",
+                    "بلا سبب",
+                    "لأن النيل وفر المقومات والمصريين بكفاحهم سخروها لبناء الحضارة",
+                    "لأن النيل وحده صنعها"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما حجرا الأساس للحضارة المصرية؟",
+                "options": [
+                    "العزلة",
+                    "الجهاد والكفاح",
+                    "الحرب والغزو",
+                    "الثروة والترف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «مؤرخ قال إن مصر هبة النيل»",
+                "options": [
+                    "مانيتون",
+                    "جمال حمدان",
+                    "هيرودوت",
+                    "ول ديورانت"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أكون؟ «مفكر مصري ألف كتاب شخصية مصر»",
+                "options": [
+                    "جمال حمدان",
+                    "رفاعة الطهطاوي",
+                    "طه حسين",
+                    "علي مبارك"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أكون؟ «كتل صخرية ضخمة تحد مصر جنوبًا»",
+                "options": [
+                    "الكثبان",
+                    "الجنادل",
+                    "الهضاب",
+                    "السدود"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «ينحدر النيل من الشمال إلى الجنوب».",
+                "options": [
+                    "من الغرب للشرق",
+                    "من الجنوب إلى الشمال",
+                    "من الشرق للغرب",
+                    "لا ينحدر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «مصر هبة النيل فقط».",
+                "options": [
+                    "هبة الصحراء",
+                    "هبة البحر",
+                    "هبة النيل والمصريين",
+                    "هبة الرياح"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صوّب الخطأ: «ساعد المناخ الجاف على تلف الآثار».",
+                "options": [
+                    "الثلوج",
+                    "حماية الآثار",
+                    "كثرة الفيضانات",
+                    "ظهور الأمطار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «الحضارة الرومانية من حضارات آسيا».",
+                "options": [
+                    "أستراليا",
+                    "أمريكا",
+                    "أوروبا",
+                    "إفريقيا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صوّب الخطأ: «وجود الحواجز الطبيعية عزز التواصل».",
+                "options": [
+                    "الحواجز منعت الحضارة",
+                    "عدم وجود الحواجز عزز التواصل",
+                    "الحواجز سببت التواصل",
+                    "الحواجز لا تؤثر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استبعد الغريب من العوامل الطبيعية: (النيل - الموقع - المناخ - كفاح المصريين)",
+                "options": [
+                    "المناخ",
+                    "النيل",
+                    "الموقع",
+                    "كفاح المصريين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استبعد الغريب من حضارات آسيا: (العراق - فينيقيا - اليمن - الرومان)",
+                "options": [
+                    "اليمن",
+                    "العراق",
+                    "فينيقيا",
+                    "الرومان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استبعد الغريب من حدود مصر الطبيعية: (الصحراء الشرقية - الصحراء الغربية - الجنادل - جبال الألب)",
+                "options": [
+                    "الصحراء الغربية",
+                    "الجنادل",
+                    "جبال الألب",
+                    "الصحراء الشرقية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما الحضارات التي قامت في قارة إفريقيا؟",
+                "options": [
+                    "الحضارة المصرية القديمة",
+                    "الحضارة الرومانية",
+                    "حضارة فينيقيا",
+                    "حضارة العراق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما الحضارات التي قامت في قارة آسيا؟",
+                "options": [
+                    "حضارة العراق القديم وفينيقيا واليمن",
+                    "اليونانية",
+                    "الرومانية",
+                    "الحضارة المصرية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اقترح أماكن مستقبلية كموطن للحضارات في ضوء عوامل قيامها:",
+                "options": [
+                    "أماكن بلا مياه",
+                    "أماكن متجمدة",
+                    "أماكن معزولة",
+                    "أماكن تتوافر فيها المياه والموقع المتميز والمناخ المعتدل والموارد والأمن"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما المقصود بعبقرية المكان؟",
+                "options": [
+                    "تميز موقع مصر الجغرافي الذي جعلها حجر الزاوية وقلب العالم القديم",
+                    "جمال الطبيعة فقط",
+                    "كثرة السكان",
+                    "قوة الجيش"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما طرق مصر إلى آسيا كما ذكر جمال حمدان؟",
+                "options": [
+                    "شمالًا عبر سوريا والعراق وجنوبًا عبر غرب شبه الجزيرة العربية حتى الخليج",
+                    "عبر أوروبا",
+                    "عبر البحر المتوسط فقط",
+                    "عبر إفريقيا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "هل تتغير أهمية الموقع من زمن لآخر؟ وما الدليل؟",
+                "options": [
+                    "تختفي",
+                    "نعم، تزداد أو تقل حسب طرق التجارة والمواصلات كأهمية قناة السويس",
+                    "لا دليل",
+                    "لا تتغير"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كيف نحافظ على أمننا القومي في المرحلة القادمة؟",
+                "options": [
+                    "بالوحدة والانتماء وحماية الحدود والموارد والوعي",
+                    "بالفرقة",
+                    "بالإهمال",
+                    "بالعزلة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أثر وجود الأنهار على قيام الحضارات؟",
+                "options": [
+                    "سببت الهجرة",
+                    "منعت الزراعة",
+                    "ساعدت على الزراعة والاستقرار وقيام المجتمعات",
+                    "لا أثر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أثر الموقع المتوسط للعالم القديم على الحضارات؟",
+                "options": [
+                    "اعتدال المناخ وملاءمته للنشاط الإنساني",
+                    "البرودة الشديدة",
+                    "العزلة",
+                    "الجفاف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أثر اختلاف حرارة الفصول في مصر؟",
+                "options": [
+                    "الجفاف",
+                    "قلة الإنتاج",
+                    "المجاعات",
+                    "تنوع الغلات مما أدى للرخاء ورغد العيش"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا بذل المصريون جهودًا عظيمة في بناء حضارتهم؟",
+                "options": [
+                    "للهجرة",
+                    "لتسخير ما وهبه الله من موارد ومناخ لمصلحتهم",
+                    "لا سبب",
+                    "للحرب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ماذا كان سيحدث لولا كفاح المصريين؟",
+                "options": [
+                    "لما ظهرت الحضارة العظيمة المؤثرة في العالم القديم",
+                    "لا شيء",
+                    "لاستمرت الحضارة",
+                    "لظهرت حضارة أعظم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما دور الرياح الشمالية في الحضارة المصرية؟",
+                "options": [
+                    "تدفع السفن نحو الجنوب فسهلت التنقل والتواصل",
+                    "لا دور",
+                    "أتلفت الزرع",
+                    "منعت السفر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما دور الصحراوات في حماية مصر؟",
+                "options": [
+                    "لا دور",
+                    "أضعفت مصر",
+                    "حدود طبيعية آمنة في الشرق والغرب ساعدت على الدفاع",
+                    "سببت الغزو"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما دور البحرين المتوسط والأحمر في أهمية مصر؟",
+                "options": [
+                    "سببا الفيضان",
+                    "لا دور",
+                    "عزلا مصر",
+                    "سهلا الاتصال والتجارة مع العالم القديم ومثلا حدودًا طبيعية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا اتخذ الكتاب مصر نموذجًا لعوامل قيام الحضارة؟",
+                "options": [
+                    "لأنها صاحبة أقدم حضارات العالم القديم",
+                    "لأنها أحدث حضارة",
+                    "بلا سبب",
+                    "لأنها أصغر حضارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما الذي يقصده جمال حمدان بأن مصر بوابة مشتركة لإفريقيا وآسيا؟",
+                "options": [
+                    "أنها جزيرة",
+                    "أنها معزولة",
+                    "أنها جزء من أوروبا",
+                    "أنها نقطة الالتقاء والعبور بين القارتين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما الصفات التي تميز بها الإنسان المصري في بناء الحضارة؟",
+                "options": [
+                    "الكفاح وحب الوطن والدفاع عنه واستثمار موارده",
+                    "الكسل",
+                    "الهجرة",
+                    "الأنانية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مقومات حضارة العراق القديم؟",
+                "options": [
+                    "نهر النيل",
+                    "نهرا دجلة والفرات اللذان ساعدا على الزراعة والاستقرار",
+                    "البحر المتوسط",
+                    "الصحراء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما العلاقة بين الأمن القومي والحدود الطبيعية؟",
+                "options": [
+                    "الحدود الطبيعية حمت مصر وحققت أمنها واستقرارها",
+                    "لا علاقة",
+                    "علاقة عكسية",
+                    "الحدود هددت الأمن"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما القيمة المستفادة من دراسة عوامل قيام الحضارات؟",
+                "options": [
+                    "التعصب",
+                    "تقدير نعم الله وحسن استخدام الموارد والمحافظة عليها",
+                    "الإهمال",
+                    "الإسراف"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في عوامل قيام الحضارات",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما اسم الحضارة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "الحضارة اليونانية",
+                    "حضارة بلاد اليمن",
+                    "الحضارة الرومانية",
+                    "حضارة فينيقيا"
+                ],
+                "ans": 2,
+                "img": "images/s1u1l3_worldmap.jpg",
+                "masks": [
+                    [
+                        13.5,
+                        29,
+                        14,
+                        6
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الحضارة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "الحضارة اليونانية",
+                    "حضارة فينيقيا",
+                    "الحضارة الرومانية",
+                    "حضارة بلاد العراق القديم"
+                ],
+                "ans": 0,
+                "img": "images/s1u1l3_worldmap.jpg",
+                "masks": [
+                    [
+                        38.5,
+                        34,
+                        14,
+                        6
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الحضارة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "حضارة فينيقيا",
+                    "حضارة بلاد اليمن",
+                    "الحضارة اليونانية",
+                    "حضارة بلاد العراق القديم"
+                ],
+                "ans": 3,
+                "img": "images/s1u1l3_worldmap.jpg",
+                "masks": [
+                    [
+                        66,
+                        47,
+                        20,
+                        6
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الحضارة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "حضارة بلاد اليمن",
+                    "الحضارة اليونانية",
+                    "حضارة فينيقيا",
+                    "حضارة بلاد العراق القديم"
+                ],
+                "ans": 2,
+                "img": "images/s1u1l3_worldmap.jpg",
+                "masks": [
+                    [
+                        55,
+                        60,
+                        12,
+                        6
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الحضارة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "الحضارة الرومانية",
+                    "الحضارة المصرية القديمة (الفرعونية)",
+                    "حضارة فينيقيا",
+                    "حضارة بلاد اليمن"
+                ],
+                "ans": 1,
+                "img": "images/s1u1l3_worldmap.jpg",
+                "masks": [
+                    [
+                        39,
+                        80,
+                        21,
+                        13
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الحضارة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "حضارة بلاد اليمن",
+                    "حضارة بلاد العراق القديم",
+                    "الحضارة المصرية القديمة",
+                    "حضارة فينيقيا"
+                ],
+                "ans": 0,
+                "img": "images/s1u1l3_worldmap.jpg",
+                "masks": [
+                    [
+                        71,
+                        84,
+                        15,
+                        6
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الدولة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "العراق",
+                    "إيطاليا",
+                    "مصر",
+                    "اليونان"
+                ],
+                "ans": 2,
+                "img": "images/s1u1l3_globe.jpg",
+                "masks": [
+                    [
+                        35,
+                        35,
+                        13,
+                        10
+                    ]
+                ]
+            },
+            {
+                "q": "توضح الخريطة موقع مصر بالنسبة للعالم القديم، فهي تقع عند ملتقى قارات:",
+                "options": [
+                    "آسيا وإفريقيا وأوروبا",
+                    "آسيا وأستراليا",
+                    "إفريقيا وأمريكا",
+                    "أوروبا وأمريكا"
+                ],
+                "ans": 0,
+                "img": "images/s1u1l3_globe.jpg",
+                "masks": []
+            },
+            {
+                "q": "تطل مصر كما يظهر في الخريطة على بحرين مهمين هما:",
+                "options": [
+                    "البحر الأسود والبحر المتوسط",
+                    "البحر الميت والبحر المتوسط",
+                    "البحر الأحمر والبحر المتوسط",
+                    "بحر العرب والبحر الأحمر"
+                ],
+                "ans": 2,
+                "img": "images/s1u1l3_globe.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة بعض استخدامات الثروات المعدنية، ومن المعادن التي وهبها الله لمصر:",
+                "options": [
+                    "الذهب والنحاس والحديد",
+                    "الفحم والقصدير",
+                    "البترول والغاز",
+                    "اليورانيوم والفضة"
+                ],
+                "ans": 0,
+                "img": "images/s1u1l3_chair.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة نقوشًا مصرية عن الزراعة، فما العامل الطبيعي الذي ساعد على قيام الزراعة في مصر؟",
+                "options": [
+                    "الرياح الجنوبية",
+                    "نهر النيل",
+                    "البحر الأحمر",
+                    "الصحراء الغربية"
+                ],
+                "ans": 1,
+                "img": "images/s1u1l3_header.jpg",
+                "masks": []
+            },
+            {
+                "q": "قامت الحضارات المصرية والعراقية على ضفاف الأنهار، ومن عوامل قيام الحضارات:",
+                "options": [
+                    "وجود الجبال الثلجية",
+                    "وجود الأنهار",
+                    "بعد البحار",
+                    "قلة السكان"
+                ],
+                "ans": 1,
+                "img": "images/s1u1l1_civmap.jpg",
+                "masks": []
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

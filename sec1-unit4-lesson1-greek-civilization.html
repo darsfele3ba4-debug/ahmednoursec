@@ -1,0 +1,4291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس الحضارة اليونانية الإغريقية - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الثَّانَوِيُّ - الْوَحْدَةُ الرَّابِعَةُ - الدَّرْسُ الأَوَّلُ: الْحَضَارَةُ الْيُونَانِيَّةُ «الإِغْرِيقِيَّةُ»</h2>
+                    <p style="margin-top: 10px;">التَّارِيخُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "التاريخ: الحضارة اليونانية الإغريقية - الصف الأول الثانوي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول الحضارة اليونانية الإغريقية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "ساعد الموقع الجغرافي لبلاد اليونان على التواصل مع حضارات:",
+                "options": [
+                    "الصين البعيدة",
+                    "أستراليا",
+                    "الأمريكتين",
+                    "الشرق القديم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كانت المعبر الرئيس للتواصل الحضاري بين الشرق واليونان جزيرتا:",
+                "options": [
+                    "صقلية ومالطة",
+                    "كريت وقبرص",
+                    "كورسيكا وكريت",
+                    "رودس وسردينيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سميت حضارة جزيرة كريت بـ:",
+                "options": [
+                    "الأثينية",
+                    "الإسبرطية",
+                    "الهلينستية",
+                    "المينوية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "سميت حضارة كريت بالمينوية لأن ملوكها كانوا يحملون لقب:",
+                "options": [
+                    "فرعون",
+                    "بطلميوس",
+                    "مينوس",
+                    "قيصر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "نشأت إسبرطة باندماج عدد من:",
+                "options": [
+                    "الإمبراطوريات",
+                    "الجزر",
+                    "المدن الكبرى",
+                    "القرى الصغيرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عرفت إسبرطة بنظامها:",
+                "options": [
+                    "الجمهوري",
+                    "العسكري الصارم",
+                    "الديمقراطي",
+                    "التجاري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "نشأت أثينا داخل إقليم:",
+                "options": [
+                    "مقدونيا",
+                    "أتيكا",
+                    "كريت",
+                    "إسبرطة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عرفت أثينا بنظامها:",
+                "options": [
+                    "العسكري الصارم",
+                    "الديمقراطي",
+                    "الملكي المطلق",
+                    "القبلي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أهم ما قدمته أثينا للإنسانية:",
+                "options": [
+                    "الأهرامات",
+                    "فكرة الديمقراطية",
+                    "الكتابة المسمارية",
+                    "النظام العسكري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تبلغ الأراضي السهلية في بلاد اليونان:",
+                "options": [
+                    "80% من المساحة",
+                    "50% من المساحة",
+                    "20% فقط من المساحة الكلية",
+                    "90% من المساحة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "برع اليونانيون في صناعة السفن بسبب:",
+                "options": [
+                    "كثرة الأنهار",
+                    "استيراد الأخشاب من الصين",
+                    "كثرة الصحاري",
+                    "طبيعة بلاد اليونان الجغرافية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تعد ... أهم الأنشطة الاقتصادية في بلاد اليونان:",
+                "options": [
+                    "الصيد",
+                    "التجارة",
+                    "الزراعة",
+                    "الرعي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صدرت اليونان:",
+                "options": [
+                    "البردي والكتان",
+                    "الأقمشة والحبوب",
+                    "الذهب الإفريقي",
+                    "الرخام والمعادن والنبيذ والزيوت"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استوردت اليونان الأقمشة والحبوب من:",
+                "options": [
+                    "الهند",
+                    "الصين",
+                    "روما",
+                    "مصر وسوريا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أسس اليونانيون في مصر مدينة على الطراز الإغريقي سميت:",
+                "options": [
+                    "بطلمية",
+                    "نقراطيس",
+                    "الإسكندرية",
+                    "أنتينوبوليس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تقع نقراطيس حاليًا بمحافظة:",
+                "options": [
+                    "الفيوم",
+                    "أسوان",
+                    "الجيزة",
+                    "البحيرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "سيطرت إسبرطة على بلاد الإغريق لمدة:",
+                "options": [
+                    "50 عامًا",
+                    "200 عام",
+                    "1000 عام",
+                    "500 عام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سقطت إسبرطة في القرن الرابع قبل الميلاد على يد:",
+                "options": [
+                    "المقدونيين",
+                    "الرومان",
+                    "الفرس",
+                    "المصريين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يحكم إسبرطة:",
+                "options": [
+                    "ثلاثة ملوك",
+                    "ملك واحد",
+                    "مجلس من الكهنة",
+                    "ملكان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يتكون مجلس الشيوخ في إسبرطة بالإضافة إلى الملكين من:",
+                "options": [
+                    "عشرين عضوًا",
+                    "ثلاثين عضوًا",
+                    "مائة عضو",
+                    "خمسين عضوًا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ينتخب أعضاء مجلس الشيوخ في إسبرطة من المواطنين الذين بلغوا:",
+                "options": [
+                    "30 عامًا",
+                    "60 عامًا",
+                    "40 عامًا",
+                    "20 عامًا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يقتصر دور الجمعية الشعبية في إسبرطة على:",
+                "options": [
+                    "إعلان الحرب",
+                    "تشريع القوانين",
+                    "التصويت بالرفض أو القبول للقوانين",
+                    "قيادة الجيش"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "الرقباء الشعبيون في إسبرطة عددهم:",
+                "options": [
+                    "خمسة أعضاء ينتخبون سنويًا",
+                    "ثلاثون عضوًا",
+                    "عشرة أعضاء",
+                    "عضوان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كل من يبلغ العشرين في إسبرطة يكون جنديًا في الجيش حتى سن:",
+                "options": [
+                    "الخمسين",
+                    "الستين",
+                    "الثلاثين",
+                    "الأربعين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قامت أثينا في بداية الأمر على النظام:",
+                "options": [
+                    "الديمقراطي",
+                    "الملكي",
+                    "الجمهوري",
+                    "العسكري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "النظام الذي امتلك كافة الموارد الاقتصادية في أثينا فزاد الفقر:",
+                "options": [
+                    "الأرستقراطي",
+                    "الشعبي",
+                    "الجمهوري",
+                    "الديمقراطي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حكم سولون أثينا:",
+                "options": [
+                    "332 ق.م",
+                    "594-593 ق.م",
+                    "467-428 ق.م",
+                    "776 ق.م"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من إصلاحات سولون:",
+                "options": [
+                    "إسقاط الديون وتشجيع العمل والإنتاج",
+                    "منع العمل",
+                    "إلغاء الديمقراطية",
+                    "زيادة الضرائب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "بعد تخلي سولون عن الحكم سافر إلى:",
+                "options": [
+                    "روما",
+                    "بابل",
+                    "فارس",
+                    "مصر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بلغت الديمقراطية في أثينا ذروتها في عهد:",
+                "options": [
+                    "الإسكندر",
+                    "سولون",
+                    "فيليب الثاني",
+                    "بركليس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "حكم بركليس أثينا:",
+                "options": [
+                    "332-323 ق.م",
+                    "594-593 ق.م",
+                    "776 ق.م",
+                    "467-428 ق.م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لم تكن الديمقراطية في أثينا كاملة لأنها:",
+                "options": [
+                    "منحت الأجانب كل الحقوق",
+                    "جعلت الحقوق للأحرار فقط وحرمت النساء",
+                    "شملت الجميع",
+                    "سمحت للعبيد بالتصويت"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عرفت الحروب بين أثينا وإسبرطة باسم:",
+                "options": [
+                    "الحروب الصليبية",
+                    "حروب البيلوبونيز",
+                    "الحروب البونية",
+                    "حروب طروادة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تمكن من فرض حكمه بالقوة على بلاد اليونان كلها:",
+                "options": [
+                    "بركليس",
+                    "فيليب الثاني المقدوني",
+                    "سولون",
+                    "سقراط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان مبدأ الإسكندر الأكبر:",
+                "options": [
+                    "فرق تسد",
+                    "الحرب دائمة",
+                    "العالم وطن واحد",
+                    "اليونان للإغريق فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "توطدت العلاقات بين مصر واليونان في فترة حكم الأسرة:",
+                "options": [
+                    "الثامنة عشرة",
+                    "السادسة والعشرين",
+                    "الأولى",
+                    "الرابعة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عرف مزج الحضارة المصرية القديمة بالحضارة اليونانية باسم الحضارة:",
+                "options": [
+                    "الرومانية",
+                    "البيزنطية",
+                    "المينوية",
+                    "الهلينستية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان اليونانيون يعتقدون أن أسرة الآلهة تقيم فوق قمة جبل:",
+                "options": [
+                    "سيناء",
+                    "الأوليمبوس",
+                    "طوروس",
+                    "لبنان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كبير الآلهة عند اليونانيين:",
+                "options": [
+                    "بعل",
+                    "آمون",
+                    "أبولو",
+                    "زيوس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أصبحت عقيدة الإلهة ... عبادة شائعة في بلاد الإغريق:",
+                "options": [
+                    "عشتار",
+                    "إيزيس",
+                    "أثينا",
+                    "حتحور"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتخذ الإسكندر الأكبر شعار قرني الكبش المقدس للإله:",
+                "options": [
+                    "زيوس",
+                    "رع",
+                    "بتاح",
+                    "آمون"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تقوم فلسفة سقراط على:",
+                "options": [
+                    "الفكر التاريخي وعلم الأحياء",
+                    "الأساطير",
+                    "إعمال العقل في كل شيء",
+                    "الطابع العلمي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أطلق العرب على أرسطو لقب:",
+                "options": [
+                    "أبي التاريخ",
+                    "أبي الطب",
+                    "عميد النحاتين",
+                    "المعلم الأول"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يلقب هيرودوت بـ:",
+                "options": [
+                    "أبي الفلسفة",
+                    "المعلم الأول",
+                    "أبي الطب",
+                    "أبي التاريخ"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ألف استرابون كتابه الشهير:",
+                "options": [
+                    "الجغرافيا",
+                    "الجمهورية",
+                    "الإلياذة",
+                    "في التاريخ العام"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صاحب ملحمتي الإلياذة والأوديسة:",
+                "options": [
+                    "هيرودوت",
+                    "أرخيلوخس",
+                    "أفلاطون",
+                    "هوميروس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أشهر أطباء الإغريق ويطلق عليه أبو الطب:",
+                "options": [
+                    "أرسطو",
+                    "أبو قراط",
+                    "جالينوس",
+                    "إيمحوتب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أقام الزعيم بركليس معبد البارثنون على قمة الأكروبول عام:",
+                "options": [
+                    "332 ق.م",
+                    "447 ق.م",
+                    "594 ق.م",
+                    "776 ق.م"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعد ... عميد النحاتين في العالم اليوناني:",
+                "options": [
+                    "سقراط",
+                    "هوميروس",
+                    "فيدياس",
+                    "بركليس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أقيمت أول دورة للألعاب الأولمبية عام:",
+                "options": [
+                    "332 ق.م",
+                    "447 ق.م",
+                    "776 ق.م",
+                    "1458 م"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن الحضارة اليونانية الإغريقية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "لقب ملوك كريت؟",
+                "options": [
+                    "فرعون",
+                    "قيصر",
+                    "بطلميوس",
+                    "مينوس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اسم حضارة كريت؟",
+                "options": [
+                    "الإسبرطية",
+                    "الهلينستية",
+                    "المينوية",
+                    "الأثينية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مدينة النظام العسكري؟",
+                "options": [
+                    "طروادة",
+                    "كريت",
+                    "إسبرطة",
+                    "أثينا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مدينة الديمقراطية؟",
+                "options": [
+                    "كريت",
+                    "إسبرطة",
+                    "مقدونيا",
+                    "أثينا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "إقليم نشأة أثينا؟",
+                "options": [
+                    "طيبة",
+                    "مقدونيا",
+                    "أتيكا",
+                    "كريت"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "نسبة الأراضي السهلية؟",
+                "options": [
+                    "50%",
+                    "90%",
+                    "20%",
+                    "70%"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أهم نشاط اقتصادي؟",
+                "options": [
+                    "الزراعة",
+                    "التجارة",
+                    "الصيد",
+                    "الرعي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صناعة برعوا فيها؟",
+                "options": [
+                    "السفن",
+                    "الورق",
+                    "الحرير",
+                    "البردي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من صادرات اليونان؟",
+                "options": [
+                    "البردي",
+                    "الرخام",
+                    "الحبوب",
+                    "الأقمشة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من واردات اليونان؟",
+                "options": [
+                    "الزيوت",
+                    "الرخام",
+                    "النبيذ",
+                    "الحبوب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مدينة يونانية بمصر؟",
+                "options": [
+                    "الإسكندرية",
+                    "طيبة",
+                    "منف",
+                    "نقراطيس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "محافظة نقراطيس حاليًا؟",
+                "options": [
+                    "قنا",
+                    "المنيا",
+                    "الجيزة",
+                    "البحيرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مدة سيطرة إسبرطة؟",
+                "options": [
+                    "50 عامًا",
+                    "200 عام",
+                    "100 عام",
+                    "500 عام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عدد ملوك إسبرطة؟",
+                "options": [
+                    "واحد",
+                    "ثلاثة",
+                    "اثنان",
+                    "خمسة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أعضاء مجلس الشيوخ بالملكين؟",
+                "options": [
+                    "50",
+                    "30",
+                    "5",
+                    "28"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سن عضو مجلس الشيوخ؟",
+                "options": [
+                    "20 عامًا",
+                    "40 عامًا",
+                    "30 عامًا",
+                    "60 عامًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عدد الرقباء الشعبيين؟",
+                "options": [
+                    "خمسة",
+                    "عشرة",
+                    "ثلاثة",
+                    "ثلاثون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "سن بدء الجندية بإسبرطة؟",
+                "options": [
+                    "العاشرة",
+                    "الأربعين",
+                    "الثلاثين",
+                    "العشرين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "محور الحياة بإسبرطة؟",
+                "options": [
+                    "الفلسفة",
+                    "الفن",
+                    "الجيش",
+                    "التجارة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أول نظام حكم بأثينا؟",
+                "options": [
+                    "العسكري",
+                    "الديمقراطي",
+                    "الملكي",
+                    "الجمهوري"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مصلح أثينا الأول؟",
+                "options": [
+                    "سولون",
+                    "سقراط",
+                    "فيليب",
+                    "بركليس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مدة التزام إصلاحات سولون؟",
+                "options": [
+                    "خمس سنوات",
+                    "عشرون سنة",
+                    "عشر سنوات",
+                    "سنة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "بلد سافر إليه سولون؟",
+                "options": [
+                    "بابل",
+                    "روما",
+                    "مصر",
+                    "فارس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حاكم ذروة الديمقراطية؟",
+                "options": [
+                    "فيليب",
+                    "بركليس",
+                    "سولون",
+                    "الإسكندر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من حرموا من الحقوق؟",
+                "options": [
+                    "الحكام",
+                    "الأحرار",
+                    "الأغنياء",
+                    "النساء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "حروب أثينا وإسبرطة؟",
+                "options": [
+                    "البيلوبونيز",
+                    "البونية",
+                    "الفارسية",
+                    "طروادة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "موحد اليونان بالقوة؟",
+                "options": [
+                    "بركليس",
+                    "سولون",
+                    "زيوس",
+                    "فيليب الثاني"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عمر الإسكندر عند الحكم؟",
+                "options": [
+                    "ثلاثون عامًا",
+                    "أربعون عامًا",
+                    "عشرون عامًا",
+                    "خمسة عشر عامًا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عام دخول الإسكندر مصر؟",
+                "options": [
+                    "776 ق.م",
+                    "525 ق.م",
+                    "332 ق.م",
+                    "30 ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أسرة توطد العلاقات؟",
+                "options": [
+                    "26",
+                    "4",
+                    "12",
+                    "18"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حضارة المزج المصري اليوناني؟",
+                "options": [
+                    "الهلينستية",
+                    "القبطية",
+                    "البيزنطية",
+                    "المينوية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جبل الآلهة؟",
+                "options": [
+                    "طوروس",
+                    "لبنان",
+                    "سيناء",
+                    "الأوليمبوس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كبير آلهة اليونان؟",
+                "options": [
+                    "بوسيدون",
+                    "أبولو",
+                    "هيرميس",
+                    "زيوس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "إلهة مصرية عبدها الإغريق؟",
+                "options": [
+                    "نوت",
+                    "حتحور",
+                    "ماعت",
+                    "إيزيس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "رمز آمون للإسكندر؟",
+                "options": [
+                    "الصقر",
+                    "الشمس",
+                    "قرنا الكبش",
+                    "الثعبان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "فيلسوف إعمال العقل؟",
+                "options": [
+                    "أفلاطون",
+                    "أرسطو",
+                    "هيرودوت",
+                    "سقراط"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "فيلسوف الطابع العلمي؟",
+                "options": [
+                    "أفلاطون",
+                    "سقراط",
+                    "بوليبيوس",
+                    "أرسطو"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "المعلم الأول؟",
+                "options": [
+                    "هوميروس",
+                    "سقراط",
+                    "أرسطو",
+                    "أفلاطون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أبو التاريخ؟",
+                "options": [
+                    "هوميروس",
+                    "استرابون",
+                    "بوليبيوس",
+                    "هيرودوت"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مؤلف التاريخ العام؟",
+                "options": [
+                    "استرابون",
+                    "أرسطو",
+                    "بوليبيوس",
+                    "هيرودوت"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مؤلف الجغرافيا؟",
+                "options": [
+                    "أفلاطون",
+                    "هيرودوت",
+                    "بوليبيوس",
+                    "استرابون"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عدد أجزاء الجغرافيا؟",
+                "options": [
+                    "عشرون",
+                    "خمسة",
+                    "سبعة عشر",
+                    "عشرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صاحب الإلياذة؟",
+                "options": [
+                    "سقراط",
+                    "أرخيلوخس",
+                    "هوميروس",
+                    "فيدياس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أشهر شعراء الغنائي؟",
+                "options": [
+                    "هوميروس",
+                    "هيرودوت",
+                    "أفلاطون",
+                    "أرخيلوخس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أبو الطب؟",
+                "options": [
+                    "زيوس",
+                    "أبو قراط",
+                    "أرسطو",
+                    "سقراط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أشهر معبد يوناني؟",
+                "options": [
+                    "الكرنك",
+                    "البارثنون",
+                    "زيوس",
+                    "الرمسيوم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عميد النحاتين؟",
+                "options": [
+                    "هوميروس",
+                    "سولون",
+                    "بركليس",
+                    "فيدياس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تمثال من عجائب الدنيا؟",
+                "options": [
+                    "هيرا",
+                    "أبولو",
+                    "زيوس",
+                    "أثينا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مدينة الألعاب الأولمبية؟",
+                "options": [
+                    "أثينا",
+                    "أوليمبيا",
+                    "روما",
+                    "إسبرطة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عام أول أولمبياد؟",
+                "options": [
+                    "1896 ق.م",
+                    "776 ق.م",
+                    "447 ق.م",
+                    "332 ق.م"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات الحضارة اليونانية الإغريقية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «ساعد الموقع الجغرافي لبلاد اليونان على نشر حضارات الشرق في باقي أنحاء القارة ...».",
+                "options": [
+                    "الآسيوية",
+                    "الأوروبية",
+                    "الأمريكية",
+                    "الإفريقية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كانت جزيرتا كريت و... بمثابة المعبر الرئيس للتواصل الحضاري».",
+                "options": [
+                    "رودس",
+                    "صقلية",
+                    "مالطة",
+                    "قبرص"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ارتبطت حضارة كريت بالحضارة ... القديمة وتأثرت بها».",
+                "options": [
+                    "الهندية",
+                    "المصرية",
+                    "الصينية",
+                    "الأمريكية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «لقب مينوس في كريت مثل لقب ... في الحضارة المصرية».",
+                "options": [
+                    "قيصر",
+                    "فرعون",
+                    "ملك",
+                    "سلطان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «طبق النظام العسكري الصارم في إسبرطة على كافة مناحي الحياة من أجل إعداد مواطنين قادرين على ...».",
+                "options": [
+                    "الزراعة",
+                    "القتال",
+                    "التجارة",
+                    "الفلسفة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تميزت أثينا بتنوعها ... الذي أدى إلى اختلاف نشاط السكان».",
+                "options": [
+                    "اللغوي",
+                    "العرقي",
+                    "الجغرافي",
+                    "الديني"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يمكن وصف طبيعة اليونان الجغرافية بأنها طبيعة جبلية ...».",
+                "options": [
+                    "صحراوية",
+                    "نهرية",
+                    "بحرية",
+                    "سهلية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «انقسمت الأراضي الزراعية في اليونان إلى إقطاعات كبيرة وأراضٍ للأفراد وأراضٍ ...».",
+                "options": [
+                    "للمراعي",
+                    "للمعابد",
+                    "للملوك",
+                    "للجنود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «اهتم اليونانيون بالثروة الحيوانية لحاجاتهم للحومها وأصوافها و...».",
+                "options": [
+                    "عظامها",
+                    "ألبانها",
+                    "جلودها فقط",
+                    "قرونها"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من صناعات اليونان زيوت الزيتون والنبيذ والأواني ...».",
+                "options": [
+                    "الخشبية",
+                    "الفخارية",
+                    "الزجاجية فقط",
+                    "الذهبية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تحولت الموانئ في بلاد اليونان إلى محطات ... مهمة لتبادل السلع».",
+                "options": [
+                    "زراعية",
+                    "عسكرية",
+                    "تجارية",
+                    "دينية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «الزراعة سبب ... ومن أهم مقومات نشأة الحضارة».",
+                "options": [
+                    "الفقر",
+                    "الحروب",
+                    "الاستقرار",
+                    "الهجرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «جاء بعض اليونانيين إلى مصر في العصر ... واشتغلوا بالتجارة».",
+                "options": [
+                    "العتيق",
+                    "المتأخر",
+                    "الوسيط",
+                    "القديم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ارتقت في نقراطيس صناعة الزجاج والأواني ...».",
+                "options": [
+                    "الحديدية",
+                    "الذهبية",
+                    "الفخارية",
+                    "النحاسية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ينتخب الملكان في إسبرطة مدى الحياة من أكبر ... في المدينة».",
+                "options": [
+                    "طبقتين",
+                    "أسرتين",
+                    "قبيلتين",
+                    "مدينتين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان للملكين في إسبرطة سلطة إعلان الحرب وقيادة ...».",
+                "options": [
+                    "الأسواق",
+                    "المدارس",
+                    "الجيش",
+                    "المعابد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «سلطة مجلس الشيوخ في إسبرطة تشريع القوانين و...».",
+                "options": [
+                    "إلغاؤها فقط",
+                    "تنفيذها فقط",
+                    "مناقشتها",
+                    "تجاهلها"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «الرقباء الشعبيون يمارسون سلطات تنفيذية وقضائية ومراقبة السلوك والأخلاق وحفظ ...».",
+                "options": [
+                    "المعابد",
+                    "الحدود",
+                    "الأمن",
+                    "الأموال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «بدأ السكان في أثينا يقومون بثورة ضد النظام ...».",
+                "options": [
+                    "الشعبي",
+                    "الأرستقراطي",
+                    "الديمقراطي",
+                    "العسكري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من إصلاحات سولون توفير فرص عمل ...».",
+                "options": [
+                    "للعامة",
+                    "للأغنياء",
+                    "للعبيد",
+                    "للأجانب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من إصلاحات سولون تحديد حد أقصى للمصروفات على ...».",
+                "options": [
+                    "الجيش",
+                    "المدارس",
+                    "المعابد",
+                    "الحفلات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يقول سولون: إن من الصعب على من يقوم بأعمال عظيمة أن يرضي ...».",
+                "options": [
+                    "نفسه",
+                    "الملك",
+                    "الآلهة",
+                    "الجميع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «انضم بركليس إلى العامة رغم كونه من أسرة ...».",
+                "options": [
+                    "ملكية",
+                    "غنية",
+                    "فقيرة",
+                    "عسكرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان بركليس مؤمنًا بأن التربية ... السليمة هي السبيل لارتقاء الشعب الأثيني».",
+                "options": [
+                    "الرياضية",
+                    "الاجتماعية",
+                    "الدينية",
+                    "العسكرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ديمقراطية أثينا لا تجيز للعبيد أو ... الاشتراك فيها».",
+                "options": [
+                    "الحكام",
+                    "الأجانب",
+                    "الأحرار",
+                    "الأغنياء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «أتاحت الحياة الديمقراطية في أثينا للسكان حرية الفكر و...».",
+                "options": [
+                    "الحرب",
+                    "التعصب",
+                    "الجهل",
+                    "الإبداع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أصبحت أثينا رائدة بلاد اليونان في القرنين الخامس و... قبل الميلاد».",
+                "options": [
+                    "الثالث",
+                    "العاشر",
+                    "الأول",
+                    "الرابع"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أدت حروب البيلوبونيز إلى ... المدن اليونانية».",
+                "options": [
+                    "ازدهار",
+                    "اتحاد",
+                    "ضعف",
+                    "قوة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «حاول فيليب الثاني إقناع اليونانيين بتوحيد الصف تحت رايته لمواجهة ...».",
+                "options": [
+                    "المصريين",
+                    "الفرس",
+                    "الفينيقيين",
+                    "الرومان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «هزم الإسكندر الأكبر الفرس في آسيا ...».",
+                "options": [
+                    "الصغرى",
+                    "الشرقية",
+                    "الكبرى",
+                    "الوسطى"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «استخدم اليونانيون كمرتزقة في الجيش ...».",
+                "options": [
+                    "المصري",
+                    "الفارسي",
+                    "الروماني",
+                    "البابلي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «القاسم المشترك بين المدن اليونانية كان في الحياة ...».",
+                "options": [
+                    "العسكرية",
+                    "السياسية",
+                    "الاقتصادية",
+                    "الدينية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «آمن اليونانيون بقوى الطبيعة وزعموا أن لكل منها ... يوجهها».",
+                "options": [
+                    "بطلًا",
+                    "كاهنًا",
+                    "إلهًا",
+                    "ملكًا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «جعل اليونانيون آلهتهم على صورة ...».",
+                "options": [
+                    "البشر",
+                    "الحيوانات",
+                    "الأشجار",
+                    "الطيور"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «عرف اليونانيون طقوسًا دينية كالمواكب الجنائزية والأناشيد و...».",
+                "options": [
+                    "التحنيط",
+                    "القرابين",
+                    "الزاقورات",
+                    "الأهرامات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «استعان اليونانيون بـ... كعنصر مهم في الطقوس».",
+                "options": [
+                    "الرسم",
+                    "الكتابة",
+                    "الموسيقى",
+                    "النحت"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «عندما جاء الإسكندر قدم القرابين للمعبودات المصرية واتخذ الألقاب ...».",
+                "options": [
+                    "البابلية",
+                    "الرومانية",
+                    "الفرعونية",
+                    "الفارسية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «أعمل فلاسفة اليونان عقولهم في تحليل مشكلات الحياة والتعرف على أسرار ...».",
+                "options": [
+                    "الكون",
+                    "الملوك",
+                    "الحروب",
+                    "التجارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تتسم مدرسة أفلاطون بالطابع ... في التفكير».",
+                "options": [
+                    "الديني",
+                    "الأسطوري",
+                    "العلمي",
+                    "العسكري"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يقول سقراط: إن البحث عن الحقيقة والحق والجمال والخير هو أسمى ...».",
+                "options": [
+                    "الأموال",
+                    "الحروب",
+                    "المناصب",
+                    "الغايات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تطورت الكتابة التاريخية من شعر الملاحم المعتمد على ... إلى الكتابة المعتمدة على الحقائق».",
+                "options": [
+                    "العلم",
+                    "الأسطورة",
+                    "الوثائق",
+                    "الآثار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كتب بوليبيوس كثيرًا عن مصر وخاصة في العصر ...».",
+                "options": [
+                    "الفرعوني",
+                    "الإسلامي",
+                    "الروماني",
+                    "البطلمي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تحدث استرابون عن مصر في الجزء السابع ... من كتابه».",
+                "options": [
+                    "الخامس",
+                    "الثالث",
+                    "الأول",
+                    "عشر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «الشعر الغنائي يتضمن الحماس والغزل و...».",
+                "options": [
+                    "الفلسفة",
+                    "الملاحم",
+                    "التاريخ",
+                    "الرثاء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «توصل اليونان إلى أن ... هو المتحكم في كل أعضاء الجسم».",
+                "options": [
+                    "المعدة",
+                    "الكبد",
+                    "القلب",
+                    "المخ"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «عرف اليونان أن القلب هو الذي يضخ الدم في ...».",
+                "options": [
+                    "العظام",
+                    "العضلات",
+                    "الشرايين",
+                    "المخ"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «حرص مفكرو الإغريق على زيارة مصر والاطلاع على مكتبات ... المصرية».",
+                "options": [
+                    "المعابد",
+                    "القصور",
+                    "المقابر",
+                    "الأسواق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «أقيم معبد البارثنون لعبادة الإلهة ...».",
+                "options": [
+                    "هيرا",
+                    "إيزيس",
+                    "أثينا",
+                    "أفروديت"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «أصبح البارثنون مسجدًا تحت الحكم الإسلامي ... عام 1458م».",
+                "options": [
+                    "التركي",
+                    "العباسي",
+                    "الفاطمي",
+                    "الأموي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «ظلت الدورات الأولمبية تقام لمدة تزيد على ... عام».",
+                "options": [
+                    "مائة",
+                    "خمسمائة",
+                    "مائتي",
+                    "ألف"
+                ],
+                "ans": 3
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ الحضارة اليونانية الإغريقية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "ساعد الموقع الجغرافي لبلاد اليونان على التواصل مع حضارات الشرق القديم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت جزيرتا كريت وقبرص المعبر الرئيس للتواصل الحضاري.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سميت حضارة كريت بالهلينستية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان ملوك كريت يحملون لقب مينوس.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نشأت إسبرطة باندماج عدد من القرى الصغيرة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عرفت إسبرطة بنظامها الديمقراطي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "نشأت أثينا داخل إقليم أتيكا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أهم ما قدمته أثينا للإنسانية فكرة الديمقراطية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تبلغ الأراضي السهلية في اليونان 80% من مساحتها.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "برع اليونانيون في صناعة السفن.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تعد الزراعة أهم الأنشطة الاقتصادية في بلاد اليونان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صدرت اليونان الرخام والمعادن والنبيذ والزيوت.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استوردت اليونان الأقمشة والحبوب من مصر وسوريا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أسس اليونانيون مدينة نقراطيس بمحافظة البحيرة حاليًا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سيطرت إسبرطة على بلاد الإغريق لمدة 200 عام.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سقطت إسبرطة على يد الرومان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان يحكم إسبرطة ملكان.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يتكون مجلس الشيوخ في إسبرطة من 28 عضوًا بالإضافة إلى الملكين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ينتخب أعضاء مجلس الشيوخ من المواطنين الذين بلغوا 20 عامًا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يقتصر دور الجمعية الشعبية على التصويت بالرفض أو القبول.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الرقباء الشعبيون عشرة أعضاء ينتخبون مدى الحياة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الجيش هو محور الحياة في إسبرطة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قامت أثينا في بداية الأمر على النظام الديمقراطي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أدى النظام الأرستقراطي في أثينا إلى زيادة الفقر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من إصلاحات سولون إسقاط الديون.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "سافر سولون إلى مصر ليطلع على حضاراتها.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "بلغت الديمقراطية في أثينا ذروتها في عهد سولون.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت ديمقراطية أثينا كاملة تشمل النساء والعبيد.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حرمت النساء في أثينا من مباشرة الحقوق السياسية والتشريعية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أدت حروب البيلوبونيز إلى ضعف المدن اليونانية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فرض فيليب الثاني المقدوني حكمه بالقوة على بلاد اليونان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان الإسكندر الأكبر يهدف إلى تحقيق مبدأ العالم وطن واحد.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "توطدت العلاقات بين مصر واليونان في فترة حكم الأسرة الرابعة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استولى الإسكندر الأكبر على مصر عام 332 ق.م.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اعتقد اليونانيون أن أسرة الآلهة تقيم فوق جبل الأوليمبوس.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أبولو كبير الآلهة عند اليونانيين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أصبحت عقيدة إيزيس عبادة شائعة في بلاد الإغريق.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتخذ الإسكندر شعار قرني الكبش رمزًا للإله آمون.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقوم فلسفة سقراط على إعمال العقل في كل شيء.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أطلق العرب على أفلاطون لقب المعلم الأول.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يلقب هيرودوت بأبي التاريخ.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "زار استرابون مصر بين عامي 25-20 ق.م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "هوميروس صاحب ملحمتي الإلياذة والأوديسة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استمد اليونان الكثير من أصول العلم من الحضارة المصرية القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أبو قراط من أشهر أطباء الإغريق.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أقام بركليس معبد البارثنون لعبادة الإله زيوس.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استخدم معبد البارثنون لعبادة ثلاثة أديان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تمثال زيوس من عجائب الدنيا السبع.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أقيمت أول دورة للألعاب الأولمبية عام 776 ق.م.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لم يتأثر الفن اليوناني بالفن المصري القديم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في الحضارة اليونانية الإغريقية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "لماذا كانت جزيرتا كريت وقبرص معبرًا للتواصل الحضاري؟",
+                "options": [
+                    "لأنهما في المحيط",
+                    "لموقعهما بين حضارات الشرق وبلاد اليونان فنشأت فيهما أقدم حضارات المنطقة ثم انتقلت لليونان",
+                    "لكثرة جبالهما",
+                    "لبعدهما عن الشرق"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا سميت حضارة كريت بالمينوية؟",
+                "options": [
+                    "نسبة لمدينة مينوس",
+                    "نسبة لإله مينوس",
+                    "نسبة لنهر مينوس",
+                    "لأن كل ملوكها كانوا يحملون لقب مينوس مثل لقب فرعون"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أثر النظام العسكري الصارم في إسبرطة؟",
+                "options": [
+                    "ازدهار الفلسفة",
+                    "نشر الديمقراطية",
+                    "لا أثر",
+                    "انعكس على التربية وكافة مجالات الحياة الاجتماعية والسياسية والثقافية والفكرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قارن بين النظام السياسي في إسبرطة وأثينا:",
+                "options": [
+                    "أثينا عسكرية",
+                    "متطابقان",
+                    "إسبرطة ديمقراطية",
+                    "إسبرطة نظام عسكري صارم وأثينا نظام ديمقراطي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا اختلف نشاط السكان ومستوياتهم في أثينا؟",
+                "options": [
+                    "لتنوع أديانها",
+                    "لعزلتها",
+                    "لكثرة ملوكها",
+                    "لتنوعها الجغرافي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كيف ساعدت الطبيعة الجغرافية على تنوع الاقتصاد اليوناني؟",
+                "options": [
+                    "طبيعة صحراوية",
+                    "طبيعة جبلية بحرية فاهتموا بالزراعة في الوديان والسهول والصناعة والتجارة",
+                    "لا تأثير",
+                    "طبيعة نهرية فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا أدرك اليونانيون ضرورة استغلال الأراضي السهلية؟",
+                "options": [
+                    "لأنها واسعة جدًا",
+                    "لأنها صحراوية",
+                    "لأنها تبلغ 20% فقط من المساحة الكلية",
+                    "لأنها ملك للمعابد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا برع اليونانيون في صناعة السفن؟",
+                "options": [
+                    "لكثرة الأنهار",
+                    "لتقليد المصريين فقط",
+                    "لطبيعة بلاد اليونان الجغرافية الجبلية البحرية",
+                    "لكثرة الصحاري"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا تعد التجارة أهم الأنشطة الاقتصادية في اليونان؟",
+                "options": [
+                    "لقلة الموانئ",
+                    "لعدم وجود بحر",
+                    "لاتساع الزراعة",
+                    "لتحول الموانئ إلى محطات تجارية لتبادل السلع بين اليونان والشرق"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما مظاهر التواصل الاقتصادي بين مصر واليونان؟",
+                "options": [
+                    "لا تواصل",
+                    "إغلاق الموانئ",
+                    "اشتغال اليونانيين بالتجارة في مصر وتأسيس نقراطيس وارتقاء صناعة الزجاج والفخار بها",
+                    "غزو يوناني"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما عناصر نظام الحكم في إسبرطة؟",
+                "options": [
+                    "الملكان ومجلس الشيوخ والجمعية الشعبية والرقباء الشعبيون والجيش",
+                    "البرلمان المنتخب",
+                    "مجلس الكهنة",
+                    "ملك واحد فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما سلطات الملكين في إسبرطة؟",
+                "options": [
+                    "إعلان الحرب وقيادة الجيش ورئاسة الهيئة القضائية وتقدم المواكب الدينية",
+                    "التعليم فقط",
+                    "التجارة",
+                    "الزراعة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما دور الرقباء الشعبيين في إسبرطة؟",
+                "options": [
+                    "ممارسة سلطات تنفيذية وقضائية ومراقبة السلوك والأخلاق وحفظ الأمن",
+                    "تشريع القوانين",
+                    "قيادة الجيش",
+                    "التجارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف تطور نظام الحكم في أثينا؟",
+                "options": [
+                    "من الملكي إلى الأرستقراطي ثم الديمقراطي بعد ثورة السكان وإصدار التشريعات",
+                    "من الجمهوري إلى الملكي",
+                    "لم يتطور",
+                    "من الديمقراطي إلى العسكري"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا ثار سكان أثينا على النظام الأرستقراطي؟",
+                "options": [
+                    "لعدالته",
+                    "لأنه ديمقراطي",
+                    "لأنه امتلك كافة الموارد الاقتصادية مما أدى إلى زيادة الفقر",
+                    "لكثرة الحروب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهم إصلاحات سولون؟",
+                "options": [
+                    "إلغاء الجيش",
+                    "تشجيع العمل والإنتاج وتوفير فرص العمل وإسقاط الديون وتحديد حد أقصى للمصروفات على الحفلات",
+                    "زيادة الضرائب",
+                    "تحرير العبيد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ماذا يعني قول سولون: من الصعب على من يقوم بأعمال عظيمة أن يرضي الجميع؟",
+                "options": [
+                    "لا معنى له",
+                    "أن إرضاء جميع الناس غاية لا تدرك فالمصلح يتعرض للنقد",
+                    "يجب إرضاء الجميع",
+                    "الأعمال العظيمة سهلة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا سافر سولون إلى مصر؟",
+                "options": [
+                    "للحرب",
+                    "للهروب",
+                    "للتجارة",
+                    "ليطلع على حضاراتها ويستفيد من إنجازاتها"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما دور بركليس في أثينا؟",
+                "options": [
+                    "احتل مصر",
+                    "بلغت الديمقراطية ذروتها في عهده وقام بإصلاحات وأقام البارثنون",
+                    "أسس إسبرطة",
+                    "ألغى الديمقراطية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا لم تكن الديمقراطية في أثينا كاملة؟",
+                "options": [
+                    "لأنها جعلت الحقوق للأحرار فقط دون العبيد والأجانب وحرمت النساء",
+                    "لأنها نظام عسكري",
+                    "لأنها شملت الجميع",
+                    "لأنها ملكية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما العلاقة بين الحرية والتطور الفكري والإبداعي؟",
+                "options": [
+                    "الحرية تتيح الإبداع وظهور الفلاسفة والمفكرين كما حدث في أثينا",
+                    "الحرية تعوق الإبداع",
+                    "الاستبداد يحقق الإبداع",
+                    "لا علاقة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما نتائج حروب البيلوبونيز؟",
+                "options": [
+                    "ضعف المدن اليونانية وتمكن فيليب الثاني المقدوني من فرض حكمه عليها",
+                    "استقلال إسبرطة",
+                    "انتصار الفرس",
+                    "قوة المدن"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أهداف الإسكندر الأكبر من حملاته؟",
+                "options": [
+                    "الهروب من اليونان",
+                    "نشر الديمقراطية",
+                    "تحقيق مبدأ العالم وطن واحد وتكوين إمبراطورية يونانية",
+                    "جمع الذهب فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما مظاهر التواصل السياسي بين مصر واليونان؟",
+                "options": [
+                    "توطد العلاقات في الأسرة 26 واستخدام اليونانيين مرتزقة ومزج الحضارتين في الهلينستية",
+                    "غزو مصر لليونان",
+                    "العزلة",
+                    "الحروب الدائمة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما المقصود بالحضارة الهلينستية؟",
+                "options": [
+                    "حضارة روما",
+                    "مزج الحضارة المصرية القديمة بالحضارة اليونانية بعد استيلاء الإسكندر على مصر",
+                    "حضارة كريت",
+                    "حضارة فينيقيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما القاسم المشترك بين المدن اليونانية رغم اختلاف نظمها؟",
+                "options": [
+                    "النظام العسكري",
+                    "الزراعة",
+                    "الحياة الدينية",
+                    "النظام الديمقراطي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما خصائص الديانة اليونانية؟",
+                "options": [
+                    "الإيمان بقوى الطبيعة لكل منها إله وأسرة الآلهة فوق الأوليمبوس في صورة البشر",
+                    "التوحيد",
+                    "عبادة الملوك",
+                    "إنكار الآلهة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مدى تأثر اليوناني القديم بالفكر المصري في العبادة؟",
+                "options": [
+                    "انتشرت عبادة زيوس في مصر فقط",
+                    "انتشرت عبادة إيزيس وقدم الإسكندر القرابين للمعبودات المصرية واتخذ شعار آمون",
+                    "لا تأثير",
+                    "أثرت اليونان في مصر فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا قدم الإسكندر القرابين للمعبودات المصرية واتخذ الألقاب الفرعونية؟",
+                "options": [
+                    "لا سبب",
+                    "لكسب ود المصريين واحترام ديانتهم",
+                    "لتغيير دينه نهائيًا",
+                    "لإهانتهم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما جوانب الحياة الفكرية في بلاد اليونان؟",
+                "options": [
+                    "التجارة",
+                    "الحرب فقط",
+                    "الزراعة",
+                    "الفلسفة والتاريخ والأدب والعلوم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا تعد الفلسفة أعظم ما تركه اليونانيون للفكر الإنساني؟",
+                "options": [
+                    "لأنها سهلة",
+                    "لأنها خاصة بالملوك",
+                    "لأنهم أعملوا عقولهم في تحليل مشكلات الحياة وأسرار الكون",
+                    "لأنها أساطير"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "قارن بين مدارس سقراط وأفلاطون وأرسطو:",
+                "options": [
+                    "كلها عسكرية",
+                    "متطابقة",
+                    "كلها أساطير",
+                    "سقراط إعمال العقل وأفلاطون الطابع العلمي وأرسطو الفكر التاريخي وعلم الأحياء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا أطلق العرب على أرسطو لقب المعلم الأول؟",
+                "options": [
+                    "لأنه بحث في كثير من العلوم إلى جانب الفلسفة",
+                    "لأنه أول مدرس",
+                    "لأنه ملك",
+                    "لأنه مصري"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما رأيك في قول سقراط عن البحث عن الحقيقة؟",
+                "options": [
+                    "قول خاطئ",
+                    "قول صحيح يدعو لاتباع العقل والضمير وعدم الخوف في سبيل الحق",
+                    "لا قيمة له",
+                    "يدعو للخوف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كيف تطورت الكتابة التاريخية عند اليونان؟",
+                "options": [
+                    "من الحقائق إلى الأساطير",
+                    "لم تتطور",
+                    "من شعر الملاحم المعتمد على الأسطورة إلى الكتابة المعتمدة على الحقائق وتحليلها",
+                    "من المسمارية إلى الهيروغليفية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهمية كتابات بوليبيوس واسترابون لتاريخ مصر؟",
+                "options": [
+                    "كتب بوليبيوس عن مصر البطلمية وتحدث استرابون عن مصر في الجزء 17 من الجغرافيا",
+                    "لا أهمية",
+                    "كتبا عن الصين",
+                    "كتبا عن روما فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أنواع الشعر عند اليونان؟",
+                "options": [
+                    "لا شعر",
+                    "شعر الملاحم كالإلياذة والأوديسة والشعر الغنائي",
+                    "الشعر الحر فقط",
+                    "النثر فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر تقدم اليونان في الطب؟",
+                "options": [
+                    "استيراد الأطباء",
+                    "العلاج بالسحر",
+                    "توصلوا إلى أن المخ يتحكم في الجسم وأن القلب يضخ الدم ومن أطبائهم أبو قراط",
+                    "لا تقدم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما دور الحضارة المصرية في تقدم العلوم اليونانية؟",
+                "options": [
+                    "لا دور",
+                    "العلوم يونانية خالصة",
+                    "أخذت مصر عن اليونان",
+                    "استمد اليونان أصول العلم من مصر وحولوا تجارب المصريين إلى نظريات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما مظاهر التواصل الثقافي بين مصر واليونان؟",
+                "options": [
+                    "إغلاق المعابد",
+                    "لا تواصل",
+                    "زيارة مفكري الإغريق لمصر والالتقاء بالكهنة والاطلاع على مكتبات المعابد",
+                    "الحروب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا انتشر الفن اليوناني ولم يقتصر على المعابد؟",
+                "options": [
+                    "لأن الفنان عاش قريبًا من الآلهة وانتشر فنه على الأبنية والأعمدة والملاعب والمسارح والبيوت",
+                    "لأنه فن رخيص",
+                    "للتجارة",
+                    "لأنه منع في المعابد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مجالات الحياة الفنية والرياضية في بلاد اليونان؟",
+                "options": [
+                    "الرسم فقط",
+                    "الموسيقى فقط",
+                    "العمارة والنحت والألعاب الأولمبية",
+                    "السينما"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا يعد البارثنون قمة تطور العمارة اليونانية؟",
+                "options": [
+                    "لأنه من الطين",
+                    "لأنه مصري",
+                    "لأنه أشهر المعابد التي تطورت من البساطة إلى مستوى رفيع",
+                    "لصغر حجمه"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كيف استخدم معبد البارثنون لعبادة ثلاثة أديان؟",
+                "options": [
+                    "لم يستخدم",
+                    "معبد لزيوس فقط",
+                    "معبد لإيزيس",
+                    "معبد لأثينا ثم كنيسة مسيحية ثم مسجد تحت الحكم التركي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أعظم إنجازات فيدياس؟",
+                "options": [
+                    "تمثال زيوس الذي يعد من عجائب الدنيا السبع",
+                    "معبد البارثنون فقط",
+                    "الألعاب الأولمبية",
+                    "الإلياذة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أهمية الألعاب الأولمبية؟",
+                "options": [
+                    "لا أهمية",
+                    "طقوس جنائزية",
+                    "مباريات واسعة تشترك فيها كل المدن اليونانية واكتسبت أهمية تاريخية وتشترك فيها اليوم كل بلاد العالم",
+                    "حروب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما الدليل على تأثر الفن اليوناني بالفن المصري؟",
+                "options": [
+                    "لا دليل",
+                    "قصر الملك مينوس ومعبد البارثنون وأعمدته الدورية ذات الأصول المصرية",
+                    "الأهرامات اليونانية",
+                    "الزاقورات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كيف انتقل الفن الشرقي إلى بلاد اليونان؟",
+                "options": [
+                    "عن طريق الفرس فقط",
+                    "عن طريق الرومان",
+                    "من خلال الأيونيين الذين استقروا في جزر بحر إيجة وساحل آسيا الصغرى ولهم صلات بمصر وسوريا",
+                    "لم ينتقل"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما القيم المستفادة من الحضارة اليونانية؟",
+                "options": [
+                    "الكسل",
+                    "الاستبداد",
+                    "تقدير العلم والعلماء والتسامح الديني واحترام العمل والديمقراطية",
+                    "التعصب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما دور فيليب الثاني المقدوني في تاريخ اليونان؟",
+                "options": [
+                    "بنى البارثنون",
+                    "فرض حكمه بالقوة على اليونان وحاول توحيد الصف لمواجهة الفرس",
+                    "نشر الديمقراطية",
+                    "أسس أثينا"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في الحضارة اليونانية الإغريقية",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "جبل أوليمبوس",
+                    "أثينا",
+                    "طروادة",
+                    "بحر إيجة"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        14.5,
+                        15.5,
+                        17.2,
+                        6.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "جبل أوليمبوس",
+                    "أثينا",
+                    "بحر إيجة",
+                    "طروادة"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        78.8,
+                        15.5,
+                        10.3,
+                        6.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "طروادة",
+                    "بحر إيجة",
+                    "جبل أوليمبوس",
+                    "أثينا"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        60.5,
+                        30.1,
+                        13.0,
+                        6.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "أثينا",
+                    "جبل أوليمبوس",
+                    "بحر إيجة",
+                    "طروادة"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        42.8,
+                        40.6,
+                        6.1,
+                        5.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "جبل أوليمبوس",
+                    "إسبرطة",
+                    "بحر إيجة",
+                    "طروادة"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        25.7,
+                        57.1,
+                        8.7,
+                        6.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "جزر الكيكلاديس",
+                    "طروادة",
+                    "بحر إيجة",
+                    "جبل أوليمبوس"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        55.6,
+                        50.6,
+                        13.8,
+                        11.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "جبل أوليمبوس",
+                    "بحر إيجة",
+                    "طروادة",
+                    "بحر كريت"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        55.9,
+                        72.7,
+                        13.5,
+                        6.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "بحر إيجة",
+                    "جزيرة كريت",
+                    "جبل أوليمبوس",
+                    "طروادة"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        58.4,
+                        86.2,
+                        11.9,
+                        5.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة أهم المدن اليونانية القديمة وحضاراتها؟",
+                "options": [
+                    "بحر إيجة",
+                    "أرغوس",
+                    "جبل أوليمبوس",
+                    "طروادة"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_map.jpg",
+                "masks": [
+                    [
+                        28.9,
+                        48.6,
+                        8.4,
+                        6.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الاقتصادية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "الزراعة",
+                    "الرعي",
+                    "التجارة",
+                    "الصناعة"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l1_econ.jpg",
+                "masks": [
+                    [
+                        71.8,
+                        16.9,
+                        15.5,
+                        5.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الاقتصادية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "التجارة",
+                    "الزراعة",
+                    "الرعي",
+                    "الصناعة"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_econ.jpg",
+                "masks": [
+                    [
+                        40.2,
+                        16.9,
+                        13.4,
+                        5.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الاقتصادية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "الزراعة",
+                    "الصناعة",
+                    "الرعي",
+                    "التجارة"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_econ.jpg",
+                "masks": [
+                    [
+                        10.6,
+                        16.9,
+                        13.4,
+                        5.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر نظام الحكم في إسبرطة المخفي بعلامة (؟)؟",
+                "options": [
+                    "الجمعية الشعبية",
+                    "الرقباء الشعبيون",
+                    "الملكان",
+                    "مجلس الشيوخ"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l1_sparta.jpg",
+                "masks": [
+                    [
+                        73.5,
+                        78.8,
+                        25.8,
+                        20.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر نظام الحكم في إسبرطة المخفي بعلامة (؟)؟",
+                "options": [
+                    "الملكان",
+                    "مجلس الشيوخ",
+                    "الرقباء الشعبيون",
+                    "الجمعية الشعبية"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_sparta.jpg",
+                "masks": [
+                    [
+                        57.5,
+                        57.7,
+                        25.8,
+                        19.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر نظام الحكم في إسبرطة المخفي بعلامة (؟)؟",
+                "options": [
+                    "الجمعية الشعبية",
+                    "الرقباء الشعبيون",
+                    "الملكان",
+                    "مجلس الشيوخ"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l1_sparta.jpg",
+                "masks": [
+                    [
+                        37.0,
+                        35.6,
+                        26.0,
+                        20.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر نظام الحكم في إسبرطة المخفي بعلامة (؟)؟",
+                "options": [
+                    "مجلس الشيوخ",
+                    "الرقباء الشعبيون",
+                    "الجمعية الشعبية",
+                    "الملكان"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_sparta.jpg",
+                "masks": [
+                    [
+                        16.7,
+                        57.7,
+                        25.8,
+                        19.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما عنصر نظام الحكم في إسبرطة المخفي بعلامة (؟)؟",
+                "options": [
+                    "الجيش",
+                    "الملكان",
+                    "الجمعية الشعبية",
+                    "مجلس الشيوخ"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l1_sparta.jpg",
+                "masks": [
+                    [
+                        0.2,
+                        78.8,
+                        25.8,
+                        20.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحياة الفكرية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "التاريخ",
+                    "الفلسفة",
+                    "العلوم",
+                    "الأدب"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_intel.jpg",
+                "masks": [
+                    [
+                        83.0,
+                        68.2,
+                        16.7,
+                        30.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحياة الفكرية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "الأدب",
+                    "التاريخ",
+                    "الفلسفة",
+                    "العلوم"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_intel.jpg",
+                "masks": [
+                    [
+                        59.5,
+                        68.2,
+                        16.5,
+                        30.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحياة الفكرية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "العلوم",
+                    "الفلسفة",
+                    "التاريخ",
+                    "الأدب"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_intel.jpg",
+                "masks": [
+                    [
+                        30.0,
+                        68.2,
+                        16.4,
+                        30.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما جانب الحياة الفكرية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "الأدب",
+                    "الفلسفة",
+                    "التاريخ",
+                    "العلوم"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_intel.jpg",
+                "masks": [
+                    [
+                        0.3,
+                        68.2,
+                        16.4,
+                        30.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الفنية والرياضية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "الألعاب الأولمبية",
+                    "العمارة",
+                    "المسرح",
+                    "النحت"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_arts.jpg",
+                "masks": [
+                    [
+                        79.4,
+                        63.6,
+                        20.3,
+                        34.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الفنية والرياضية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "العمارة",
+                    "الألعاب الأولمبية",
+                    "المسرح",
+                    "النحت"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_arts.jpg",
+                "masks": [
+                    [
+                        41.7,
+                        63.6,
+                        20.3,
+                        34.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما مجال الحياة الفنية والرياضية في بلاد اليونان المخفي بعلامة (؟)؟",
+                "options": [
+                    "المسرح",
+                    "الألعاب الأولمبية",
+                    "العمارة",
+                    "النحت"
+                ],
+                "ans": 1,
+                "img": "images/s1u4l1_arts.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        63.6,
+                        26.7,
+                        34.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما الأثر الموضح في الصورة من حضارة جزيرة كريت؟",
+                "options": [
+                    "معبد زيوس",
+                    "قصر أوغاريت",
+                    "معبد البارثنون",
+                    "قصر الملك مينوس"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_minos.jpg",
+                "masks": [
+                    [
+                        24.3,
+                        87.2,
+                        53.5,
+                        12.8
+                    ]
+                ]
+            },
+            {
+                "q": "من حاكم أثينا الموضح في الصورة صاحب الإصلاحات (594-593 ق.م)؟",
+                "options": [
+                    "سقراط",
+                    "بركليس",
+                    "سولون",
+                    "فيليب الثاني"
+                ],
+                "ans": 2,
+                "img": "images/s1u4l1_solon.jpg",
+                "masks": [
+                    [
+                        29.5,
+                        88.2,
+                        40.9,
+                        11.8
+                    ]
+                ]
+            },
+            {
+                "q": "من الإله الموضح في الصورة كبير آلهة اليونان؟",
+                "options": [
+                    "الإله بعل",
+                    "الإله آمون",
+                    "الإله أبولو",
+                    "الإله زيوس"
+                ],
+                "ans": 3,
+                "img": "images/s1u4l1_zeus.jpg",
+                "masks": [
+                    [
+                        34.5,
+                        91.2,
+                        47.5,
+                        8.8
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المعبد الموضح في الصورة الذي أقامه بركليس على الأكروبول؟",
+                "options": [
+                    "معبد البارثنون",
+                    "معبد زيوس",
+                    "معبد الكرنك",
+                    "قصر مينوس"
+                ],
+                "ans": 0,
+                "img": "images/s1u4l1_parthenon.jpg",
+                "masks": [
+                    [
+                        28.9,
+                        89.1,
+                        41.5,
+                        10.9
+                    ]
+                ]
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

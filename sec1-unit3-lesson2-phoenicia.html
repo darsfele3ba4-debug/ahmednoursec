@@ -1,0 +1,4253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس حضارة فينيقيا - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الثَّانَوِيُّ - الْوَحْدَةُ الثَّالِثَةُ - الدَّرْسُ الثَّانِي: حَضَارَةُ فِينِيقْيَا</h2>
+                    <p style="margin-top: 10px;">التَّارِيخُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "التاريخ: حضارة فينيقيا - الصف الأول الثانوي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول حضارة فينيقيا",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "كان الفينيقيون أول من استقروا على الشريط الساحلي لـ:",
+                "options": [
+                    "سوريا وساحل فلسطين ولبنان",
+                    "مصر والسودان",
+                    "اليونان وإيطاليا",
+                    "العراق وفارس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تعني كلمة فينيقيا:",
+                "options": [
+                    "الأرض الخضراء",
+                    "الأرض الحمراء اللون",
+                    "أرض البحر",
+                    "أرض الجبال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أطلق الإغريق على الفينيقيين اسم:",
+                "options": [
+                    "الحيثيين",
+                    "الكلدانيين",
+                    "الهكسوس",
+                    "فينكس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نسب اسم الفينيقيين إلى الصبغة الحمراء التي استخرجوها من:",
+                "options": [
+                    "الصخور",
+                    "الحيوانات البحرية",
+                    "الطين",
+                    "النباتات الجبلية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أشهر المدن الفينيقية:",
+                "options": [
+                    "أثينا وإسبرطة",
+                    "بابل وآشور",
+                    "صيدا وصور وجبيل وأوغاريت",
+                    "منف وطيبة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أقيمت مدينة صيدا على:",
+                "options": [
+                    "لسان ممتد في الماء تحيط به جزر صغيرة",
+                    "واحة صحراوية",
+                    "قمة جبل",
+                    "ضفاف نهر دجلة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تولت زعامة المدن الفينيقية بعد صيدا مدينة:",
+                "options": [
+                    "جبيل",
+                    "أوغاريت",
+                    "بيروت",
+                    "صور"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اكتسبت مدينة صور مناعة ضد الغزاة بسبب:",
+                "options": [
+                    "بعدها عن البحر",
+                    "جيشها المصري",
+                    "السور العظيم الذي يحيط بها",
+                    "كثرة سكانها"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أقدم المدن الفينيقية وأوثقها صلة بمصر القديمة:",
+                "options": [
+                    "عكا",
+                    "جبيل",
+                    "صيدا",
+                    "صور"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عثر في مدينة جبيل على أقدم:",
+                "options": [
+                    "مسلة",
+                    "كتابة مسمارية",
+                    "هرم",
+                    "أبجدية في الوطن العربي القديم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نالت شهرة عظيمة في الفن والعمران وكانت ميناءً يمتلئ بالبضائع مدينة:",
+                "options": [
+                    "صيدا",
+                    "أوغاريت",
+                    "حيفا",
+                    "جبيل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أهم المستوطنات الفينيقية في حوض البحر المتوسط:",
+                "options": [
+                    "منف",
+                    "بابل",
+                    "قرطاجة",
+                    "أكاد"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أسس الفينيقيون قرطاجة بالقرب من مدينة:",
+                "options": [
+                    "أثينا",
+                    "الإسكندرية",
+                    "تونس الحالية",
+                    "روما"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من مقومات التوسع البحري للفينيقيين:",
+                "options": [
+                    "توافر الأخشاب وكثرة التعاريج الساحلية وموقع البلاد المتوسط",
+                    "كثرة الأنهار",
+                    "الصحاري الواسعة",
+                    "السهول الزراعية الشاسعة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان نظام الحكم عند الفينيقيين:",
+                "options": [
+                    "شبه ديمقراطي",
+                    "ملكيًا مطلقًا",
+                    "عسكريًا",
+                    "ثيوقراطيًا كاملًا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت سلطة الحاكم أو الملك في المدن الفينيقية:",
+                "options": [
+                    "معدومة",
+                    "مقيدة",
+                    "مطلقة",
+                    "إلهية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مجلس الشيوخ عند الفينيقيين هو هيئة من:",
+                "options": [
+                    "الأغنياء",
+                    "الجنود",
+                    "المشرعين",
+                    "الكهنة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مجلس النواب عند الفينيقيين من طبقة:",
+                "options": [
+                    "الفقراء",
+                    "الأغنياء",
+                    "العبيد",
+                    "الكهنة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "عرفت بعض المدن الفينيقية النظام الجمهوري وخاصة مدينة:",
+                "options": [
+                    "صيدا",
+                    "صور",
+                    "جبيل",
+                    "قرطاجة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "حاول احتلال فينيقيا في القرن السادس قبل الميلاد الملك البابلي:",
+                "options": [
+                    "حمورابي",
+                    "نبوخذ نصر الثاني",
+                    "سرجون الأول",
+                    "كورش"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "احتل الإسكندر الأكبر فينيقيا عام:",
+                "options": [
+                    "604 ق.م",
+                    "538 ق.م",
+                    "332 ق.م",
+                    "30 ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "دخلت الجيوش الإسلامية المدن الفينيقية وفتحتها دون مقاومة تذكر عام:",
+                "options": [
+                    "1517م",
+                    "332م",
+                    "634م",
+                    "1100م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "اشترك الفينيقيون مع الملك تحتمس الثالث في معركة:",
+                "options": [
+                    "اليرموك",
+                    "مجدو",
+                    "قادش",
+                    "حطين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "في عهد الملك ... كاد نفوذ مصر يصل إلى الضياع في سوريا:",
+                "options": [
+                    "إخناتون",
+                    "تحتمس الثالث",
+                    "رمسيس الثاني",
+                    "أحمس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "بعد المعاهدة التي عقدها رمسيس الثاني مع ... ظلت المدن الفينيقية تحت السيطرة المصرية:",
+                "options": [
+                    "الهكسوس",
+                    "الآشوريين",
+                    "الفرس",
+                    "الحيثيين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كان هدف سيطرة مصر على المناطق المجاورة:",
+                "options": [
+                    "المحافظة على الأمن القومي المصري",
+                    "استغلال ثروات البلاد الأخرى",
+                    "نشر الدين",
+                    "جمع العبيد"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حول الفينيقيون سفوح جبال لبنان إلى:",
+                "options": [
+                    "مدن",
+                    "موانئ",
+                    "مقابر",
+                    "مصاطب صالحة للزراعة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أدخل الفينيقيون شجر الرمان إلى:",
+                "options": [
+                    "اليونان",
+                    "مصر",
+                    "العراق",
+                    "شمال إفريقيا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استخدم الفينيقيون في صباغة الثياب المزخرفة مادة حمراء من أجسام:",
+                "options": [
+                    "المعادن",
+                    "النباتات",
+                    "بعض القواقع البحرية",
+                    "الطيور"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عرف الفينيقيون الصناعات الزجاجية من:",
+                "options": [
+                    "الهند",
+                    "مصر",
+                    "العراق",
+                    "اليونان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تميزت صناعة الفخار الفينيقية بـ:",
+                "options": [
+                    "البساطة الشديدة",
+                    "الدقة والانسجام وحسن الذوق",
+                    "الخشونة",
+                    "صغر الحجم فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت ... هي المورد الأساسي عند الفينيقيين:",
+                "options": [
+                    "الرعي",
+                    "الصيد",
+                    "التجارة",
+                    "الزراعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تخصص سكان المدن الداخلية الفينيقية في:",
+                "options": [
+                    "النقل البحري",
+                    "الصيد",
+                    "النقل البري",
+                    "التعدين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "الفينيقيون هم أول أمة ... في التاريخ:",
+                "options": [
+                    "جبلية",
+                    "زراعية",
+                    "صحراوية",
+                    "بحرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من معابر التواصل الحضاري نحو قارة آسيا:",
+                "options": [
+                    "طريق الصحراء الغربية",
+                    "طريق النوبة",
+                    "طريق المحيط الأطلنطي",
+                    "طريق شبه جزيرة سيناء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "احتل الفينيقيون رأس المثلث الحضاري الذي ضلعه الأيمن:",
+                "options": [
+                    "بلاد اليونان",
+                    "شبه الجزيرة العربية",
+                    "بلاد النيل",
+                    "بلاد العراق القديم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استوردت مصر من فينيقيا خشب:",
+                "options": [
+                    "الأرز",
+                    "الأبنوس",
+                    "الصندل",
+                    "الزيتون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يشير حجر بالرمو إلى أن الملك سنفرو أرسل أسطولًا من:",
+                "options": [
+                    "عشر سفن",
+                    "مائة سفينة",
+                    "أربعين سفينة",
+                    "خمس سفن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "استعان بحارة فينيقيين للدوران حول إفريقيا الفرعون:",
+                "options": [
+                    "سنفرو",
+                    "خوفو",
+                    "إخناتون",
+                    "نخاو"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استمرت رحلة الدوران حول إفريقيا:",
+                "options": [
+                    "عشر سنوات",
+                    "ثلاث سنوات",
+                    "سنة واحدة",
+                    "ستة أشهر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "المعبود إيل عند الفينيقيين هو:",
+                "options": [
+                    "القوة المتجددة في الشمس",
+                    "رب الخصب والنماء",
+                    "صاحب الكلمة الأولى والأخيرة في شئون البشر الدينية",
+                    "ربة الحب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "المعبود بعل هو:",
+                "options": [
+                    "صاحب الكلمة الأولى",
+                    "إله البحر",
+                    "رب الخصب والنماء الذي أصلح الأرض",
+                    "ربة الحرب"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "زوجة الإله بعل:",
+                "options": [
+                    "أثينا",
+                    "عشتار",
+                    "إيزيس",
+                    "حتحور"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "المعبود أدونيس (أدون) يمثل:",
+                "options": [
+                    "الخصب",
+                    "الحرب",
+                    "البحر",
+                    "القوة المتجددة في الشمس بعد هزيمة الشتاء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تشبه قصة الإله بعل عند الفينيقيين قصة:",
+                "options": [
+                    "سنوهي",
+                    "الأخوين",
+                    "الطوفان",
+                    "إيزيس وأوزوريس مع الإله ست"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تشمل الطبقة الدنيا في المجتمع الفينيقي:",
+                "options": [
+                    "التجار",
+                    "الخدم والعبيد",
+                    "الكهنة",
+                    "الموظفين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تتكون الأبجدية الفينيقية من:",
+                "options": [
+                    "ثمانية وعشرين حرفًا",
+                    "عشرة حروف",
+                    "خمسين حرفًا",
+                    "اثنين وعشرين حرفًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "كانت الأبجدية الفينيقية أول أبجدية عرفها العالم في القرن:",
+                "options": [
+                    "الرابع عشر ق.م",
+                    "السابع الميلادي",
+                    "العاشر ق.م",
+                    "الأول الميلادي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أخذ الأبجدية عن الفينيقيين وعدلوا فيها:",
+                "options": [
+                    "الإغريق",
+                    "البابليون",
+                    "الفرس",
+                    "المصريون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عثر في مدينة أوغاريت على بقايا قصر ضخم زينت أعمدته بـ:",
+                "options": [
+                    "العاج",
+                    "الذهب",
+                    "النحاس",
+                    "الفضة"
+                ],
+                "ans": 3
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن حضارة فينيقيا",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "معنى فينيقيا؟",
+                "options": [
+                    "الأرض الخضراء",
+                    "الأرض الحمراء",
+                    "أرض الشمس",
+                    "أرض البحر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اسم إغريقي للفينيقيين؟",
+                "options": [
+                    "الحيثيون",
+                    "العموريون",
+                    "الآراميون",
+                    "فينكس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مصدر الصبغة الحمراء؟",
+                "options": [
+                    "نباتات",
+                    "طين",
+                    "حيوانات بحرية",
+                    "صخور"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مدينة على لسان مائي؟",
+                "options": [
+                    "أوغاريت",
+                    "جبيل",
+                    "صور",
+                    "صيدا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "زعيمة بعد صيدا؟",
+                "options": [
+                    "بيروت",
+                    "جبيل",
+                    "صور",
+                    "عكا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مدينة بها أقدم أبجدية؟",
+                "options": [
+                    "صيدا",
+                    "صور",
+                    "حيفا",
+                    "جبيل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مدينة الفن والعمران؟",
+                "options": [
+                    "عكا",
+                    "بعلبك",
+                    "صيدا",
+                    "أوغاريت"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أهم مستوطنة فينيقية؟",
+                "options": [
+                    "روما",
+                    "قرطاجة",
+                    "بابل",
+                    "أثينا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قرب أي مدينة قرطاجة؟",
+                "options": [
+                    "طرابلس",
+                    "القاهرة",
+                    "تونس",
+                    "الجزائر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "نظام الحكم الفينيقي؟",
+                "options": [
+                    "شبه ديمقراطي",
+                    "عسكري",
+                    "ديني",
+                    "مطلق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "هيئة المشرعين؟",
+                "options": [
+                    "الكهنة",
+                    "مجلس النواب",
+                    "مجلس الشيوخ",
+                    "الملك"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مجلس الأغنياء؟",
+                "options": [
+                    "مجلس الشيوخ",
+                    "مجلس النواب",
+                    "الكهنة",
+                    "الجيش"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مدينة جمهورية؟",
+                "options": [
+                    "جبيل",
+                    "صور",
+                    "قرطاجة",
+                    "صيدا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عام احتلال الإسكندر؟",
+                "options": [
+                    "332 ق.م",
+                    "634 م",
+                    "30 ق.م",
+                    "538 ق.م"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عام الفتح الإسلامي؟",
+                "options": [
+                    "538 م",
+                    "1100 م",
+                    "332 ق.م",
+                    "634 م"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "معركة مع تحتمس الثالث؟",
+                "options": [
+                    "قادش",
+                    "زاما",
+                    "حطين",
+                    "مجدو"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ملك أهمل سوريا؟",
+                "options": [
+                    "إخناتون",
+                    "رمسيس الثاني",
+                    "أحمس",
+                    "تحتمس الثالث"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معاهدة رمسيس مع؟",
+                "options": [
+                    "الهكسوس",
+                    "الفرس",
+                    "الآشوريين",
+                    "الحيثيين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أسرة رمسيس الثاني؟",
+                "options": [
+                    "العشرون",
+                    "التاسعة عشرة",
+                    "الرابعة",
+                    "الثامنة عشرة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "شجر أدخلوه لإفريقيا؟",
+                "options": [
+                    "الزيتون",
+                    "النخيل",
+                    "العنب",
+                    "الرمان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تحويل سفوح لبنان؟",
+                "options": [
+                    "مصاطب",
+                    "مقابر",
+                    "موانئ",
+                    "مدن"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من خامات النسيج؟",
+                "options": [
+                    "الورق",
+                    "البلاستيك",
+                    "الكتان",
+                    "النايلون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مصدر الصبغة الحمراء للثياب؟",
+                "options": [
+                    "النباتات",
+                    "الأحجار",
+                    "القواقع البحرية",
+                    "الأشجار"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صناعة تعلموها من مصر؟",
+                "options": [
+                    "الفخار",
+                    "النسيج",
+                    "السفن",
+                    "الزجاج"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "المورد الأساسي؟",
+                "options": [
+                    "التجارة",
+                    "الرعي",
+                    "الزراعة",
+                    "التعدين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تخصص المدن الداخلية؟",
+                "options": [
+                    "النقل البحري",
+                    "الصيد",
+                    "الزراعة",
+                    "النقل البري"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تخصص المدن الساحلية؟",
+                "options": [
+                    "النقل البري",
+                    "النقل البحري",
+                    "الرعي",
+                    "التعدين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أول أمة بحرية؟",
+                "options": [
+                    "الإغريق",
+                    "الرومان",
+                    "الفينيقيون",
+                    "المصريون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عدد معابر آسيا؟",
+                "options": [
+                    "اثنان",
+                    "أربعة",
+                    "ثلاثة",
+                    "خمسة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "قاعدة المثلث الحضاري؟",
+                "options": [
+                    "النيل",
+                    "شبه الجزيرة العربية",
+                    "العراق",
+                    "الشام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "خشب استوردته مصر؟",
+                "options": [
+                    "الجميز",
+                    "السنط",
+                    "الأرز",
+                    "الأبنوس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ملك أرسل 40 سفينة؟",
+                "options": [
+                    "سنفرو",
+                    "نخاو",
+                    "زوسر",
+                    "خوفو"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مصدر خبر سنفرو؟",
+                "options": [
+                    "حجر بالرمو",
+                    "مسلة حمورابي",
+                    "حجر رشيد",
+                    "بردية تورين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "فرعون الدوران حول إفريقيا؟",
+                "options": [
+                    "رمسيس",
+                    "نخاو",
+                    "تحتمس",
+                    "سنفرو"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مدة الدوران حول إفريقيا؟",
+                "options": [
+                    "سنة",
+                    "عشر سنوات",
+                    "ثلاث سنوات",
+                    "خمس سنوات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صاحب الكلمة الأولى؟",
+                "options": [
+                    "عشتار",
+                    "بعل",
+                    "إيل",
+                    "أدونيس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "رب الخصب والنماء؟",
+                "options": [
+                    "أدونيس",
+                    "آنو",
+                    "إيل",
+                    "بعل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "زوجة بعل؟",
+                "options": [
+                    "إيزيس",
+                    "حتحور",
+                    "عشتار",
+                    "نوت"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "القوة المتجددة في الشمس؟",
+                "options": [
+                    "أدونيس",
+                    "بعل",
+                    "عشتار",
+                    "إيل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عدد طبقات المجتمع؟",
+                "options": [
+                    "اثنتان",
+                    "أربع",
+                    "خمس",
+                    "ثلاث"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "طبقة الخدم والعبيد؟",
+                "options": [
+                    "العليا",
+                    "الوسطى",
+                    "الحاكمة",
+                    "الدنيا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "طبقة الوزير والنبلاء؟",
+                "options": [
+                    "الدنيا",
+                    "العامة",
+                    "الوسطى",
+                    "العليا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عدد حروف الأبجدية؟",
+                "options": [
+                    "22",
+                    "28",
+                    "26",
+                    "30"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قرن ظهور الأبجدية؟",
+                "options": [
+                    "العاشر م",
+                    "الأول م",
+                    "الرابع عشر ق.م",
+                    "الخامس ق.م"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "آخذو الأبجدية أولًا؟",
+                "options": [
+                    "الإغريق",
+                    "المصريون",
+                    "الرومان",
+                    "الفرس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ناشرو الأبجدية بأوروبا؟",
+                "options": [
+                    "الرومان",
+                    "الفينيقيون",
+                    "الفرس",
+                    "البابليون"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "زينة أعمدة قصر أوغاريت؟",
+                "options": [
+                    "العاج",
+                    "الذهب",
+                    "الفضة",
+                    "النحاس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أثر يدل على النحت؟",
+                "options": [
+                    "الزاقورات",
+                    "التوابيت",
+                    "الأهرامات",
+                    "المسلات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مدينة بها جالية مصرية؟",
+                "options": [
+                    "صيدا",
+                    "صور",
+                    "جبيل",
+                    "قرطاجة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "خط حكام جبيل؟",
+                "options": [
+                    "اللاتينية",
+                    "المسمارية",
+                    "الهيروغليفية",
+                    "الإغريقية"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات حضارة فينيقيا",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «كانت بلاد الشام مهدًا للديانة اليهودية و...».",
+                "options": [
+                    "الهندوسية",
+                    "الزرادشتية",
+                    "البوذية",
+                    "المسيحية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «لعبت بلاد الشام دورًا بارزًا في نشر الديانة ...».",
+                "options": [
+                    "الهندوسية",
+                    "الإسلامية",
+                    "الوثنية",
+                    "البوذية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من حضارات بلاد الشام الحضارة الآرامية والعمورية القديمة و...».",
+                "options": [
+                    "الإغريقية",
+                    "الرومانية",
+                    "المصرية",
+                    "الفينيقية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «اشتهر الفينيقيون باستخدام الصبغة الحمراء في صبغ ...».",
+                "options": [
+                    "الأواني",
+                    "المنسوجات",
+                    "الجدران",
+                    "السفن"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من كلمة (فينكس) اشتق لفظ ...».",
+                "options": [
+                    "فرنسا",
+                    "فارس",
+                    "فلسطين",
+                    "فينيقيا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «احتلت مدينة ... مركز الزعامة بين المدن الفينيقية الأخرى».",
+                "options": [
+                    "عكا",
+                    "أوغاريت",
+                    "صيدا",
+                    "حيفا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كان يحيط بمدينة صور سور عظيم أكسبها ... ضد الغزاة».",
+                "options": [
+                    "ضعفًا",
+                    "مناعة",
+                    "شهرة",
+                    "ثروة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «عثر في جبيل على كثير من التماثيل ...».",
+                "options": [
+                    "المصرية",
+                    "الإغريقية",
+                    "الرومانية",
+                    "البابلية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «عثر في جبيل على أحجار عليها أسماء فراعنة ...».",
+                "options": [
+                    "آشوريين",
+                    "إغريق",
+                    "فرس",
+                    "مصريين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كانت أوغاريت ميناءً يمتلئ بالبضائع التي تصدر إلى ... الجهات».",
+                "options": [
+                    "كل",
+                    "أبعد",
+                    "بعض",
+                    "أقرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كان لوجود الفينيقيين على ساحل محدد تحيط به الجبال أثر في توجههم نحو ... طلبًا للرزق».",
+                "options": [
+                    "الجبال",
+                    "البحر",
+                    "الأنهار",
+                    "الصحراء"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من مقومات التوسع البحري كثرة التعاريج الساحلية المهيئة لنشأة ...».",
+                "options": [
+                    "المدن الزراعية",
+                    "الصحاري",
+                    "الموانئ",
+                    "الجبال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «أخذت قرطاجة في التقدم حتى أصبحت تنافس المدن الفينيقية في التجارة والنشاط ...».",
+                "options": [
+                    "الجبلي",
+                    "الصحراوي",
+                    "البحري",
+                    "الزراعي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «كانت المدن الفينيقية الشرقية مستقلة عن بعضها من الناحية ...».",
+                "options": [
+                    "السياسية",
+                    "اللغوية",
+                    "الثقافية",
+                    "الدينية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «لم يستطع الفينيقيون أن يشكلوا وحدة ... واحدة».",
+                "options": [
+                    "دينية",
+                    "لغوية",
+                    "ثقافية",
+                    "سياسية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «كان الفينيقيون يفضلون الأمان والاستقرار ...».",
+                "options": [
+                    "السياسي",
+                    "الاقتصادي",
+                    "الديني",
+                    "العسكري"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كان الحاكم أو الملك الفينيقي يحكم بـ...».",
+                "options": [
+                    "الانتخاب",
+                    "القوة",
+                    "الوراثة",
+                    "القرعة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «الكهنة هم رجال الدين الذين كان لهم دور في إدارة شئون ...».",
+                "options": [
+                    "الصيد",
+                    "الحكم",
+                    "الزراعة",
+                    "التجارة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «استمرت قرطاجة على النظام الجمهوري حتى سقطت على يد ...».",
+                "options": [
+                    "الرومان",
+                    "الإغريق",
+                    "المصريين",
+                    "الفرس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «منعت أسوار فينيقيا المنيعة نبوخذ نصر الثاني من ...».",
+                "options": [
+                    "زيارتها",
+                    "تجارتها",
+                    "حمايتها",
+                    "احتلالها"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «بعد ثلاثة قرون من احتلال الإسكندر خضعت المدن الفينيقية لسيطرة ...».",
+                "options": [
+                    "المصريين",
+                    "الفرس",
+                    "الرومان",
+                    "البابليين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «جعل المصريون سوريا ولبنان وحدة واحدة تمثل خط الدفاع ... عن الحدود المصرية».",
+                "options": [
+                    "الأخير",
+                    "الثاني",
+                    "الثالث",
+                    "الأول"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أنشأ المصريون في سوريا ولبنان العديد من القلاع و... الحربية».",
+                "options": [
+                    "الحصون",
+                    "المعابد",
+                    "الأسواق",
+                    "المقابر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «كانت مصر عبر التاريخ حامية للدول ... في مواجهة كل المعتدين».",
+                "options": [
+                    "الأوروبية",
+                    "الإفريقية الجنوبية",
+                    "العربية",
+                    "الآسيوية البعيدة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ركز إخناتون كل اهتمامه على نشر الدعوة ...».",
+                "options": [
+                    "العسكرية",
+                    "الدينية",
+                    "التجارية",
+                    "الزراعية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تدعمت الصلات ... بين مصر وفينيقيا بعد معاهدة رمسيس الثاني».",
+                "options": [
+                    "التجارية",
+                    "الدينية فقط",
+                    "العدائية",
+                    "العسكرية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «اهتم الفينيقيون بالنواحي الاقتصادية التي تتواكب مع بيئتهم ...».",
+                "options": [
+                    "الطبيعية",
+                    "الصناعية",
+                    "الصحراوية",
+                    "الجليدية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «زرع الفينيقيون الحبوب في السهول والأشجار كالنخيل والعنب و...».",
+                "options": [
+                    "الأرز",
+                    "الزيتون",
+                    "القطن",
+                    "القصب"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ربى الفينيقيون الأبقار والأغنام و... كما اشتغلوا بالصيد».",
+                "options": [
+                    "الفيلة",
+                    "الجمال فقط",
+                    "الماعز",
+                    "الخيول فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من أمثلة صناعة الغزل والنسيج عند الفينيقيين الصوف والحرير والقطن و...».",
+                "options": [
+                    "الجلد",
+                    "البوليستر",
+                    "الكتان",
+                    "النايلون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «عرف الفينيقيون الصناعة الزجاجية من مصر وسرعان ما ... فيها».",
+                "options": [
+                    "احتكروها",
+                    "فشلوا",
+                    "تركوها",
+                    "تفوقوا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «استخدم الفينيقيون النحاس والبرونز والحديد والذهب والفضة في صناعة ...».",
+                "options": [
+                    "الأسلحة",
+                    "الفخار",
+                    "السفن",
+                    "الملابس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من صناعات الفينيقيين أدوات الزينة والآلات ...».",
+                "options": [
+                    "الحربية الثقيلة",
+                    "الموسيقية",
+                    "الزراعية الحديثة",
+                    "الطبية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «نهض الفينيقيون بالتجارة حتى سيطروا على تجارة العالم ... آنذاك».",
+                "options": [
+                    "الجوية",
+                    "البرية",
+                    "الصحراوية",
+                    "البحرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أقيمت موانئ الفينيقيين عند الرءوس ... في البحر».",
+                "options": [
+                    "الجبلية",
+                    "الخارجية",
+                    "الداخلية",
+                    "الرملية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «احتكر سكان المدن الداخلية القوافل التجارية التي جلبت المنتجات الآسيوية و...».",
+                "options": [
+                    "الإفريقية",
+                    "الأوروبية",
+                    "الأمريكية",
+                    "الأسترالية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «في قرطاجة مرسى حربي ومرسى ... آخر».",
+                "options": [
+                    "جوي",
+                    "داخلي",
+                    "بري",
+                    "خارجي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «لم يقتصر الفينيقيون على تصدير المواد ... مثل الأخشاب».",
+                "options": [
+                    "الغذائية",
+                    "الخام",
+                    "المصنعة",
+                    "الطبية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من صادرات الفينيقيين أصباغهم ... المشهورة».",
+                "options": [
+                    "الأرجوانية",
+                    "الصفراء",
+                    "الزرقاء",
+                    "الخضراء"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من معابر التواصل نحو آسيا طريق ساحل البحر ... وطريق ساحل البحر الأحمر».",
+                "options": [
+                    "المتوسط",
+                    "العربي",
+                    "قزوين",
+                    "الأسود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من المثلث الحضاري خرجت حضارة إنسانية أشعت بنورها على ...».",
+                "options": [
+                    "مصر فقط",
+                    "العراق فقط",
+                    "أوروبا فقط",
+                    "العالم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «استخدم خشب الأرز في مقابر الملوك وصناعة ...».",
+                "options": [
+                    "الأدوات الزراعية",
+                    "الملابس",
+                    "الحلي",
+                    "السفن"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «الملك سنفرو مؤسس الأسرة ...».",
+                "options": [
+                    "الخامسة",
+                    "الثالثة",
+                    "الرابعة",
+                    "الأولى"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «زادت العلاقات التجارية بين مصر وفينيقيا خاصة في عهد الدولة ...».",
+                "options": [
+                    "الوسطى",
+                    "القديمة",
+                    "المتأخرة",
+                    "الحديثة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من خصائص الديانة الفينيقية عبادة الظواهر ...».",
+                "options": [
+                    "البحرية فقط",
+                    "الصناعية",
+                    "الطبيعية",
+                    "الفلكية فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «صور الفينيقيون الظواهر والأشياء في هيئة معبودات ذات صفة ...».",
+                "options": [
+                    "مائية",
+                    "بشرية",
+                    "نباتية",
+                    "حيوانية فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «كان بناء المعابد الفينيقية بسيطًا في بداية الأمر ثم تطور لتصبح غاية في الفن و... في البناء».",
+                "options": [
+                    "القبح",
+                    "الروعة",
+                    "البساطة",
+                    "الضعف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ظهر تأثر الفينيقيين بالمصريين في عادات الدفن من وضع الطعام و... مع المتوفى».",
+                "options": [
+                    "السلاح",
+                    "الشراب",
+                    "الذهب فقط",
+                    "الحيوانات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «دعت الحاجة الفينيقيين إلى ابتكار وسيلة سريعة لتسجيل ما يبيعونه وما ... في سجلاتهم».",
+                "options": [
+                    "يشترونه",
+                    "يعبدونه",
+                    "يزرعونه",
+                    "يصنعونه"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «لا شك أن اختراع الأبجدية الفينيقية كان له الفضل الأكبر في نشر الوعي و... والحضارة».",
+                "options": [
+                    "الثقافة",
+                    "الجهل",
+                    "الفقر",
+                    "الحروب"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ حضارة فينيقيا",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "كان الفينيقيون أول من استقروا على الشريط الساحلي لسوريا وفلسطين ولبنان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تعني كلمة فينيقيا الأرض الخضراء.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أطلق الإغريق على الفينيقيين اسم فينكس.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أقيمت مدينة صيدا على قمة جبل.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "احتلت صيدا مركز الزعامة بين المدن الفينيقية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تولت مدينة صور زعامة المدن الفينيقية بعد صيدا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت مدينة صور بلا أسوار.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جبيل من أقدم المدن الفينيقية وأوثقها صلة بمصر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عثر في جبيل على أقدم أبجدية في الوطن العربي القديم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نالت أوغاريت شهرة عظيمة في الفن والعمران.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من مقومات التوسع البحري توافر الأخشاب الصالحة لبناء السفن.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أسس الفينيقيون قرطاجة بالقرب من مدينة الإسكندرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تمكن الفينيقيون الشرقيون من تشكيل وحدة سياسية واحدة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان نظام الحكم عند الفينيقيين شبه ديمقراطي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كانت سلطة الملك الفينيقي مطلقة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مجلس الشيوخ عند الفينيقيين هيئة من المشرعين.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مجلس النواب من طبقة الفقراء.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عرفت قرطاجة النظام الجمهوري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نجح نبوخذ نصر الثاني في احتلال فينيقيا بسهولة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "احتل الإسكندر الأكبر فينيقيا عام 332 ق.م.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فتحت الجيوش الإسلامية المدن الفينيقية دون مقاومة تذكر عام 634م.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اشترك الفينيقيون مع تحتمس الثالث في معركة مجدو.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كان هدف مصر من السيطرة على المناطق المجاورة استغلال ثرواتها.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "في عهد إخناتون كاد نفوذ مصر في سوريا يصل إلى الضياع.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أخذ رمسيس الثاني على عاتقه تعزيز النفوذ المصري في سوريا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حول الفينيقيون سفوح جبال لبنان إلى مصاطب زراعية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أدخل الفينيقيون شجر الرمان إلى شمال إفريقيا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لم يعرف الفينيقيون صناعة الغزل والنسيج.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عرف الفينيقيون الصناعات الزجاجية من مصر.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تميزت صناعة الفخار الفينيقية بالدقة والانسجام وحسن الذوق.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كانت الزراعة هي المورد الأساسي عند الفينيقيين.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تخصص سكان المدن الداخلية الفينيقية في النقل البري.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اتخذ سكان المدن الساحلية النقل البحري مجالًا لنشاطهم التجاري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الفينيقيون أول أمة بحرية في التاريخ.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اقتصر الفينيقيون في تجارتهم على تصدير المواد الخام.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "احتل الفينيقيون رأس المثلث الحضاري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قاعدة المثلث الحضاري هي بلاد النيل.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استوردت مصر خشب الأرز من فينيقيا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أرسل الملك سنفرو أسطولًا من أربعين سفينة لإحضار خشب الأرز.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استعان نخاو ببحارة فينيقيين للدوران حول إفريقيا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استمرت رحلة الدوران حول إفريقيا عشر سنوات.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "المعبود بعل رب الخصب والنماء.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "المعبودة عشتار زوجة الإله إيل.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يمثل أدونيس القوة المتجددة في الشمس بعد هزيمة الشتاء.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تشبه قصة بعل قصة إيزيس وأوزوريس مع ست.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تتكون الأبجدية الفينيقية من ثمانية وعشرين حرفًا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اقتبس الفينيقيون حروف أبجديتهم من الكتابة المصرية القديمة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أخذ الإغريق الأبجدية عن الفينيقيين بعد أن عدلوا فيها.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كان حكام جبيل يكتبون أسماءهم بالهيروغليفية المصرية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لم يهتم الفينيقيون بفن العمارة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في حضارة فينيقيا",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "لماذا سميت فينيقيا بهذا الاسم؟",
+                "options": [
+                    "لكثرة الجبال",
+                    "نسبة إلى ملك اسمه فينكس",
+                    "نسبة إلى الصبغة الحمراء التي استخرجوها من الحيوانات البحرية واشتهروا بها في صبغ المنسوجات",
+                    "لكثرة الأشجار"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما أهمية موقع مدينة صيدا؟",
+                "options": [
+                    "بعيدة عن البحر",
+                    "في الصحراء",
+                    "على قمة جبل",
+                    "أقيمت على لسان ممتد في الماء تحيط به جزر صغيرة واحتلت مركز الزعامة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا اكتسبت مدينة صور مناعة ضد الغزاة؟",
+                "options": [
+                    "لأنها في جزيرة بعيدة",
+                    "لكثرة جنودها المصريين",
+                    "لأنه كان يحيط بها سور عظيم",
+                    "لبعدها عن البحر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما الدليل على قوة الصلة بين جبيل ومصر القديمة؟",
+                "options": [
+                    "العثور على أهرامات",
+                    "لا دليل",
+                    "العثور على تماثيل مصرية وأحجار عليها أسماء فراعنة مصريين",
+                    "العثور على زاقورات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا توجه الفينيقيون نحو البحر؟",
+                "options": [
+                    "لكثرة الأنهار",
+                    "لاتساع أراضيهم الزراعية",
+                    "لوجودهم على ساحل محدد تحيط به الجبال من الشرق فاتجهوا للبحر طلبًا للرزق",
+                    "للهروب من الحروب فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما مقومات التوسع البحري للفينيقيين؟",
+                "options": [
+                    "توافر الأخشاب وكثرة التعاريج الساحلية وموقع البلاد المتوسط بين الشرق والغرب",
+                    "اتساع السهول",
+                    "كثرة الصحاري",
+                    "كثرة الأنهار"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أهمية مدينة قرطاجة؟",
+                "options": [
+                    "مدينة صحراوية",
+                    "عاصمة مصر",
+                    "أهم المستوطنات الفينيقية تقدمت حتى نافست المدن الفينيقية في التجارة والنشاط البحري",
+                    "مركز ديني فقط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا لم يستطع الفينيقيون الشرقيون تكوين وحدة سياسية؟",
+                "options": [
+                    "لعدم وجود مدن",
+                    "لاتحادهم الدائم",
+                    "لكثرة الحروب مع مصر",
+                    "لاستقلال كل مدينة واهتمامها بمصالحها الذاتية وسيادة التنافس بينها"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما الذي يجعل نظام الحكم الفينيقي شبه ديمقراطي؟",
+                "options": [
+                    "سلطة الملك مطلقة",
+                    "حكم عسكري",
+                    "لا توجد حكومة",
+                    "لكل مدينة حكومة وسلطة الملك مقيدة يساعده مجلس الشيوخ ومجلس النواب والكهنة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قارن بين مجلس الشيوخ ومجلس النواب عند الفينيقيين:",
+                "options": [
+                    "الشيوخ من الفقراء",
+                    "النواب من الكهنة",
+                    "متطابقان",
+                    "مجلس الشيوخ هيئة من المشرعين ومجلس النواب من طبقة الأغنياء"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا فشل نبوخذ نصر الثاني في احتلال فينيقيا؟",
+                "options": [
+                    "لبعدها",
+                    "لأن أسوارها المنيعة منعته من ذلك",
+                    "لضعف جيشه فقط",
+                    "لتحالفه معها"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "رتب الأحداث: احتلال الإسكندر لفينيقيا - الفتح الإسلامي - السيطرة الرومانية:",
+                "options": [
+                    "الرومان قبل الإسكندر",
+                    "الإسكندر بعد الإسلام",
+                    "احتلال الإسكندر ثم السيطرة الرومانية ثم الفتح الإسلامي",
+                    "الفتح الإسلامي أولًا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا قام المصريون بحملات عسكرية إلى سوريا ولبنان؟",
+                "options": [
+                    "لنشر الدين المصري",
+                    "لجعلها خط الدفاع الأول عن الحدود المصرية والمحافظة على الأمن القومي",
+                    "لاستغلال ثرواتها",
+                    "لجلب العبيد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر التواصل السياسي والعسكري بين مصر وفينيقيا؟",
+                "options": [
+                    "حملات مصرية وإنشاء قلاع واشتراك الفينيقيين مع تحتمس الثالث في مجدو",
+                    "الحروب الدائمة",
+                    "العزلة",
+                    "غزو الفينيقيين لمصر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما أثر سياسة إخناتون على النفوذ المصري في سوريا؟",
+                "options": [
+                    "احتلت مصر كل آسيا",
+                    "لم يتأثر",
+                    "كاد النفوذ المصري يصل إلى الضياع لتركيزه على الدعوة الدينية",
+                    "زاد النفوذ"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما نتيجة المعاهدة بين رمسيس الثاني والحيثيين على فينيقيا؟",
+                "options": [
+                    "احتلها الحيثيون",
+                    "ظلت المدن الفينيقية تحت السيطرة المصرية وتدعمت الصلات التجارية",
+                    "خربت المدن",
+                    "استقلت فينيقيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر اهتمام الفينيقيين بالزراعة؟",
+                "options": [
+                    "الاعتماد على الاستيراد",
+                    "استغلال كل المساحات وتحويل سفوح لبنان إلى مصاطب وزراعة الحبوب والأشجار",
+                    "زراعة القطن فقط",
+                    "إهمال الزراعة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما أهم الصناعات الفينيقية؟",
+                "options": [
+                    "الغزل والنسيج والثياب المزخرفة والزجاج والفخار والمعادن وأدوات الزينة والآلات الموسيقية",
+                    "السيارات",
+                    "الطائرات",
+                    "الورق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما الدليل على التواصل الاقتصادي في مجال الصناعة بين مصر وفينيقيا؟",
+                "options": [
+                    "عرف الفينيقيون الصناعات الزجاجية من مصر وتفوقوا فيها",
+                    "لا دليل",
+                    "استيراد الفخار من اليونان",
+                    "عرف المصريون الزجاج من فينيقيا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا كانت التجارة المورد الأساسي للفينيقيين؟",
+                "options": [
+                    "لموقعهم المتميز وضيق الأرض الزراعية وتوافر الموانئ والأخشاب",
+                    "لعدم وجود بحر",
+                    "لكثرة المعادن فقط",
+                    "لكثرة الأراضي الزراعية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف استفاد الفينيقيون من موقعهم في التجارة؟",
+                "options": [
+                    "حاربوا جيرانهم فقط",
+                    "أفادوا كثيرًا من النقل التجاري بين الدول الكبرى مثل مصر والعراق واليونان",
+                    "لم يستفيدوا",
+                    "عزلوا أنفسهم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قارن بين نشاط سكان المدن الداخلية والساحلية الفينيقية:",
+                "options": [
+                    "متطابقان",
+                    "الداخلية للنقل البحري",
+                    "الساحلية للرعي",
+                    "الداخلية تخصصت في النقل البري والقوافل والساحلية في النقل البحري"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما الدليل على تقدم الفينيقيين التجاري؟",
+                "options": [
+                    "إهمال التجارة",
+                    "عدم وجود موانئ",
+                    "اعتمادهم على الزراعة",
+                    "سيطرتهم على تجارة العالم البحرية وتجارتهم في المواد الخام والمصنعة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما معابر التواصل الحضاري نحو قارة آسيا؟",
+                "options": [
+                    "طريق شبه جزيرة سيناء وطريق ساحل المتوسط وطريق ساحل البحر الأحمر",
+                    "طريق النوبة",
+                    "طريق الصحراء الغربية فقط",
+                    "طريق المحيط الأطلنطي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما المقصود بالمثلث الحضاري؟",
+                "options": [
+                    "مثلث الأهرامات",
+                    "مثلث رأسه فينيقيا وضلعه الأيمن العراق والأيسر النيل وقاعدته شبه الجزيرة العربية",
+                    "مثلث في أوروبا",
+                    "مثلث جغرافي في إفريقيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر التواصل الاقتصادي بين مصر وفينيقيا؟",
+                "options": [
+                    "العزلة الاقتصادية",
+                    "فتح أسواق للمنتجات المصرية واستيراد خشب الأرز واستعانة نخاو بالبحارة الفينيقيين",
+                    "الحروب التجارية",
+                    "لا تواصل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ماذا يوضح حجر بالرمو؟",
+                "options": [
+                    "أن الملك سنفرو أرسل أسطولًا من أربعين سفينة لإحضار خشب الأرز من فينيقيا",
+                    "قصة الطوفان",
+                    "أبجدية فينيقيا",
+                    "قوانين حمورابي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا استعان الفرعون نخاو ببحارة فينيقيين؟",
+                "options": [
+                    "لنقل الحجارة",
+                    "لبناء الأهرامات",
+                    "لمحاربة الفرس",
+                    "للدوران حول إفريقيا لاكتشاف أسواق جديدة لبراعتهم البحرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما خصائص الديانة الفينيقية؟",
+                "options": [
+                    "عبادة الملك فقط",
+                    "عبادة الظواهر الطبيعية وتقديس قوى الخصب والنماء وتصويرها في هيئة بشرية",
+                    "التوحيد",
+                    "إنكار البعث"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما أهم المعبودات الفينيقية؟",
+                "options": [
+                    "آنو ومردوخ",
+                    "إيل وبعل وعشتار وأدونيس",
+                    "زيوس وأثينا",
+                    "آمون ورع"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما وجه الشبه بين الديانة الفينيقية والمصرية؟",
+                "options": [
+                    "عبادة واحدة",
+                    "تصوير الصراع بين الخير والشر في قصة بعل كقصة إيزيس وأوزوريس مع ست والاعتقاد بالبعث",
+                    "الزاقورات",
+                    "لا شبه"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما الدليل على تأثر الفينيقيين بالمصريين في الاعتقاد بالبعث؟",
+                "options": [
+                    "بناء الأهرامات",
+                    "وضع الطعام والشراب مع المتوفى",
+                    "التحنيط الكامل",
+                    "عبادة آمون"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما الطبقات الاجتماعية عند الفينيقيين؟",
+                "options": [
+                    "الكهنة فقط",
+                    "العليا (الوزير والنبلاء وكبار الكهنة والتجار والأغنياء) والوسطى (المهن والموظفون) والدنيا (الخدم والعبيد)",
+                    "طبقة واحدة",
+                    "طبقتان فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا اخترع الفينيقيون الحروف الهجائية؟",
+                "options": [
+                    "للزينة",
+                    "لكتابة الشعر فقط",
+                    "لتقليد العراقيين",
+                    "لحاجتهم إلى وسيلة سريعة لتسجيل معاملاتهم التجارية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أهمية الأبجدية الفينيقية للعالم؟",
+                "options": [
+                    "استخدمت في فينيقيا فقط",
+                    "أول أبجدية في العالم انتقلت للإغريق ثم الرومان ومنها خرجت الأبجديات الأوروبية الحديثة",
+                    "لا أهمية",
+                    "اندثرت"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قارن بين الكتابة الهيروغليفية والفينيقية:",
+                "options": [
+                    "متطابقتان",
+                    "الهيروغليفية من أقدم الكتابات التصويرية والفينيقية أول كتابة استخدم الإنسان فيها الحروف",
+                    "الهيروغليفية أبجدية حديثة",
+                    "الفينيقية تصويرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كيف انتقلت الأبجدية الفينيقية إلى أوروبا؟",
+                "options": [
+                    "أخذها الإغريق وعدلوا فيها ثم ورثها الرومان الذين نشروها في أوروبا",
+                    "عن طريق مصر",
+                    "عن طريق الفرس",
+                    "لم تنتقل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مظاهر التواصل الثقافي بين مصر وجبيل؟",
+                "options": [
+                    "لا تواصل",
+                    "جالية مصرية من التجار نشرت الثقافة وكتب الحكام أسماءهم بالهيروغليفية واتخذوا شعارًا مصريًا",
+                    "نشر اللغة الإغريقية",
+                    "نشر المسمارية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر براعة الفينيقيين في العمارة؟",
+                "options": [
+                    "بناء الزاقورات فقط",
+                    "بناء الأهرامات",
+                    "إهمال العمارة",
+                    "القلاع والحصون والأسوار وإقامة القصور مثل قصر أوغاريت ذي الأعمدة المزينة بالفضة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "علام تدل بقايا المعابد في فينيقيا؟",
+                "options": [
+                    "على استخدام الطين فقط",
+                    "على ضعف المهندسين",
+                    "على البساطة",
+                    "على تمكن المهندسين وقدرتهم على استخدام كتل ضخمة من الأحجار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما الدليل على تفوق الفينيقيين في فن النقش والنحت؟",
+                "options": [
+                    "الأهرامات",
+                    "الزاقورات",
+                    "المسلات المصرية",
+                    "ما عثر عليه من توابيت رائعة النقوش"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما المشغولات التي أتقنها الفينيقيون في صناعة الحلي؟",
+                "options": [
+                    "الأسلحة الثقيلة",
+                    "العقود والخواتم والأقراط والأساور من الذهب والفضة والأحجار الكريمة",
+                    "الملابس",
+                    "السفن"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما المقصود بالحروف الهجائية؟",
+                "options": [
+                    "أرقام حسابية",
+                    "كتابة تصويرية",
+                    "علامات مسمارية",
+                    "حروف اخترعها الفينيقيون لتسهيل معاملاتهم التجارية مكونة من 22 حرفًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما المقصود بالزاقورة؟",
+                "options": [
+                    "مقبرة ملكية",
+                    "قصر الحاكم",
+                    "معبد يتوج فيه الملك وتقام به الشعائر ويتعلم به الأفراد وتحفظ به السجلات والعقود",
+                    "مخزن غلال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "كيف تستثمر الموارد في التنمية الاقتصادية كما فعل الفينيقيون؟",
+                "options": [
+                    "بتركها دون استغلال",
+                    "ببيعها للأجانب فقط",
+                    "بإهدارها",
+                    "باستغلال الموارد الطبيعية المتاحة بحكمة في الزراعة والصناعة والتجارة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما القيم المستفادة من دراسة حضارة فينيقيا؟",
+                "options": [
+                    "الكسل",
+                    "العنف",
+                    "إتقان العمل والأمانة والإخلاص والأمن والأمان",
+                    "الغش"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا ازدهرت حضارة فينيقيا؟",
+                "options": [
+                    "لاتساع الصحاري",
+                    "لكثرة الحروب",
+                    "لموقعها المتميز وتوافر الأخشاب والموانئ ونشاط سكانها التجاري والبحري",
+                    "للعزلة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما دور قرطاجة في التجارة؟",
+                "options": [
+                    "لا دور",
+                    "كانت بها موانئ ومرسى حربي ومرسى داخلي وأصبحت تنافس المدن الفينيقية",
+                    "مدينة زراعية فقط",
+                    "مدينة صحراوية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما دور الفينيقيين في التواصل الحضاري بين الشعوب؟",
+                "options": [
+                    "عزلوا الشعوب",
+                    "حاربوا الجميع",
+                    "لا دور",
+                    "نقلوا السلع والأفكار والأبجدية بين الشرق والغرب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا أدخل الفينيقيون شجر الرمان إلى شمال إفريقيا؟",
+                "options": [
+                    "بالصدفة",
+                    "لنشاطهم البحري وتأسيسهم مستوطنات مثل قرطاجة",
+                    "لتجارة الخشب",
+                    "بأمر الفرعون"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في حضارة فينيقيا",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة موقع الحضارة الفينيقية؟",
+                "options": [
+                    "البحر الأسود",
+                    "اليونانيون",
+                    "البحر المتوسط",
+                    "آسيا الصغرى (تركيا)"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_map.jpg",
+                "masks": [
+                    [
+                        57.7,
+                        1.0,
+                        23.0,
+                        6.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة موقع الحضارة الفينيقية؟",
+                "options": [
+                    "البحر المتوسط",
+                    "البحر الأسود",
+                    "اليونانيون",
+                    "آسيا الصغرى (تركيا)"
+                ],
+                "ans": 3,
+                "img": "images/s1u3l2_map.jpg",
+                "masks": [
+                    [
+                        48.0,
+                        15.4,
+                        24.6,
+                        16.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة موقع الحضارة الفينيقية؟",
+                "options": [
+                    "البحر الأسود",
+                    "البحر المتوسط",
+                    "اليونانيون",
+                    "آسيا الصغرى (تركيا)"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_map.jpg",
+                "masks": [
+                    [
+                        1.2,
+                        16.2,
+                        18.3,
+                        6.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة موقع الحضارة الفينيقية؟",
+                "options": [
+                    "آسيا الصغرى (تركيا)",
+                    "اليونانيون",
+                    "البحر الأسود",
+                    "البحر المتوسط"
+                ],
+                "ans": 3,
+                "img": "images/s1u3l2_map.jpg",
+                "masks": [
+                    [
+                        18.8,
+                        48.2,
+                        32.1,
+                        6.8
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة موقع الحضارة الفينيقية؟",
+                "options": [
+                    "آسيا الصغرى (تركيا)",
+                    "اليونانيون",
+                    "البحر الأسود",
+                    "الفينيقيون"
+                ],
+                "ans": 3,
+                "img": "images/s1u3l2_map.jpg",
+                "masks": [
+                    [
+                        78.6,
+                        49.5,
+                        21.0,
+                        6.6
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة موقع الحضارة الفينيقية؟",
+                "options": [
+                    "اليونانيون",
+                    "البحر الأسود",
+                    "مصر",
+                    "آسيا الصغرى (تركيا)"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_map.jpg",
+                "masks": [
+                    [
+                        47.6,
+                        79.8,
+                        13.3,
+                        6.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة قرطاجة والمدن الفينيقية؟",
+                "options": [
+                    "المحيط الأطلنطي",
+                    "قرطاجة",
+                    "أسبانيا",
+                    "بلاد الشام"
+                ],
+                "ans": 1,
+                "img": "images/s1u3l2_carthage.jpg",
+                "masks": [
+                    [
+                        31.6,
+                        50.2,
+                        7.7,
+                        7.7
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة قرطاجة والمدن الفينيقية؟",
+                "options": [
+                    "قرطاجة",
+                    "أسبانيا",
+                    "بلاد الشام",
+                    "المحيط الأطلنطي"
+                ],
+                "ans": 1,
+                "img": "images/s1u3l2_carthage.jpg",
+                "masks": [
+                    [
+                        9.5,
+                        36.5,
+                        7.7,
+                        7.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة قرطاجة والمدن الفينيقية؟",
+                "options": [
+                    "أسبانيا",
+                    "قرطاجة",
+                    "المحيط الأطلنطي",
+                    "بلاد الشام"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_carthage.jpg",
+                "masks": [
+                    [
+                        0.7,
+                        19.2,
+                        8.3,
+                        20.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة قرطاجة والمدن الفينيقية؟",
+                "options": [
+                    "المحيط الأطلنطي",
+                    "قرطاجة",
+                    "أسبانيا",
+                    "بلاد الشام"
+                ],
+                "ans": 3,
+                "img": "images/s1u3l2_carthage.jpg",
+                "masks": [
+                    [
+                        75.1,
+                        53.9,
+                        5.7,
+                        17.0
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة قرطاجة والمدن الفينيقية؟",
+                "options": [
+                    "مصر",
+                    "أسبانيا",
+                    "قرطاجة",
+                    "المحيط الأطلنطي"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_carthage.jpg",
+                "masks": [
+                    [
+                        65.5,
+                        76.0,
+                        5.7,
+                        7.4
+                    ]
+                ]
+            },
+            {
+                "q": "ما المكان المخفي بعلامة (؟) على خريطة قرطاجة والمدن الفينيقية؟",
+                "options": [
+                    "أسبانيا",
+                    "العراق القديم",
+                    "قرطاجة",
+                    "المحيط الأطلنطي"
+                ],
+                "ans": 1,
+                "img": "images/s1u3l2_carthage.jpg",
+                "masks": [
+                    [
+                        86.6,
+                        58.7,
+                        7.6,
+                        17.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع الفينيقي؟",
+                "options": [
+                    "الطبقة الدنيا: الخدم والعبيد",
+                    "الطبقة الوسطى: أصحاب المهن والصناعات والموظفون",
+                    "طبقة الجنود المرتزقة",
+                    "الطبقة العليا: الوزير والنبلاء وكبار الكهنة والتجار والأغنياء"
+                ],
+                "ans": 3,
+                "img": "images/s1u3l2_classes.jpg",
+                "masks": [
+                    [
+                        36.9,
+                        15.2,
+                        26.2,
+                        22.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع الفينيقي؟",
+                "options": [
+                    "الطبقة الدنيا: الخدم والعبيد",
+                    "طبقة الجنود المرتزقة",
+                    "الطبقة الوسطى: أصحاب المهن والصناعات والموظفون",
+                    "الطبقة العليا: الوزير والنبلاء وكبار الكهنة والتجار والأغنياء"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_classes.jpg",
+                "masks": [
+                    [
+                        28.9,
+                        49.2,
+                        44.9,
+                        12.9
+                    ]
+                ]
+            },
+            {
+                "q": "ما الطبقة المخفية بعلامة (؟) في هرم طبقات المجتمع الفينيقي؟",
+                "options": [
+                    "الطبقة الدنيا: الخدم والعبيد",
+                    "الطبقة الوسطى: أصحاب المهن والصناعات والموظفون",
+                    "الطبقة العليا: الوزير والنبلاء وكبار الكهنة والتجار والأغنياء",
+                    "طبقة الجنود المرتزقة"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_classes.jpg",
+                "masks": [
+                    [
+                        35.6,
+                        79.5,
+                        28.9,
+                        12.9
+                    ]
+                ]
+            },
+            {
+                "q": "ما المفهوم المخفي بعلامة (؟) في مفاهيم الوحدة الثالثة؟",
+                "options": [
+                    "كتابة مسمارية",
+                    "دويلات المدن",
+                    "حروف هجائية",
+                    "زاقورة"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_concepts.jpg",
+                "masks": [
+                    [
+                        79.1,
+                        1.1,
+                        20.6,
+                        23.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما المفهوم المخفي بعلامة (؟) في مفاهيم الوحدة الثالثة؟",
+                "options": [
+                    "زاقورة",
+                    "دويلات المدن",
+                    "كتابة مسمارية",
+                    "حروف هجائية"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_concepts.jpg",
+                "masks": [
+                    [
+                        79.1,
+                        52.2,
+                        20.6,
+                        23.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المدينة الفينيقية الموضحة في الصورة التي أقيمت على لسان ممتد في الماء؟",
+                "options": [
+                    "مدينة صيدا",
+                    "مدينة صور",
+                    "مدينة جبيل",
+                    "مدينة أوغاريت"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_sidon.jpg",
+                "masks": [
+                    [
+                        30.8,
+                        85.7,
+                        37.5,
+                        14.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المدينة الفينيقية الموضحة في الصورة التي تولت الزعامة بعد صيدا؟",
+                "options": [
+                    "مدينة صيدا",
+                    "مدينة جبيل",
+                    "مدينة صور",
+                    "مدينة قرطاجة"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_tyre.jpg",
+                "masks": [
+                    [
+                        30.5,
+                        86.8,
+                        39.8,
+                        13.2
+                    ]
+                ]
+            },
+            {
+                "q": "ما الأثر الموضح في الصورة؟",
+                "options": [
+                    "الأبجدية الفينيقية",
+                    "درع حربي",
+                    "تابوت من جبيل",
+                    "تماثيل صغيرة من الفخار (فن فينيقي من قرطاجة)"
+                ],
+                "ans": 3,
+                "img": "images/s1u3l2_figs.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        74.5,
+                        100.0,
+                        25.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما الأثر الموضح في الصورة الذي يدل على تقدم الصناعات المعدنية عند الفينيقيين؟",
+                "options": [
+                    "درع حربي",
+                    "تابوت",
+                    "تاج ذهبي",
+                    "تمثال صغير"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_armor.jpg",
+                "masks": [
+                    [
+                        11.6,
+                        85.9,
+                        78.5,
+                        14.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسما المعبودين الموضحين في الصورة؟",
+                "options": [
+                    "زيوس وأبولو",
+                    "آمون ورع",
+                    "المعبود بعل والمعبود إيل",
+                    "آنو وإيا"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_elbaal.jpg",
+                "masks": [
+                    [
+                        0.0,
+                        89.2,
+                        100.0,
+                        10.8
+                    ]
+                ]
+            },
+            {
+                "q": "من المعبودة الموضحة في الصورة ربة الخصب والنماء وزوجة بعل؟",
+                "options": [
+                    "الإلهة عشتار",
+                    "إيزيس",
+                    "حتحور",
+                    "أثينا"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_ishtar.jpg",
+                "masks": [
+                    [
+                        8.8,
+                        87.7,
+                        84.2,
+                        12.3
+                    ]
+                ]
+            },
+            {
+                "q": "ما الأثر الموضح في الصورة؟",
+                "options": [
+                    "معبد فينيقي بلبنان",
+                    "قصر أوغاريت",
+                    "زاقورة بابل",
+                    "معبد الكرنك"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_temple.jpg",
+                "masks": [
+                    [
+                        20.6,
+                        84.5,
+                        60.7,
+                        15.5
+                    ]
+                ]
+            },
+            {
+                "q": "ما الموضح في الصورة الذي كان له الفضل الأكبر في نشر الوعي والثقافة في العالم؟",
+                "options": [
+                    "الأبجدية الفينيقية",
+                    "الكتابة الديموطيقية",
+                    "الكتابة المسمارية",
+                    "الكتابة الهيروغليفية"
+                ],
+                "ans": 0,
+                "img": "images/s1u3l2_alphabet.jpg",
+                "masks": [
+                    [
+                        13.7,
+                        87.9,
+                        75.5,
+                        12.1
+                    ]
+                ]
+            },
+            {
+                "q": "ما الأثر الموضح في الصورة الذي يدل على تفوق الفينيقيين في النقش والنحت؟",
+                "options": [
+                    "تابوت توت عنخ آمون",
+                    "حجر بالرمو",
+                    "تابوت من مدينة جبيل",
+                    "مسلة حمورابي"
+                ],
+                "ans": 2,
+                "img": "images/s1u3l2_coffin.jpg",
+                "masks": [
+                    [
+                        28.1,
+                        89.0,
+                        43.5,
+                        11.0
+                    ]
+                ]
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>
